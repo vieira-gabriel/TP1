@@ -13,17 +13,17 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	Nome();
-	void setNome(string nome);
+	void setNome(string nome) throw (invalid_argument);
 	void callNome(Nome objeto);
 };
 
 class Telefone{
 private:
-	int telefone[11];
+	int telefone[13]; //O numero será armazenado no formato AANNNNNNNNN, mas será aprensentado no fomrato AA NNNNN-NNNN
 	void validar(int) throw (invalid_argument);
 public:
 	Telefone();
-	void setTelefone(int telefone[]);
+	void setTelefone(int telefone[]) throw (invalid_argument);
 	void callTelefone(Telefone objeto);
 };
 
@@ -33,7 +33,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	Edereco();
-	void setEndereco(string endereco);
+	void setEndereco(string endereco) throw (invalid_argument);
 	void callEndereco(Endereco objeto);
 };
 
@@ -43,7 +43,7 @@ private:
 	void validar(int, int, int) throw (invalid_argument);
 public:
 	Data();
-	void setData(int dia, int mes, int ano);
+	void setData(int dia, int mes, int ano) throw (invalid_argument);
 	void callData(Data objeto);	
 };
 
@@ -53,7 +53,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	Email();
-	void setEmail(string email);
+	void setEmail(string email) throw (invalid_argument);
 	void callEmail(Email objeto);	
 };
 
@@ -63,7 +63,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	Senha();
-	void setSenha(string senha);
+	void setSenha(string senha) throw (invalid_argument);
 	void callSenha(Senha objeto);
 };
 
@@ -73,7 +73,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	Texto();
-	void setTexto(string texto);
+	void setTexto(string texto) throw (invalid_argument);
 	void callTexto(Texto objeto);	
 };
 
@@ -83,7 +83,7 @@ private:
 	void validar(int) throw (invalid_argument);
 public:
 	Idioma();
-	void setIdioma(char idioma[]);
+	void setIdioma(char idioma[]) throw (invalid_argument);
 	void callIdioma(Idioma objeto);
 	
 };

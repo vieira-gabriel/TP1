@@ -70,7 +70,7 @@ public:
 class Texto{
 private:
 	string texto;
-	void validar(string) throw (invalid_argument);
+	void validar(string, Nome) throw (invalid_argument);
 public:
 	Texto();
 	void setTexto(string texto) throw (invalid_argument);

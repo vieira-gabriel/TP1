@@ -24,9 +24,27 @@ void Nome::callNome(){
 	//FAZER ESSE CÓDIGO
 }
 
-void Telefone::validar(int telefone[]) throw (invalid_argument){
-	for (int i = 0; i < 11; ++i){ //11 é o número de caracteres na variável telefone
-		if (telefone[i] < 0 || telefone[i] > 9) throw invalid_argument("Argumento invalido");
+void Telefone::validar(char telefone[]) throw (invalid_argument){
+	int i = 0, end = 0, num = 0;
+
+	while (!end){
+		if (telefone[i] <= '9' && '0' <= telefone[i]){		// Se for numero adiciona contador.
+			num++;
+		}
+		else if (telefone[i] == '\0'){		// Se for fim de string.
+			if (num == 11){						// Confirma tamanho de telefone.
+				end = 1;
+			}
+			else{
+				throw invalid_argument("Argumento invalido. O telefone deve ter 11 digitos.");
+			}
+		}
+		else{		// Digito invalido.
+			throw invalid_argument("Argumento invalido. O telefone deve possuir apenas digitos de 0-9.");
+		}
+
+		i++;
+		if (i > 11) throw invalid_argument("Argumento invalido. O telefone deve ter 11 digitos.");		// Tamanho invalido.
 	}
 }
 
@@ -37,6 +55,7 @@ void Telefone::setTelefone(int telefone[]) throw (invalid_argument){
 	valor[2] = " ";
 	valor[8] = "-";
 
+	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN
 	for (int posicao1 = 0, int posicao2; posicao1 < 11; ++posicao1, ++posicao2){
 		if (posicao1 == 2 || posicao1 == 8) ++posicao1;
 		valor[posicao1] = telefone[posicao2];

@@ -48,12 +48,12 @@ void Telefone::validar(char telefone[]) throw (invalid_argument){
 	}
 }
 
-void Telefone::setTelefone(int telefone[]) throw (invalid_argument){
-	validar(telefone);
-	int valor[13];
-
-	valor[2] = " ";
-	valor[8] = "-";
+void Telefone::setTelefone(char telefone[]) throw (invalid_argument){ 
+	validar(telefone);    // Valida telefone fornecido. 
+	int valor[14]; 
+	valor[2] = ' '; 
+	valor[8] = '-'; 
+	valor[13] = '\0'; 
 
 	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN
 	for (int posicao1 = 0, int posicao2; posicao1 < 11; ++posicao1, ++posicao2){
@@ -61,9 +61,8 @@ void Telefone::setTelefone(int telefone[]) throw (invalid_argument){
 		valor[posicao1] = telefone[posicao2];
 	}
 	//Essa função é para guardar o valor no formato AA NNNNN-NNNN
-	for (int i = 0; i < 13; ++i){
-		this->telefone[i] = valor[i];
-	}
+	this->telefone_char = valor; 
+	this->telefone_int = atoi(telefone);  // Armazena em formato inteiro o telefone.
 }
 void Telefone::callTelefone(){
 	//FAZER ESSE CÓDIGO

@@ -19,11 +19,12 @@ public:
 
 class Telefone{
 private:
-	int telefone[13]; //O numero será armazenado no formato AANNNNNNNNN, mas será aprensentado no fomrato AA NNNNN-NNNN
-	void validar(int) throw (invalid_argument);
+	int telefone_int; //O numero será armazenado no formato AANNNNNNNNN, mas será aprensentado no fomrato AA NNNNN-NNNN
+	char telefone_char[14];
+	void validar(char telefone[]) throw (invalid_argument);
 public:
 	Telefone();
-	void setTelefone(int telefone[]) throw (invalid_argument);
+	void setTelefone(char telefone[]) throw (invalid_argument);
 	void callTelefone(Telefone objeto);
 };
 

@@ -7,12 +7,12 @@
 void Nome::validar(string nome) throw (invalid_argument){
 	// Lança exceção se a primeira letra não for maiúscula (segunto tabela ASCII).
 
-	if (nome[0] < 'A' || nome[0 > 'Z']) throw invalid_argument("Argumento invalido. Primeira letra deve ser maiúscula");
+	if (nome[0] < 'A' || nome[0 > 'Z']) throw invalid_argument("Argumento inválido. Primeira letra deve ser maiúscula");
 
 	// Lança exceção se o nome possuir menos que 20 caracteres.
 	//nome.length() retorna o tamanho da string nome
 
-	if (nome.length() > 20 || nome.length() < 1) throw invalid_argument("Argumento invalido. Nome precisa ter entre 1 e 20 caracteres");
+	if (nome.length() > 20 || nome.length() < 1) throw invalid_argument("Argumento inválido. Nome precisa ter entre 1 e 20 caracteres");
 }
 
 void Nome::setNome(string nome) throw (invalid_argument){
@@ -33,6 +33,7 @@ void Telefone::validar(int telefone[]) throw (invalid_argument){
 void Telefone::setTelefone(int telefone[]) throw (invalid_argument){
 	validar(telefone);
 	int valor[13];
+
 	valor[2] = " ";
 	valor[8] = "-";
 
@@ -41,8 +42,9 @@ void Telefone::setTelefone(int telefone[]) throw (invalid_argument){
 		valor[posicao1] = telefone[posicao2];
 	}
 	//Essa função é para guardar o valor no formato AA NNNNN-NNNN
-
-	this->telefone = valor;
+	for (int i = 0; i < 13; ++i){
+		this->telefone[i] = valor[i];
+	}
 }
 void Telefone::callTelefone(){
 	//FAZER ESSE CÓDIGO
@@ -50,10 +52,10 @@ void Telefone::callTelefone(){
 
 void Endereco::validar(string endereco) throw (invalid_argument){
 	int tamanho = endereco.length();
-	if (tamanho > 20 || tamanho < 1) throw invalid_argument("Argumento invalido. Endereço precisa ter entre 1 e 20 caracteres");
+	if (tamanho > 20 || tamanho < 1) throw invalid_argument("Argumento inválido. Endereço precisa ter entre 1 e 20 caracteres");
 
 	//Se o primeiro ou o ultimo caractere for " ", retornara um argumento inválido
-	if (endereco[0] == ' ' || endereco[tamanho-1]) throw invalid_argument("Argumento invalido. Primeiro ou ultimo caractere não pode ser espaço em branco");
+	if (endereco[0] == ' ' || endereco[tamanho-1]) throw invalid_argument("Argumento inválido. Primeiro ou ultimo caractere não pode ser espaço em branco");
 	//(tamanho-1) é a posição no ventor do ultimo caractere
 }
 
@@ -68,13 +70,13 @@ void Endereco::callEndereco(Endereco objeto){
 
 void Data::validar(int dia, int mes, int ano) throw (invalid_argument){
 	//Validação quanto ao ano
-	if(ano < 1900 || ano > 2099) throw invalid_argument("Argumento invalido. Ano deve ser um valor inteiro entre 1900 e 2099");
+	if(ano < 1900 || ano > 2099) throw invalid_argument("Argumento inválido. Ano deve ser um valor inteiro entre 1900 e 2099");
 
 	//Validação quanto ao mês
-	if(mes < 1 || mes > 12) throw invalid_argument("Argumento invalido. Mes deve ser um valor inteiro ente 1 e 12");
+	if(mes < 1 || mes > 12) throw invalid_argument("Argumento inválido. Mes deve ser um valor inteiro ente 1 e 12");
 
 	//Validação do dia (considerando que todos os meses possuem 31 dias)
-	if(mes < 1 || mes > 12) throw invalid_argument("Argumento invalido. Dia deve ser um valor inteiro ente 1 e 31");
+	if(mes < 1 || mes > 12) throw invalid_argument("Argumento inválido. Dia deve ser um valor inteiro ente 1 e 31");
 }
 
 void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
@@ -99,15 +101,15 @@ void Email::validar(string email) throw (invalid_argument){
 			inicio_dominio = i + 1;
 		}
 		else if (dominio == E_DOMINIO){
-			if(!((email[i] >= 'A' && email <= 'Z') || (email[i] >= 'a' && email <= 'z') || (email[i] >= '0' && email <= '9'))) throw invalid_argument("Argumento invalido. Dominio com caracteres inválidos");
-			if (email[i] >= '0' && email <= '9') ++quantidade_numeros_dominio;
+			if(!((email[i] >= 'A' && email[i] <= 'Z') || (email[i] >= 'a' && email[i] <= 'z') || (email[i] >= '0' && email[i] <= '9'))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
+			if (email[i] >= '0' && email[i] <= '9') ++quantidade_numeros_dominio;
 
 			//Nessa parte, verifica-se se o dominio é composto somente por números
-			if (quantidade_numeros_dominio == email.length() - inicio_dominio) throw invalid_argument("Argumento invalido. Dominio não pode possuir somente números");
+			if (quantidade_numeros_dominio == email.length() - inicio_dominio) throw invalid_argument("Argumento inválido. Dominio não pode possuir somente números");
 		}
 	}
-	if(email[0] == '.' || email[fim_local] == '.') throw invalid_argument("Argumento invalido. Primeiro e ultimo caractere da parte local não pode ser '.'");
-	if(email[inicio_dominio] == '-' || email[email.length() - 1] == '-') throw invalid_argument("Argumento invalido. Primeiro e ultimo caractere do domínio não pode ser '-'");
+	if(email[0] == '.' || email[fim_local] == '.') throw invalid_argument("Argumento inválido. Primeiro e ultimo caractere da parte local não pode ser '.'");
+	if(email[inicio_dominio] == '-' || email[email.length() - 1] == '-') throw invalid_argument("Argumento inválido. Primeiro e ultimo caractere do domínio não pode ser '-'");
 }
 
 void Email::setEmail(string email) throw (invalid_argument){
@@ -119,38 +121,56 @@ void Email::callEmail(Email objeto){
 	//FAZER ESSE CÓDIGO
 }
 
-void Senha::validar(string senha, Nome usuário) throw (invalid_argument){
-	
+void Senha::validar(string senha, Nome usuario) throw (invalid_argument){
+	int quant_letras_maiusculas = 0;	//Quantidades de letras maiúsculas na senha. É necessário ter pelo menos uma
+	int quant_letras_minusculas = 0;	//Quantidades de letras minusculas na senha. É necessário ter pelo menos uma
+	int quant_digitos = 0;				//Quantidades de digitos na senha. É necessário ter pelo menos um
+
+	if (senha == usuário.nome) throw invalid_argument("Argumento inválido. Senha não pode ser igual ao nome de usuário");
+	for (int i = 0; i < senha.length(); ++i){
+		if (senha[i] >= 'A' && senha[i] <= 'Z') ++quant_letras_maiusculas;
+		else if (senha[i] >= 'a' && senha[i] <= 'z') ++quant_letras_minusculas;
+		else if (senha[i] >= '0' && senha[i] <= '9') ++quant_digitos;
+		else throw invalid_argument("Argumento inválido. Senha só pode conter letras e digitos.");
+	}
+	if(quant_digitos == 0 || quant_letras_minusculas == 0 || quant_letras_maiusculas == 0) throw invalid_argument("Argumento inválido. Senha precisa conter, pelo menos, uma letra
+maiúscula, uma letra minúscula e um dígito.");
 }
 
-void Senha::setSenha() throw (invalid_argument){
-	validar();
+void Senha::setSenha(string senha, Nome usuario) throw (invalid_argument){
+	validar(senha, usuario);
+	this->senha = senha;
 }
 
 void Senha::callSenha(Senha objeto){
 	//FAZER ESSE CÓDIGO
 }
 
-void XX::validar() throw (invalid_argument){
-
+void Texto::validar(string texto) throw (invalid_argument){
+	if (texto.length() > 30) throw invalid_argument("Argumento inválido. Texto possui mais que 30 caracteres.")
 }
 
-void XX::setXX() throw (invalid_argument){
-	validar();
+void Texto::setTexto(string texto) throw (invalid_argument){
+	validar(texto);
+	this->texto - texto;
 }
 
-void XX::callXX(XX objeto){
+void Texto::callTexto(Texto objeto){
 	//FAZER ESSE CÓDIGO
 }
 
-void XX::validar() throw (invalid_argument){
-
+void Idioma::validar(char idioma[]) throw (invalid_argument){
+	if(idioma != "ENG\0" || idioma != "FRA\0" || idioma != "GER\0" || idioma != "ITA\0" || idioma != "POR\0" || idioma != "SPA\0") throw invalid_argument("Argumento inválido. Entre ENG (inglês), FRA (francês), GER (alemão), ITA (italiano), POR
+(português) ou SPA (espanhol).");
 }
 
-void XX::setXX() throw (invalid_argument){
-	validar();
+void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
+	validar(idioma);
+	for (int i = 0; i < 3; ++i){ //O valor 3 é o numero de caracteres que define o idioma
+		this->idioma[i] = idioma[i];
+	}
 }
 
-void XX::callXX(XX objeto){
+void Idioma::callIdioma(Idioma objeto){
 	//FAZER ESSE CÓDIGO
 }

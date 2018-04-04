@@ -60,17 +60,17 @@ public:
 class Senha{
 private:
 	string senha;
-	void validar(string) throw (invalid_argument);
+	void validar(string, Nome) throw (invalid_argument);
 public:
 	Senha();
-	void setSenha(string senha) throw (invalid_argument);
+	void setSenha(string senha, Nome usuario) throw (invalid_argument);
 	void callSenha(Senha objeto);
 };
 
 class Texto{
 private:
 	string texto;
-	void validar(string, Nome) throw (invalid_argument);
+	void validar(string) throw (invalid_argument);
 public:
 	Texto();
 	void setTexto(string texto) throw (invalid_argument);
@@ -80,7 +80,7 @@ public:
 class Idioma{
 private:
 	char idioma[3];
-	void validar(int) throw (invalid_argument);
+	void validar(char) throw (invalid_argument);
 public:
 	Idioma();
 	void setIdioma(char idioma[]) throw (invalid_argument);

@@ -19,9 +19,6 @@ bool eh_numero(char caractere){
 	return FALSE;
 }
 
-// As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
-// Essas funções usam a tabela ASCII como referência.
-
 void Nome::validar(string nome) throw (invalid_argument){
 	// Lança exceção se a primeira letra não for maiúscula (segunto tabela ASCII).
 

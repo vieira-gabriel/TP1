@@ -7,6 +7,12 @@
 
 using namespace std;
 
+bool eh_maiusculo(char caractere);
+bool eh_minusculo(char caractere);
+bool eh_numero(char caractere);
+// As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
+// Essas funções usam a tabela ASCII como referência.
+
 class Nome{ //Essa classe servirá tanto para o primeiro nome quanto para o sobrenome
 private:
 	string nome;

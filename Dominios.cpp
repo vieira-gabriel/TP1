@@ -178,7 +178,7 @@ void Texto::callTexto(Texto objeto){
 }
 
 void Idioma::validar(char idioma[]) throw (invalid_argument){
-	if(idioma != "ENG\0" || idioma != "FRA\0" || idioma != "GER\0" || idioma != "ITA\0" || idioma != "POR\0" || idioma != "SPA\0") throw invalid_argument("Argumento inválido. Entre ENG (inglês), FRA (francês), GER (alemão), ITA (italiano), POR
+	if(idioma != "ENG\0" || idioma != "FRA\0" || idioma != "GER\0" || idioma != "ITA\0" || idioma != "POR\0" || idioma != "SPA\0") throw invalid_argument("Argumento inválido. As entradas válidas são ENG (inglês), FRA (francês), GER (alemão), ITA (italiano), POR
 (português) ou SPA (espanhol).");
 }
 
@@ -190,5 +190,20 @@ void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
 }
 
 void Idioma::callIdioma(Idioma objeto){
+	//FAZER ESSE CÓDIGO
+}
+
+void Classe_de_termo::validar(char classe[]) throw (invalid_argument){
+	if(classe != "PT\0" || classe != "NP\0") throw invalid_argument("Argumento inválido. As entradas válidas são PT (preferred term) ou NP (non preferred term).");
+}
+
+void Classe_de_termo::setClasse_de_termpo(char idioma[]) throw (invalid_argument){
+	validar(idioma);
+	for (int i = 0; i < 3; ++i){ //O valor 3 é o numero de caracteres que define o idioma
+		this->idioma[i] = idioma[i];
+	}
+}
+
+void Classe_de_termo::callClasse_de_termpo(Classe_de_termo objeto){
 	//FAZER ESSE CÓDIGO
 }

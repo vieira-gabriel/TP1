@@ -89,4 +89,15 @@ public:
 	
 };
 
+class Classe_de_termo{
+private:
+	char classe[2];
+	void validar(char) throw (invalid_argument);
+
+public:
+	Classe_de_termo();
+	void setClasse_de_termo(char classe[]) throw (invalid_argument);
+	void callClasse_de_termo(Classe_de_termo objeto);	
+};
+
 #endif // DOMINIOS_H_INCLUDED

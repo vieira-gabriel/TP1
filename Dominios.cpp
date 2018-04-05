@@ -139,12 +139,11 @@ void Email::callEmail(Email objeto){
 	//FAZER ESSE CÓDIGO
 }
 
-void Senha::validar(string senha, Nome usuario) throw (invalid_argument){
+void Senha::validar(string senha) throw (invalid_argument){
 	int quant_letras_maiusculas = 0;	//Quantidades de letras maiúsculas na senha. É necessário ter pelo menos uma
 	int quant_letras_minusculas = 0;	//Quantidades de letras minusculas na senha. É necessário ter pelo menos uma
 	int quant_digitos = 0;				//Quantidades de digitos na senha. É necessário ter pelo menos um
 
-	if (senha == usuário.nome) throw invalid_argument("Argumento inválido. Senha não pode ser igual ao nome de usuário");
 	for (int i = 0; i < senha.length(); ++i){
 		if (senha[i] >= 'A' && senha[i] <= 'Z') ++quant_letras_maiusculas;
 		else if (senha[i] >= 'a' && senha[i] <= 'z') ++quant_letras_minusculas;
@@ -155,7 +154,7 @@ void Senha::validar(string senha, Nome usuario) throw (invalid_argument){
 maiúscula, uma letra minúscula e um dígito.");
 }
 
-void Senha::setSenha(string senha, Nome usuario) throw (invalid_argument){
+void Senha::setSenha(string senha) throw (invalid_argument){
 	validar(senha, usuario);
 	this->senha = senha;
 }

@@ -4,10 +4,28 @@
 #define NAO_E_DOMINIO 0
 //Essas variáveis serão usadas para saber que parte do email é o dominio ou a parte local
 
+bool eh_maiusculo(char caractere){
+	if(caractere >= 'A' && caractere <= 'Z') return TRUE;
+	return FALSE;
+}
+
+bool eh_minusculo(char caractere){
+	if(caractere >= 'a' && caractere <= 'z') return TRUE;
+	return FALSE;
+}
+
+bool eh_numero(char caractere){
+	if(caractere >= '0' && caractere <= '9') return TRUE;
+	return FALSE;
+}
+
+// As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
+// Essas funções usam a tabela ASCII como referência.
+
 void Nome::validar(string nome) throw (invalid_argument){
 	// Lança exceção se a primeira letra não for maiúscula (segunto tabela ASCII).
 
-	if (nome[0] < 'A' || nome[0 > 'Z']) throw invalid_argument("Argumento inválido. Primeira letra deve ser maiúscula");
+	if (!eh_maiusculo(nome[0])) throw invalid_argument("Argumento inválido. Primeira letra deve ser maiúscula");
 
 	// Lança exceção se o nome possuir menos que 20 caracteres.
 	//nome.length() retorna o tamanho da string nome
@@ -28,7 +46,7 @@ void Telefone::validar(char telefone[]) throw (invalid_argument){
 	int i = 0, end = 0, num = 0;
 
 	while (!end){
-		if (telefone[i] <= '9' && '0' <= telefone[i]){		// Se for numero adiciona contador.
+		if (eh_numero(telefone[i])){		// Se for numero adiciona contador.
 			num++;
 		}
 		else if (telefone[i] == '\0'){		// Se for fim de string.
@@ -75,6 +93,8 @@ void Endereco::validar(string endereco) throw (invalid_argument){
 	//Se o primeiro ou o ultimo caractere for " ", retornara um argumento inválido
 	if (endereco[0] == ' ' || endereco[tamanho-1]) throw invalid_argument("Argumento inválido. Primeiro ou ultimo caractere não pode ser espaço em branco");
 	//(tamanho-1) é a posição no ventor do ultimo caractere
+
+
 }
 
 void Endereco::setEndereco(string endereco) throw (invalid_argument){
@@ -119,7 +139,7 @@ void Email::validar(string email) throw (invalid_argument){
 			inicio_dominio = i + 1;
 		}
 		else if (dominio == E_DOMINIO){
-			if(!((email[i] >= 'A' && email[i] <= 'Z') || (email[i] >= 'a' && email[i] <= 'z') || (email[i] >= '0' && email[i] <= '9'))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
+			if(!(eh_maiusculo(email[i]) || eh_minusculo(email[i]) || eh_numero(email[i]))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
 			if (email[i] >= '0' && email[i] <= '9') ++quantidade_numeros_dominio;
 
 			//Nessa parte, verifica-se se o dominio é composto somente por números
@@ -145,9 +165,9 @@ void Senha::validar(string senha) throw (invalid_argument){
 	int quant_digitos = 0;				//Quantidades de digitos na senha. É necessário ter pelo menos um
 
 	for (int i = 0; i < senha.length(); ++i){
-		if (senha[i] >= 'A' && senha[i] <= 'Z') ++quant_letras_maiusculas;
-		else if (senha[i] >= 'a' && senha[i] <= 'z') ++quant_letras_minusculas;
-		else if (senha[i] >= '0' && senha[i] <= '9') ++quant_digitos;
+		if (eh_maiusculo(senha[i])) ++quant_letras_maiusculas;
+		else if (eh_minusculo(senha[i])) ++quant_letras_minusculas;
+		else if (eh_numero(senha[i])) ++quant_digitos;
 		else throw invalid_argument("Argumento inválido. Senha só pode conter letras e digitos.");
 	}
 	if(quant_digitos == 0 || quant_letras_minusculas == 0 || quant_letras_maiusculas == 0) throw invalid_argument("Argumento inválido. Senha precisa conter, pelo menos, uma letra

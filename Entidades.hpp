@@ -1,3 +1,7 @@
+#ifndef ENTIDADES_H_INCLUDED
+#define ENTIDADES_H_INCLUDED
+
+#include "Dominios.hpp"
 
 
 class Leitor{ //Dados requeridos para leitor (usuário mais básico)
@@ -11,10 +15,25 @@ private:
 
 public:
 	Leitor();
-	void setNome(Nome nome);
-	void setSobrenome(Nome sobrenome);
-	void setEmail(Email email);
-	void setSenha(Senha senha);	
+	void setNome(const Nome &nome);	//O argumento que esta sendo passado é uma referência do objeto nome. "const" é para que não seja possível alterar o conteúdo da referência
+	Nome getNome() const{
+		return nome;
+	}
+
+	void setSobrenome(const Nome &sobrenome);
+	Nome getSobrenome() const{
+		return sobrenome;
+	}
+
+	void setEmail(const Email &email);
+	Email getEmail() const{
+		return email;
+	}
+	
+	void setSenha(const Senha &senha);	
+	Senha getSenha() const{
+		return senha;
+	}
 };
 
 class Desenvolvedor : public Leitor{
@@ -62,3 +81,5 @@ private:
 public:
 	Definição();
 };
+
+#endif // ENTIDADES_H_INCLUDED

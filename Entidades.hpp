@@ -10,29 +10,33 @@ private:
 	Email email;
 	Senha senha;
 
-	void validarNome(Nome);	//Essa classe também vale para validar o sobrenome
-	void validarEmail(Email);
-	void validarSenha(Senha);
+	void validarSenha(Senha) throw (invalid_argument);
 
 public:
 	Leitor();
 
-	void setNome(const Nome &nome);	//O argumento que esta sendo passado é uma referência do objeto nome. "const" é para que não seja possível alterar o conteúdo da referência
+	void setNome(const Nome &nome){	//O argumento que esta sendo passado é uma referência do objeto nome. "const" é para que não seja possível alterar o conteúdo da referência
+		this->nome = nome;
+	}
 	Nome getNome() const{
 		return nome;
 	}
 
-	void setSobrenome(const Nome &sobrenome);
+	void setSobrenome(const Nome &sobrenome){
+		this->sobrenome = sobrenome;
+	}
 	Nome getSobrenome() const{
 		return sobrenome;
 	}
 
-	void setEmail(const Email &email);
+	void setEmail(const Email &email){
+		this->email = email;
+	}
 	Email getEmail() const{
 		return email;
 	}
 
-	void setSenha(const Senha &senha);	
+	void setSenha(const Senha &senha) throw (invalid_argument);	//definida no arquivo .cpp
 	Senha getSenha() const{
 		return senha;
 	}

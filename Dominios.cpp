@@ -3,7 +3,7 @@
 #define E_DOMINIO 1
 #define NAO_E_DOMINIO 0
 //Essas variáveis serão usadas para saber que parte do email é o dominio ou a parte local
-
+/*
 bool eh_maiusculo(char caractere){
 	if(caractere >= 'A' && caractere <= 'Z') return TRUE;
 	return FALSE;
@@ -18,6 +18,9 @@ bool eh_numero(char caractere){
 	if(caractere >= '0' && caractere <= '9') return TRUE;
 	return FALSE;
 }
+
+//--------------------------------------------------------------------------- 
+//Classe Nome.
 
 void Nome::validar(string nome) throw (invalid_argument){
 	// Lança exceção se a primeira letra não for maiúscula (segunto tabela ASCII).
@@ -38,50 +41,57 @@ void Nome::setNome(string nome) throw (invalid_argument){
 void Nome::callNome(){
 	//FAZER ESSE CÓDIGO
 }
+*/
+//--------------------------------------------------------------------------- 
+//Classe Telefone.
 
-void Telefone::validar(char telefone[]) throw (invalid_argument){
-	int i = 0, end = 0, num = 0;
-
-	while (!end){
-		if (eh_numero(telefone[i])){		// Se for numero adiciona contador.
-			num++;
-		}
-		else if (telefone[i] == '\0'){		// Se for fim de string.
-			if (num == 11){						// Confirma tamanho de telefone.
-				end = 1;
-			}
-			else{
-				throw invalid_argument("Argumento invalido. O telefone deve ter 11 digitos.");
-			}
-		}
-		else{		// Digito invalido.
-			throw invalid_argument("Argumento invalido. O telefone deve possuir apenas digitos de 0-9.");
-		}
-
-		i++;
-		if (i > 11) throw invalid_argument("Argumento invalido. O telefone deve ter 11 digitos.");		// Tamanho invalido.
+void Telefone::validar(string telefone) throw (invalid_argument){ 
+	if (telefone.size() != 11) { 
+		throw invalid_argument("Telefone formato incorreto, o telefone deve ter 11 digitos."); 
+	} 
+	for (int i = 0; i < telefone.size(); i++) { 
+		if (!isdigit(telefone.at(i))) { 
+			throw invalid_argument("Telefone formato incorreto, eh valido apenas digitos de 0-9"); 
+		} 
 	}
 }
 
-void Telefone::setTelefone(char telefone[]) throw (invalid_argument){ 
-	validar(telefone);    // Valida telefone fornecido. 
-	int valor[14]; 
+void Telefone::setTelefone(string telefone) throw (invalid_argument){  
+	validar(telefone); 
+
+	string valor = "AA NNNNN-NNNN"; 
 	valor[2] = ' '; 
 	valor[8] = '-'; 
 	valor[13] = '\0'; 
-
-	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN
-	for (int posicao1 = 0, int posicao2; posicao1 < 11; ++posicao1, ++posicao2){
-		if (posicao1 == 2 || posicao1 == 8) ++posicao1;
-		valor[posicao1] = telefone[posicao2];
+   
+	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN. 
+	for (int posicao1 = 0, posicao2 = 0; posicao2 < telefone.size(); posicao1++, posicao2++){ 
+		if (posicao1 == 2 || posicao1 == 8) { 
+			posicao1++; 
+	} 
+	valor[posicao1] = telefone[posicao2]; 
 	}
-	//Essa função é para guardar o valor no formato AA NNNNN-NNNN
-	this->telefone_char = valor; 
-	this->telefone_int = atoi(telefone);  // Armazena em formato inteiro o telefone.
+
+	this->telefone = valor;
 }
-void Telefone::callTelefone(){
-	//FAZER ESSE CÓDIGO
+
+string Telefone::callTelefone(){
+	return telefone;
 }
+
+int main(){ 
+	Telefone numero; 
+	string number = "11222223333"; 
+
+	numero.setTelefone(number); 
+	number = numero.callTelefone(); 
+	printf("%s\n", number.c_str()); 
+
+	return 0; 
+}
+/*
+//--------------------------------------------------------------------------- 
+//Classe Endereco.
 
 void Endereco::validar(string endereco) throw (invalid_argument){
 	int tamanho = endereco.length();
@@ -90,8 +100,6 @@ void Endereco::validar(string endereco) throw (invalid_argument){
 	//Se o primeiro ou o ultimo caractere for " ", retornara um argumento inválido
 	if (endereco[0] == ' ' || endereco[tamanho-1]) throw invalid_argument("Argumento inválido. Primeiro ou ultimo caractere não pode ser espaço em branco");
 	//(tamanho-1) é a posição no ventor do ultimo caractere
-
-
 }
 
 void Endereco::setEndereco(string endereco) throw (invalid_argument){
@@ -102,6 +110,9 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument){
 void Endereco::callEndereco(Endereco objeto){
 	//FAZER ESSE CÓDIGO
 }
+
+//--------------------------------------------------------------------------- 
+//Classe Data.
 
 void Data::validar(int dia, int mes, int ano) throw (invalid_argument){
 	//Validação quanto ao ano
@@ -124,6 +135,9 @@ void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
 void Data::callData(Email objeto){
 	//FAZER ESSE CÓDIGO
 }
+
+//--------------------------------------------------------------------------- 
+//Classe Email.
 
 void Email::validar(string email) throw (invalid_argument){
 	int dominio = NAO_E_DOMINIO; //Como o código vai percorrer cada caractere da string, quando ele achar o @ ele mudará essa variável para E_DOMINIO
@@ -156,6 +170,9 @@ void Email::callEmail(Email objeto){
 	//FAZER ESSE CÓDIGO
 }
 
+//--------------------------------------------------------------------------- 
+//Classe Senha.
+
 void Senha::validar(string senha) throw (invalid_argument){
 	int quant_letras_maiusculas = 0;	//Quantidades de letras maiúsculas na senha. É necessário ter pelo menos uma
 	int quant_letras_minusculas = 0;	//Quantidades de letras minusculas na senha. É necessário ter pelo menos uma
@@ -180,6 +197,9 @@ void Senha::callSenha(Senha objeto){
 	//FAZER ESSE CÓDIGO
 }
 
+//--------------------------------------------------------------------------- 
+//Classe Texto.
+
 void Texto::validar(string texto) throw (invalid_argument){
 	if (texto.length() > 30) throw invalid_argument("Argumento inválido. Texto possui mais que 30 caracteres.")
 }
@@ -198,6 +218,9 @@ void Idioma::validar(char idioma[]) throw (invalid_argument){
 (português) ou SPA (espanhol).");
 }
 
+//--------------------------------------------------------------------------- 
+//Classe Idioma.
+
 void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
 	validar(idioma);
 	for (int i = 0; i < 3; ++i){ //O valor 3 é o numero de caracteres que define o idioma
@@ -208,6 +231,9 @@ void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
 void Idioma::callIdioma(Idioma objeto){
 	//FAZER ESSE CÓDIGO
 }
+
+//--------------------------------------------------------------------------- 
+//Classe Termo.
 
 void Classe_de_termo::validar(char classe[]) throw (invalid_argument){
 	if(classe != "PT\0" || classe != "NP\0") throw invalid_argument("Argumento inválido. As entradas válidas são PT (preferred term) ou NP (non preferred term).");
@@ -223,3 +249,5 @@ void Classe_de_termo::setClasse_de_termpo(char idioma[]) throw (invalid_argument
 void Classe_de_termo::callClasse_de_termpo(Classe_de_termo objeto){
 	//FAZER ESSE CÓDIGO
 }
+
+*/

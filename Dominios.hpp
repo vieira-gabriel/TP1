@@ -12,6 +12,9 @@ bool eh_minusculo(char caractere);
 bool eh_numero(char caractere);
 // As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
 // Essas funções usam a tabela ASCII como referência.
+/*
+//--------------------------------------------------------------------------- 
+//Classe Nome.
 
 class Nome{ //Essa classe servirá tanto para o primeiro nome quanto para o sobrenome
 private:
@@ -22,27 +25,35 @@ public:
 	void setNome(string nome) throw (invalid_argument);
 	void callNome(Nome objeto);
 };
+*/
+//--------------------------------------------------------------------------- 
+//Classe Telefone.
 
 class Telefone{
 private:
-	int telefone_int; //O numero será armazenado no formato AANNNNNNNNN, mas será aprensentado no fomrato AA NNNNN-NNNN
-	char telefone_char[14];
-	void validar(char telefone[]) throw (invalid_argument);
+	string telefone; 
+	void validar(string) throw (invalid_argument);
 public:
-	Telefone();
-	void setTelefone(char telefone[]) throw (invalid_argument);
-	void callTelefone(Telefone objeto);
+	Telefone() {}; 
+	void setTelefone(string) throw (invalid_argument); 
+	string callTelefone();
 };
+/*
+//--------------------------------------------------------------------------- 
+//Classe Endereco.
 
-class Edereco{
+class Endereco{
 private:
 	string endereco;
 	void validar(string) throw (invalid_argument);
 public:
-	Edereco();
+	Endereco();
 	void setEndereco(string endereco) throw (invalid_argument);
 	void callEndereco(Endereco objeto);
 };
+
+//--------------------------------------------------------------------------- 
+//Classe Data.
 
 class Data{
 private:
@@ -54,6 +65,9 @@ public:
 	void callData(Data objeto);	
 };
 
+//--------------------------------------------------------------------------- 
+//Classe Email.
+
 class Email{
 private:
 	string email;
@@ -63,6 +77,9 @@ public:
 	void setEmail(string email) throw (invalid_argument);
 	void callEmail(Email objeto);	
 };
+
+//--------------------------------------------------------------------------- 
+//Classe Senha.
 
 class Senha{
 private:
@@ -74,6 +91,9 @@ public:
 	void callSenha(Senha objeto);
 };
 
+//--------------------------------------------------------------------------- 
+//Classe Texto.
+
 class Texto{
 private:
 	string texto;
@@ -83,6 +103,9 @@ public:
 	void setTexto(string texto) throw (invalid_argument);
 	void callTexto(Texto objeto);	
 };
+
+//--------------------------------------------------------------------------- 
+//Classe Idioma.
 
 class Idioma{
 private:
@@ -95,6 +118,9 @@ public:
 	
 };
 
+//--------------------------------------------------------------------------- 
+//Classe Termo.
+
 class Classe_de_termo{
 private:
 	char classe[2];
@@ -105,5 +131,5 @@ public:
 	void setClasse_de_termo(char classe[]) throw (invalid_argument);
 	void callClasse_de_termo(Classe_de_termo objeto);	
 };
-
+*/
 #endif // DOMINIOS_H_INCLUDED

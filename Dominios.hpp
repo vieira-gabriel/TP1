@@ -9,7 +9,6 @@ using namespace std;
 
 bool eh_maiusculo(char caractere);
 bool eh_minusculo(char caractere);
-bool eh_numero(char caractere);
 // As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
 // Essas funções usam a tabela ASCII como referência.
 
@@ -38,7 +37,7 @@ public:
 	void setTelefone(string) throw (invalid_argument); 
 	string callTelefone();
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Endereco.
 
@@ -47,11 +46,11 @@ private:
 	string endereco;
 	void validar(string) throw (invalid_argument);
 public:
-	Endereco();
+	Endereco() {};
 	void setEndereco(string endereco) throw (invalid_argument);
-	void callEndereco(Endereco objeto);
+	string callEndereco();
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Data.
 

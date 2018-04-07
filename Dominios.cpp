@@ -25,18 +25,16 @@ void Nome::validar(string nome) throw (invalid_argument){
 		throw invalid_argument("Nome inválido. Nome precisa ter entre 1 a 20 caracteres.");
 	}
 
+	// Lanca excecao se nao for um alfabetico.
+	for (int i = 0; i < nome.size(); i++) {
+		if (!isalpha(nome.at(i))) {
+			throw invalid_argument("Nome inválido. Usar apenas caracteres.");
+		}
+	}
+
 	// Lança exceção se a primeira letra não for maiúscula (segundo tabela ASCII).
 	if (!eh_maiusculo(nome[0])) {
 		throw invalid_argument("Nome inválido. Primeira letra deve ser maiúscula.");
-	}
-
-	// Lanca excecao se nao for um alfabetico ou espaco.
-	for (int i = 0; i < nome.size(); i++) {
-		if (!isalpha(nome.at(i))) {
-			if (nome.at(i) != ' ') {
-				throw invalid_argument("Nome inválido. Usar apenas caracteres.");
-			}
-		}
 	}
 }
 
@@ -75,8 +73,8 @@ void Telefone::setTelefone(string telefone) throw (invalid_argument){
 	for (int posicao1 = 0, posicao2 = 0; posicao2 < telefone.size(); posicao1++, posicao2++){ 
 		if (posicao1 == 2 || posicao1 == 8) {
 			posicao1++;
-	}
-	valor[posicao1] = telefone[posicao2];
+		}
+		valor[posicao1] = telefone[posicao2];
 	}
 
 	this->telefone = valor;
@@ -86,35 +84,33 @@ string Telefone::callTelefone(){
 	return telefone;
 }
 
-int main(){
-	Nome name;
-	Telefone numero;
-
-	string number = "11222223333"; 
-	string carlos = "Carlos Max";
-	string alex = "alex";
-
-	numero.setTelefone(number);
-	name.setNome(carlos);
-
-	number = numero.callTelefone();
-	alex = name.callNome(); 
-	printf("%s\n", number.c_str());
-	printf("%s\n", alex.c_str()); 
-
-	return 0; 
-}
-/*
 //--------------------------------------------------------------------------- 
 //Classe Endereco.
 
 void Endereco::validar(string endereco) throw (invalid_argument){
-	int tamanho = endereco.length();
-	if (tamanho > 20 || tamanho < 1) throw invalid_argument("Argumento inválido. Endereço precisa ter entre 1 e 20 caracteres");
+	// Lança exceção se o endereco possuir menos que 1 caracteres ou se nome maior que 20 caracteres.
+	if (endereco.length() > 20 || endereco.length() < 1) {
+		throw invalid_argument("Endereço inválido. Endereço precisa ter entre 1 a 20 caracteres.");
+	}
 
-	//Se o primeiro ou o ultimo caractere for " ", retornara um argumento inválido
-	if (endereco[0] == ' ' || endereco[tamanho-1]) throw invalid_argument("Argumento inválido. Primeiro ou ultimo caractere não pode ser espaço em branco");
-	//(tamanho-1) é a posição no ventor do ultimo caractere
+	// Lança exceção se a primeira letra for espaço.
+	if (endereco[0] == ' ' || endereco[endereco.size() - 1] == ' ') {
+		throw invalid_argument("Endereço inválido. Primeira e a última letra não podem ser espaço.");
+	}
+
+	// Lanca excecao se nao for um alfabetico ou tiver espaços seguidos.
+	for (int i = 0; i < endereco.size(); i++) {
+		if (!isalpha(endereco.at(i))) {
+			if (endereco.at(i) == ' ') {
+				if (endereco.at(i - 1) == ' ') {
+					throw invalid_argument("Endereço inválido. Não pode utilizar espaços seguidos.");
+				}
+			}
+			else {
+				throw invalid_argument("Endereço inválido. Usar apenas caracteres e espaço.");
+			}
+		}
+	}
 }
 
 void Endereco::setEndereco(string endereco) throw (invalid_argument){
@@ -122,10 +118,10 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument){
 	this->endereco = endereco;
 }
 
-void Endereco::callEndereco(Endereco objeto){
-	//FAZER ESSE CÓDIGO
+string Endereco::callEndereco(){
+	return endereco;
 }
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Data.
 
@@ -266,3 +262,29 @@ void Classe_de_termo::callClasse_de_termpo(Classe_de_termo objeto){
 }
 
 */
+
+
+int main(){
+	Nome name;
+	Telefone numero;
+	Endereco ende;
+
+	string number = "11222223333"; 
+	string carlos = "CarlosMax";
+	string alex = "alex";
+	string local = "uni ceub";
+	string unb = "UnB";
+
+	numero.setTelefone(number);
+	name.setNome(carlos);
+	ende.setEndereco(local);
+
+	number = numero.callTelefone();
+	alex = name.callNome();
+	unb = ende.callEndereco(); 
+	printf("%s\n", number.c_str());
+	printf("%s\n", alex.c_str());
+	printf("%s\n", unb.c_str());
+
+	return 0; 
+}

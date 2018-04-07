@@ -12,7 +12,7 @@ bool eh_minusculo(char caractere);
 bool eh_numero(char caractere);
 // As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
 // Essas funções usam a tabela ASCII como referência.
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Nome.
 
@@ -21,11 +21,11 @@ private:
 	string nome;
 	void validar(string) throw (invalid_argument);
 public:
-	Nome();
-	void setNome(string nome) throw (invalid_argument);
-	void callNome(Nome objeto);
+	Nome() {};
+	void setNome(string) throw (invalid_argument);
+	string callNome();
 };
-*/
+
 //--------------------------------------------------------------------------- 
 //Classe Telefone.
 

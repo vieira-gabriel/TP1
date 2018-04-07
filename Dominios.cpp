@@ -1,36 +1,43 @@
 #include "Dominios.hpp"
+#include <stdbool.h>
 
 #define E_DOMINIO 1
 #define NAO_E_DOMINIO 0
 //Essas variáveis serão usadas para saber que parte do email é o dominio ou a parte local
-/*
+
 bool eh_maiusculo(char caractere){
-	if(caractere >= 'A' && caractere <= 'Z') return TRUE;
-	return FALSE;
+	if(caractere >= 'A' && caractere <= 'Z') return true;
+	return false;
 }
 
 bool eh_minusculo(char caractere){
-	if(caractere >= 'a' && caractere <= 'z') return TRUE;
-	return FALSE;
-}
-
-bool eh_numero(char caractere){
-	if(caractere >= '0' && caractere <= '9') return TRUE;
-	return FALSE;
+	if(caractere >= 'a' && caractere <= 'z') return true;
+	return false;
 }
 
 //--------------------------------------------------------------------------- 
 //Classe Nome.
 
 void Nome::validar(string nome) throw (invalid_argument){
-	// Lança exceção se a primeira letra não for maiúscula (segunto tabela ASCII).
+	// Lança exceção se o nome possuir menos que 1 caracteres ou se nome maior que 20 caracteres.
+	// nome.length() retorna o tamanho da string nome
+	if (nome.length() > 20 || nome.length() < 1) {
+		throw invalid_argument("Nome inválido. Nome precisa ter entre 1 a 20 caracteres.");
+	}
 
-	if (!eh_maiusculo(nome[0])) throw invalid_argument("Argumento inválido. Primeira letra deve ser maiúscula");
+	// Lança exceção se a primeira letra não for maiúscula (segundo tabela ASCII).
+	if (!eh_maiusculo(nome[0])) {
+		throw invalid_argument("Nome inválido. Primeira letra deve ser maiúscula.");
+	}
 
-	// Lança exceção se o nome possuir menos que 20 caracteres.
-	//nome.length() retorna o tamanho da string nome
-
-	if (nome.length() > 20 || nome.length() < 1) throw invalid_argument("Argumento inválido. Nome precisa ter entre 1 e 20 caracteres");
+	// Lanca excecao se nao for um alfabetico ou espaco.
+	for (int i = 0; i < nome.size(); i++) {
+		if (!isalpha(nome.at(i))) {
+			if (nome.at(i) != ' ') {
+				throw invalid_argument("Nome inválido. Usar apenas caracteres.");
+			}
+		}
+	}
 }
 
 void Nome::setNome(string nome) throw (invalid_argument){
@@ -38,38 +45,38 @@ void Nome::setNome(string nome) throw (invalid_argument){
 	this->nome = nome;
 }
 
-void Nome::callNome(){
-	//FAZER ESSE CÓDIGO
+string Nome::callNome(){
+	return nome;
 }
-*/
+
 //--------------------------------------------------------------------------- 
 //Classe Telefone.
 
 void Telefone::validar(string telefone) throw (invalid_argument){ 
 	if (telefone.size() != 11) { 
-		throw invalid_argument("Telefone formato incorreto, o telefone deve ter 11 digitos."); 
+		throw invalid_argument("Telefone inválido. O telefone deve ter 11 digitos."); 
 	} 
 	for (int i = 0; i < telefone.size(); i++) { 
 		if (!isdigit(telefone.at(i))) { 
-			throw invalid_argument("Telefone formato incorreto, eh valido apenas digitos de 0-9"); 
+			throw invalid_argument("Telefone inválido. É valido apenas digitos de 0 a 9."); 
 		} 
 	}
 }
 
 void Telefone::setTelefone(string telefone) throw (invalid_argument){  
-	validar(telefone); 
+	validar(telefone);
 
-	string valor = "AA NNNNN-NNNN"; 
-	valor[2] = ' '; 
-	valor[8] = '-'; 
-	valor[13] = '\0'; 
+	string valor = "AA NNNNN-NNNN";
+	valor[2] = ' ';
+	valor[8] = '-';
+	valor[13] = '\0';
    
 	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN. 
 	for (int posicao1 = 0, posicao2 = 0; posicao2 < telefone.size(); posicao1++, posicao2++){ 
-		if (posicao1 == 2 || posicao1 == 8) { 
-			posicao1++; 
-	} 
-	valor[posicao1] = telefone[posicao2]; 
+		if (posicao1 == 2 || posicao1 == 8) {
+			posicao1++;
+	}
+	valor[posicao1] = telefone[posicao2];
 	}
 
 	this->telefone = valor;
@@ -79,13 +86,21 @@ string Telefone::callTelefone(){
 	return telefone;
 }
 
-int main(){ 
-	Telefone numero; 
-	string number = "11222223333"; 
+int main(){
+	Nome name;
+	Telefone numero;
 
-	numero.setTelefone(number); 
-	number = numero.callTelefone(); 
-	printf("%s\n", number.c_str()); 
+	string number = "11222223333"; 
+	string carlos = "Carlos Max";
+	string alex = "alex";
+
+	numero.setTelefone(number);
+	name.setNome(carlos);
+
+	number = numero.callTelefone();
+	alex = name.callNome(); 
+	printf("%s\n", number.c_str());
+	printf("%s\n", alex.c_str()); 
 
 	return 0; 
 }
@@ -150,7 +165,7 @@ void Email::validar(string email) throw (invalid_argument){
 			inicio_dominio = i + 1;
 		}
 		else if (dominio == E_DOMINIO){
-			if(!(eh_maiusculo(email[i]) || eh_minusculo(email[i]) || eh_numero(email[i]))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
+			if(!(eh_maiusculo(email[i]) || eh_minusculo(email[i]) || isdigit(email[i]))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
 			if (email[i] >= '0' && email[i] <= '9') ++quantidade_numeros_dominio;
 
 			//Nessa parte, verifica-se se o dominio é composto somente por números
@@ -181,7 +196,7 @@ void Senha::validar(string senha) throw (invalid_argument){
 	for (int i = 0; i < senha.length(); ++i){
 		if (eh_maiusculo(senha[i])) ++quant_letras_maiusculas;
 		else if (eh_minusculo(senha[i])) ++quant_letras_minusculas;
-		else if (eh_numero(senha[i])) ++quant_digitos;
+		else if (isdigit(senha[i])) ++quant_digitos;
 		else throw invalid_argument("Argumento inválido. Senha só pode conter letras e digitos.");
 	}
 	if(quant_digitos == 0 || quant_letras_minusculas == 0 || quant_letras_maiusculas == 0) throw invalid_argument("Argumento inválido. Senha precisa conter, pelo menos, uma letra

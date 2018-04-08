@@ -59,7 +59,7 @@ public:
 	void setData(int, int, int) throw (invalid_argument);
 	void getData(int*);	
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Email.
 
@@ -68,11 +68,11 @@ private:
 	string email;
 	void validar(string) throw (invalid_argument);
 public:
-	Email();
-	void setEmail(string email) throw (invalid_argument);
-	void getEmail(Email objeto);	
+	Email() {};
+	void setEmail(string) throw (invalid_argument);
+	string getEmail();	
 };
-*/
+
 //--------------------------------------------------------------------------- 
 //Classe Senha.
 

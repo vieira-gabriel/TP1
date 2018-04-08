@@ -238,41 +238,85 @@ void Data::getData(int* data){
 	data[1] = mes;
 	data[2] = ano;
 }
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Email.
 
 void Email::validar(string email) throw (invalid_argument){
-	int dominio = NAO_E_DOMINIO; //Como o código vai percorrer cada caractere da string, quando ele achar o @ ele mudará essa variável para E_DOMINIO
-	int fim_local, inicio_dominio, quantidade_numeros_dominio = 0; //essa ultima variável servirá para verificar se no dominio existem caracteres q n são só números
+	int arroba;
+	const char* pt;
+	bool dom_ndigit_ok = false;
 
-	for (int i = 0; i < email.length(); ++i){
-		if (dominio == NAO_E_DOMINIO){
-			if(email[i] == '@') dominio = E_DOMINIO;
-			fim_local = i - 1;
-			inicio_dominio = i + 1;
-		}
-		else if (dominio == E_DOMINIO){
-			if(!(eh_maiusculo(email[i]) || eh_minusculo(email[i]) || isdigit(email[i]))) throw invalid_argument("Argumento inválido. Dominio com caracteres inválidos");
-			if (email[i] >= '0' && email[i] <= '9') ++quantidade_numeros_dominio;
+	// Acha a separação do local e do domínio.
+	pt = strchr(email.c_str(), '@');
+	arroba = pt - email.c_str();
 
-			//Nessa parte, verifica-se se o dominio é composto somente por números
-			if (quantidade_numeros_dominio == email.length() - inicio_dominio) throw invalid_argument("Argumento inválido. Dominio não pode possuir somente números");
+	// Chacagem do local.
+		// Verifica se local começa ou termina com ponto final.
+	if (email.at(0) == '.' || email.at(arroba - 1) == '.') {
+		throw invalid_argument("Email inválido. O local do email não pode começar nem terminar com ponto final.");
+	}
+		// Verifica conteúdo do local.
+	for (int i = 0; i < arroba; i++) {
+		if (!isalnum(email.at(i))) {
+			if (email.at(i) != '!' &&
+				email.at(i) != '#' &&
+				email.at(i) != '$' &&
+				email.at(i) != '%' &&
+				email.at(i) != '&' &&
+				email.at(i) != '\'' &&
+				email.at(i) != '*' &&
+				email.at(i) != '+' &&
+				email.at(i) != '-' &&
+				email.at(i) != '/' &&
+				email.at(i) != '=' &&
+				email.at(i) != '?' &&
+				email.at(i) != '^' &&
+				email.at(i) != '_' &&
+				email.at(i) != '`' &&
+				email.at(i) != '{' &&
+				email.at(i) != '|' &&
+				email.at(i) != '}' &&
+				email.at(i) != '~' &&
+				email.at(i) != ';' &&
+				email.at(i) != '.' ) {
+				throw invalid_argument("Email inválido. Caracter inválido identificado no local do email.");
+			}
 		}
 	}
-	if(email[0] == '.' || email[fim_local] == '.') throw invalid_argument("Argumento inválido. Primeiro e ultimo caractere da parte local não pode ser '.'");
-	if(email[inicio_dominio] == '-' || email[email.length() - 1] == '-') throw invalid_argument("Argumento inválido. Primeiro e ultimo caractere do domínio não pode ser '-'");
+
+	// Checagem do domínio.
+		// Verifica se domínio começa ou termina com hifem.
+	if (email.at(arroba + 1) == '-' || email.at(email.size() - 1) == '-') {
+		throw invalid_argument("Email inválido. O domínio do email não pode começar nem terminar com hífem.");
+	}
+		// Verifica conteúdo do domínio.
+	for (int i = arroba + 1; i < email.size(); i++) {
+		if (!isdigit(email.at(i))) {
+			dom_ndigit_ok = true;
+
+			if (!isalpha(email.at(i))) {
+				if (email.at(i) != '-') {
+					throw invalid_argument("Email inválido. Caracter inválido identificado no domínio do email.");
+				}
+			}
+		}
+	}
+		// Verifica se domínio consiste de apenas digitos.
+	if(!dom_ndigit_ok) {
+		throw invalid_argument("Email inválido. O domínio do email não pode consistir de apenas digitos numéricos.");
+	}
 }
 
 void Email::setEmail(string email) throw (invalid_argument){
 	validar(email);
-	this->email = email
+	this->email = email;
 }
 
-void Email::getEmail(Email objeto){
-	//FAZER ESSE CÓDIGO
+string Email::getEmail(){
+	return email;
 }
-*/
+
 //--------------------------------------------------------------------------- 
 //Classe Senha.
 
@@ -403,6 +447,7 @@ int main(){
 	Texto texto;
 	Idioma idioma;
 	Classe_de_termo classe;
+	Email email;
 
 	string number = "11222223333"; 
 	string carlos = "Carl";
@@ -414,6 +459,7 @@ int main(){
 	string txt = "abc";
 	string speek = "";
 	string claxe = "";
+	string mail = "";
 
 	numero.setTelefone(number);
 	nome.setNome(carlos);
@@ -423,6 +469,7 @@ int main(){
 	texto.setTexto("Qu@lquer cois@ pro texto.");
 	idioma.setIdioma("ITA");
 	classe.setClasse("NP");
+	email.setEmail("12'3._abG@7ab-c89");
 
 	number = numero.getTelefone();
 	alex = nome.getNome();
@@ -432,6 +479,7 @@ int main(){
 	txt = texto.getTexto();
 	speek = idioma.getIdioma();
 	claxe = classe.getClasse();
+	mail = email.getEmail();
 
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
@@ -441,6 +489,7 @@ int main(){
 	printf("%s\n", txt.c_str());
 	printf("%s\n", speek.c_str());
 	printf("%s\n", claxe.c_str());
+	printf("%s\n", mail.c_str());
 
 	return 0; 
 }

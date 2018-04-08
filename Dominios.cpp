@@ -1,19 +1,9 @@
 #include "Dominios.hpp"
 #include <stdbool.h>
 
+//Essas variáveis serão usadas para saber que parte do email é o dominio ou a parte local
 #define E_DOMINIO 1
 #define NAO_E_DOMINIO 0
-//Essas variáveis serão usadas para saber que parte do email é o dominio ou a parte local
-
-bool eh_maiusculo(char caractere){
-	if(caractere >= 'A' && caractere <= 'Z') return true;
-	return false;
-}
-
-bool eh_minusculo(char caractere){
-	if(caractere >= 'a' && caractere <= 'z') return true;
-	return false;
-}
 
 //--------------------------------------------------------------------------- 
 //Classe Nome.
@@ -28,12 +18,12 @@ void Nome::validar(string nome) throw (invalid_argument){
 	// Lanca excecao se nao for um alfabetico.
 	for (int i = 0; i < nome.size(); i++) {
 		if (!isalpha(nome.at(i))) {
-			throw invalid_argument("Nome inválido. Usar apenas caracteres.");
+			throw invalid_argument("Nome inválido. Usar apenas caracteres alfabéticos.");
 		}
 	}
 
 	// Lança exceção se a primeira letra não for maiúscula (segundo tabela ASCII).
-	if (!eh_maiusculo(nome[0])) {
+	if (!isupper(nome[0])) {
 		throw invalid_argument("Nome inválido. Primeira letra deve ser maiúscula.");
 	}
 }
@@ -43,7 +33,7 @@ void Nome::setNome(string nome) throw (invalid_argument){
 	this->nome = nome;
 }
 
-string Nome::callNome(){
+string Nome::getNome(){
 	return nome;
 }
 
@@ -80,7 +70,7 @@ void Telefone::setTelefone(string telefone) throw (invalid_argument){
 	this->telefone = valor;
 }
 
-string Telefone::callTelefone(){
+string Telefone::getTelefone(){
 	return telefone;
 }
 
@@ -93,7 +83,7 @@ void Endereco::validar(string endereco) throw (invalid_argument){
 		throw invalid_argument("Endereço inválido. Endereço precisa ter entre 1 a 20 caracteres.");
 	}
 
-	// Lança exceção se a primeira letra for espaço.
+	// Lança exceção se a primeira ou ultima letra for espaço.
 	if (endereco[0] == ' ' || endereco[endereco.size() - 1] == ' ') {
 		throw invalid_argument("Endereço inválido. Primeira e a última letra não podem ser espaço.");
 	}
@@ -107,7 +97,7 @@ void Endereco::validar(string endereco) throw (invalid_argument){
 				}
 			}
 			else {
-				throw invalid_argument("Endereço inválido. Usar apenas caracteres e espaço.");
+				throw invalid_argument("Endereço inválido. Usar apenas caracteres alfabeticos e espaço.");
 			}
 		}
 	}
@@ -118,7 +108,7 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument){
 	this->endereco = endereco;
 }
 
-string Endereco::callEndereco(){
+string Endereco::getEndereco(){
 	return endereco;
 }
 
@@ -243,7 +233,7 @@ void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
 	this->ano = ano;
 }
 
-void Data::callData(int* data){
+void Data::getData(int* data){
 	data[0] = dia;
 	data[1] = mes;
 	data[2] = ano;
@@ -279,37 +269,65 @@ void Email::setEmail(string email) throw (invalid_argument){
 	this->email = email
 }
 
-void Email::callEmail(Email objeto){
+void Email::getEmail(Email objeto){
 	//FAZER ESSE CÓDIGO
 }
-
+*/
 //--------------------------------------------------------------------------- 
 //Classe Senha.
 
-void Senha::validar(string senha) throw (invalid_argument){
-	int quant_letras_maiusculas = 0;	//Quantidades de letras maiúsculas na senha. É necessário ter pelo menos uma
-	int quant_letras_minusculas = 0;	//Quantidades de letras minusculas na senha. É necessário ter pelo menos uma
-	int quant_digitos = 0;				//Quantidades de digitos na senha. É necessário ter pelo menos um
+void Senha::validar(string senha, string nome) throw (invalid_argument){
+	bool digit_ok = false, upper_ok = false, lower_ok = false;
 
-	for (int i = 0; i < senha.length(); ++i){
-		if (eh_maiusculo(senha[i])) ++quant_letras_maiusculas;
-		else if (eh_minusculo(senha[i])) ++quant_letras_minusculas;
-		else if (isdigit(senha[i])) ++quant_digitos;
-		else throw invalid_argument("Argumento inválido. Senha só pode conter letras e digitos.");
+	// Verifica tamanho da senha.
+	if (senha.size() != 8) {
+		throw invalid_argument("Senha inválida. Senha deve possuir 8 caracteres.");
 	}
-	if(quant_digitos == 0 || quant_letras_minusculas == 0 || quant_letras_maiusculas == 0) throw invalid_argument("Argumento inválido. Senha precisa conter, pelo menos, uma letra
-maiúscula, uma letra minúscula e um dígito.");
+
+	// Verifica conteúdo de senha.
+	for (int i = 0; i < senha.size(); i++) {
+		if (isdigit(senha.at(i))) {
+			digit_ok = true;
+		}
+		else if (isupper(senha.at(i))) {
+			upper_ok = true;
+		}
+		else if (islower(senha.at(i))) {
+			lower_ok = true;
+		}
+		else {
+			throw invalid_argument("Senha inválida. Senha deve possuir apenas caracteres alfabéticos e digitos de 0 a 9.");
+		}
+	}
+	if (!digit_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo um número.");
+	}
+	if (!upper_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo uma letra maiúscula.");
+	}
+	if (!lower_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo uma letra minúscula.");
+	}
+
+	// Verifica se nome do usuário está contido na senha. Sem muita persistência.
+	if (strstr(senha.c_str(), nome.c_str()) != NULL) {
+		throw invalid_argument("Senha inválida. Senha não pode conter o nome do usuário.");
+	}
+	nome.at(0) = nome.at(0) + 32;	// Transforma primeira letra em mińúscula e compara novamente.
+	if (strstr(senha.c_str(), nome.c_str()) != NULL) {
+		throw invalid_argument("Senha inválida. Senha não pode conter o nome do usuário.");
+	}
 }
 
-void Senha::setSenha(string senha) throw (invalid_argument){
-	validar(senha, usuario);
+void Senha::setSenha(string senha, string nome) throw (invalid_argument){
+	validar(senha, nome);
 	this->senha = senha;
 }
 
-void Senha::callSenha(Senha objeto){
-	//FAZER ESSE CÓDIGO
+string Senha::getSenha(){
+	return senha;
 }
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Texto.
 
@@ -322,7 +340,7 @@ void Texto::setTexto(string texto) throw (invalid_argument){
 	this->texto - texto;
 }
 
-void Texto::callTexto(Texto objeto){
+void Texto::getTexto(Texto objeto){
 	//FAZER ESSE CÓDIGO
 }
 
@@ -341,7 +359,7 @@ void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
 	}
 }
 
-void Idioma::callIdioma(Idioma objeto){
+void Idioma::getIdioma(Idioma objeto){
 	//FAZER ESSE CÓDIGO
 }
 
@@ -359,40 +377,47 @@ void Classe_de_termo::setClasse_de_termpo(char idioma[]) throw (invalid_argument
 	}
 }
 
-void Classe_de_termo::callClasse_de_termpo(Classe_de_termo objeto){
+void Classe_de_termo::getClasse_de_termpo(Classe_de_termo objeto){
 	//FAZER ESSE CÓDIGO
 }
 
 */
 
 
+
+// Main de teste.
 int main(){
-	Nome name;
+	Nome nome;
 	Telefone numero;
 	Endereco ende;
 	Data date;
+	Senha senha;
 
 	string number = "11222223333"; 
-	string carlos = "CarlosMax";
+	string carlos = "Carl";
 	string alex = "alex";
 	string local = "uni ceub";
 	string unb = "UnB";
 	int data[3] = {0, 0, 0};
+	string password = "";
 
 	numero.setTelefone(number);
-	name.setNome(carlos);
+	nome.setNome(carlos);
 	ende.setEndereco(local);
 	date.setData(7, 4, 2018);
+	senha.setSenha("A2cArlg3", nome.getNome());
 
-	number = numero.callTelefone();
-	alex = name.callNome();
-	unb = ende.callEndereco();
-	date.callData(data);
-	 
+	number = numero.getTelefone();
+	alex = nome.getNome();
+	unb = ende.getEndereco();
+	date.getData(data);
+	password = senha.getSenha();
+
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
 	printf("%s\n", unb.c_str());
 	printf("%d/%d/%d\n", data[0], data[1], data[2]);
+	printf("%s\n", password.c_str());
 
 	return 0; 
 }

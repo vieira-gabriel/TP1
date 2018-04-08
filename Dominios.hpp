@@ -3,14 +3,10 @@
 
 #include <stdexcept>
 #include <string>
+#include <cstring>
 #include <stdio.h>
 
 using namespace std;
-
-bool eh_maiusculo(char caractere);
-bool eh_minusculo(char caractere);
-// As três funções acima são para verificar se determinado caractere de uma string é maiúsculo, minúsculo ou numero, respectivamente
-// Essas funções usam a tabela ASCII como referência.
 
 //--------------------------------------------------------------------------- 
 //Classe Nome.
@@ -22,7 +18,7 @@ private:
 public:
 	Nome() {};
 	void setNome(string) throw (invalid_argument);
-	string callNome();
+	string getNome();
 };
 
 //--------------------------------------------------------------------------- 
@@ -35,7 +31,7 @@ private:
 public:
 	Telefone() {}; 
 	void setTelefone(string) throw (invalid_argument); 
-	string callTelefone();
+	string getTelefone();
 };
 
 //--------------------------------------------------------------------------- 
@@ -48,7 +44,7 @@ private:
 public:
 	Endereco() {};
 	void setEndereco(string endereco) throw (invalid_argument);
-	string callEndereco();
+	string getEndereco();
 };
 
 //--------------------------------------------------------------------------- 
@@ -61,7 +57,7 @@ private:
 public:
 	Data() {};
 	void setData(int, int, int) throw (invalid_argument);
-	void callData(int*);	
+	void getData(int*);	
 };
 /*
 //--------------------------------------------------------------------------- 
@@ -74,22 +70,22 @@ private:
 public:
 	Email();
 	void setEmail(string email) throw (invalid_argument);
-	void callEmail(Email objeto);	
+	void getEmail(Email objeto);	
 };
-
+*/
 //--------------------------------------------------------------------------- 
 //Classe Senha.
 
 class Senha{
 private:
 	string senha;
-	void validar(string) throw (invalid_argument);
+	void validar(string, string) throw (invalid_argument);
 public:
-	Senha();
-	void setSenha(string senha) throw (invalid_argument);
-	void callSenha(Senha objeto);
+	Senha() {};
+	void setSenha(string, string) throw (invalid_argument);
+	string getSenha();
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Texto.
 
@@ -100,7 +96,7 @@ private:
 public:
 	Texto();
 	void setTexto(string texto) throw (invalid_argument);
-	void callTexto(Texto objeto);	
+	void getTexto(Texto objeto);	
 };
 
 //--------------------------------------------------------------------------- 
@@ -113,7 +109,7 @@ private:
 public:
 	Idioma();
 	void setIdioma(char idioma[]) throw (invalid_argument);
-	void callIdioma(Idioma objeto);
+	void getIdioma(Idioma objeto);
 	
 };
 
@@ -128,7 +124,7 @@ private:
 public:
 	Classe_de_termo();
 	void setClasse_de_termo(char classe[]) throw (invalid_argument);
-	void callClasse_de_termo(Classe_de_termo objeto);	
+	void getClasse_de_termo(Classe_de_termo objeto);	
 };
 */
 #endif // DOMINIOS_H_INCLUDED

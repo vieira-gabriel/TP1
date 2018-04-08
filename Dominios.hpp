@@ -50,7 +50,7 @@ public:
 	void setEndereco(string endereco) throw (invalid_argument);
 	string callEndereco();
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Data.
 
@@ -59,11 +59,11 @@ private:
 	int dia, mes, ano;
 	void validar(int, int, int) throw (invalid_argument);
 public:
-	Data();
-	void setData(int dia, int mes, int ano) throw (invalid_argument);
-	void callData(Data objeto);	
+	Data() {};
+	void setData(int, int, int) throw (invalid_argument);
+	void callData(int*);	
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Email.
 

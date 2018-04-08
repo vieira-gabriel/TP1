@@ -121,19 +121,119 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument){
 string Endereco::callEndereco(){
 	return endereco;
 }
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Data.
 
 void Data::validar(int dia, int mes, int ano) throw (invalid_argument){
-	//Validação quanto ao ano
-	if(ano < 1900 || ano > 2099) throw invalid_argument("Argumento inválido. Ano deve ser um valor inteiro entre 1900 e 2099");
+	// Validação quanto ao ano.
+	if(ano < 1900 || ano > 2099) {
+		throw invalid_argument("Ano inválido. Ano deve ser um valor inteiro entre 1900 e 2099.");
+	}
 
-	//Validação quanto ao mês
-	if(mes < 1 || mes > 12) throw invalid_argument("Argumento inválido. Mes deve ser um valor inteiro ente 1 e 12");
+	// Validação quanto ao mês.
+	if(mes < 1 || mes > 12) {
+		throw invalid_argument("Mês inválido. Mês deve ser um valor inteiro entre 1 e 12.");
+	}
 
-	//Validação do dia (considerando que todos os meses possuem 31 dias)
-	if(mes < 1 || mes > 12) throw invalid_argument("Argumento inválido. Dia deve ser um valor inteiro ente 1 e 31");
+	// Validação quanto ao dia.
+	switch(mes){
+		case 1:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Janeiro.");
+			}
+		break;
+
+		case 2:		// Verificar ano bissexto.
+			if (ano%4 == 0) {		// Multiplo de 4.
+				if (ano%100 == 0) {		// Multiplo de 4 e 100.
+					if (ano%400 == 0) {		// Multiplo de 4 e 100 e 400.
+						if(dia < 1 || dia > 29) {
+							throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 29 nesse mês de Fevereiro.");
+						}
+						break;
+					}
+					
+					if(dia < 1 || dia > 28) {
+						throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 28 nesse mês de Fevereiro.");
+					}
+					break;
+				}
+
+				if(dia < 1 || dia > 29) {
+					throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 29 nesse mês de Fevereiro.");
+				}
+			}
+			else {
+				if(dia < 1 || dia > 28) {
+					throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 28 nesse mês de Fevereiro.");
+				}
+			}
+		break;
+		
+		case 3:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Março.");
+			}
+		break;
+
+		case 4:
+			if(dia < 1 || dia > 30) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Abril.");
+			}
+		break;
+		
+		case 5:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Maio.");
+			}
+		break;
+		
+		case 6:
+			if(dia < 1 || dia > 30) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Junho.");
+			}
+		break;
+		
+		case 7:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Julho.");
+			}
+		break;
+		
+		case 8:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Agosto.");
+			}
+		break;
+		
+		case 9:
+			if(dia < 1 || dia > 30) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Setembro.");
+			}
+		break;
+		
+		case 10:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Outubro.");
+			}
+		break;
+		
+		case 11:
+			if(dia < 1 || dia > 30) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Novembro.");
+			}
+		break;
+		
+		case 12:
+			if(dia < 1 || dia > 31) {
+				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Dezembro.");
+			}
+		break;
+		
+		default:
+		break;	
+	}
 }
 
 void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
@@ -143,10 +243,12 @@ void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
 	this->ano = ano;
 }
 
-void Data::callData(Email objeto){
-	//FAZER ESSE CÓDIGO
+void Data::callData(int* data){
+	data[0] = dia;
+	data[1] = mes;
+	data[2] = ano;
 }
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Email.
 
@@ -268,23 +370,29 @@ int main(){
 	Nome name;
 	Telefone numero;
 	Endereco ende;
+	Data date;
 
 	string number = "11222223333"; 
 	string carlos = "CarlosMax";
 	string alex = "alex";
 	string local = "uni ceub";
 	string unb = "UnB";
+	int data[3] = {0, 0, 0};
 
 	numero.setTelefone(number);
 	name.setNome(carlos);
 	ende.setEndereco(local);
+	date.setData(7, 4, 2018);
 
 	number = numero.callTelefone();
 	alex = name.callNome();
-	unb = ende.callEndereco(); 
+	unb = ende.callEndereco();
+	date.callData(data);
+	 
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
 	printf("%s\n", unb.c_str());
+	printf("%d/%d/%d\n", data[0], data[1], data[2]);
 
 	return 0; 
 }

@@ -332,6 +332,7 @@ string Senha::getSenha(){
 //Classe Texto.
 
 void Texto::validar(string texto) throw (invalid_argument){
+	// Verifica o tamanho do texto de definição.
 	if (texto.length() < 1 || texto.length() > 30) {
 		throw invalid_argument("Texto de definição inválido. Texto deve possuir de 1 a 30 caracteres.");
 	}
@@ -345,26 +346,31 @@ void Texto::setTexto(string texto) throw (invalid_argument){
 string Texto::getTexto(){
 	return texto;
 }
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Idioma.
 
-void Idioma::validar(char idioma[]) throw (invalid_argument){
-	if(idioma != "ENG\0" || idioma != "FRA\0" || idioma != "GER\0" || idioma != "ITA\0" || idioma != "POR\0" || idioma != "SPA\0") throw invalid_argument("Argumento inválido. As entradas válidas são ENG (inglês), FRA (francês), GER (alemão), ITA (italiano), POR
-(português) ou SPA (espanhol).");
-}
-
-void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
-	validar(idioma);
-	for (int i = 0; i < 3; ++i){ //O valor 3 é o numero de caracteres que define o idioma
-		this->idioma[i] = idioma[i];
+void Idioma::validar(string idioma) throw (invalid_argument){
+	// Verifica se é uma entrada válida.
+	if(	strcmp(idioma.c_str(), "ENG") && 
+		strcmp(idioma.c_str(), "FRA") && 
+		strcmp(idioma.c_str(), "GER") && 
+		strcmp(idioma.c_str(), "ITA") && 
+		strcmp(idioma.c_str(), "POR") && 
+		strcmp(idioma.c_str(), "SPA") ) {
+		throw invalid_argument("Idioma inválido. As entradas válidas são ENG(inglês), FRA(francês), GER(alemão), ITA(italiano), POR(português) ou SPA(espanhol).");
 	}
 }
 
-void Idioma::getIdioma(Idioma objeto){
-	//FAZER ESSE CÓDIGO
+void Idioma::setIdioma(string idioma) throw (invalid_argument){
+	validar(idioma);
+	this->idioma = idioma;
 }
 
+string Idioma::getIdioma(){
+	return idioma;
+}
+/*
 //--------------------------------------------------------------------------- 
 //Classe Termo.
 
@@ -395,6 +401,7 @@ int main(){
 	Data date;
 	Senha senha;
 	Texto texto;
+	Idioma idioma;
 
 	string number = "11222223333"; 
 	string carlos = "Carl";
@@ -404,6 +411,7 @@ int main(){
 	int data[3] = {0, 0, 0};
 	string password = "";
 	string txt = "abc";
+	string speek = "";
 
 	numero.setTelefone(number);
 	nome.setNome(carlos);
@@ -411,6 +419,7 @@ int main(){
 	date.setData(7, 4, 2018);
 	senha.setSenha("A2cArlg3", nome.getNome());
 	texto.setTexto("Qu@lquer cois@ pro texto.");
+	idioma.setIdioma("ITA");
 
 	number = numero.getTelefone();
 	alex = nome.getNome();
@@ -418,6 +427,7 @@ int main(){
 	date.getData(data);
 	password = senha.getSenha();
 	txt = texto.getTexto();
+	speek = idioma.getIdioma();
 
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
@@ -425,6 +435,7 @@ int main(){
 	printf("%d/%d/%d\n", data[0], data[1], data[2]);
 	printf("%s\n", password.c_str());
 	printf("%s\n", txt.c_str());
+	printf("%s\n", speek.c_str());
 
 	return 0; 
 }

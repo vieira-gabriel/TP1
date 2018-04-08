@@ -98,21 +98,21 @@ public:
 	void setTexto(string) throw (invalid_argument);
 	string getTexto();	
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Idioma.
 
 class Idioma{
 private:
-	char idioma[3];
-	void validar(char) throw (invalid_argument);
+	string idioma;
+	void validar(string) throw (invalid_argument);
 public:
-	Idioma();
-	void setIdioma(char idioma[]) throw (invalid_argument);
-	void getIdioma(Idioma objeto);
+	Idioma() {};
+	void setIdioma(string) throw (invalid_argument);
+	string getIdioma();
 	
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Termo.
 

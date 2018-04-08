@@ -85,7 +85,7 @@ public:
 	void setSenha(string, string) throw (invalid_argument);
 	string getSenha();
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Texto.
 
@@ -94,11 +94,11 @@ private:
 	string texto;
 	void validar(string) throw (invalid_argument);
 public:
-	Texto();
-	void setTexto(string texto) throw (invalid_argument);
-	void getTexto(Texto objeto);	
+	Texto() {};
+	void setTexto(string) throw (invalid_argument);
+	string getTexto();	
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Classe Idioma.
 

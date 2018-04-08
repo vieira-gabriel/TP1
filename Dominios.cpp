@@ -327,30 +327,32 @@ void Senha::setSenha(string senha, string nome) throw (invalid_argument){
 string Senha::getSenha(){
 	return senha;
 }
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Texto.
 
 void Texto::validar(string texto) throw (invalid_argument){
-	if (texto.length() > 30) throw invalid_argument("Argumento inválido. Texto possui mais que 30 caracteres.")
+	if (texto.length() < 1 || texto.length() > 30) {
+		throw invalid_argument("Texto de definição inválido. Texto deve possuir de 1 a 30 caracteres.");
+	}
 }
 
 void Texto::setTexto(string texto) throw (invalid_argument){
 	validar(texto);
-	this->texto - texto;
+	this->texto = texto;
 }
 
-void Texto::getTexto(Texto objeto){
-	//FAZER ESSE CÓDIGO
+string Texto::getTexto(){
+	return texto;
 }
+/*
+//--------------------------------------------------------------------------- 
+//Classe Idioma.
 
 void Idioma::validar(char idioma[]) throw (invalid_argument){
 	if(idioma != "ENG\0" || idioma != "FRA\0" || idioma != "GER\0" || idioma != "ITA\0" || idioma != "POR\0" || idioma != "SPA\0") throw invalid_argument("Argumento inválido. As entradas válidas são ENG (inglês), FRA (francês), GER (alemão), ITA (italiano), POR
 (português) ou SPA (espanhol).");
 }
-
-//--------------------------------------------------------------------------- 
-//Classe Idioma.
 
 void Idioma::setIdioma(char idioma[]) throw (invalid_argument){
 	validar(idioma);
@@ -392,6 +394,7 @@ int main(){
 	Endereco ende;
 	Data date;
 	Senha senha;
+	Texto texto;
 
 	string number = "11222223333"; 
 	string carlos = "Carl";
@@ -400,24 +403,28 @@ int main(){
 	string unb = "UnB";
 	int data[3] = {0, 0, 0};
 	string password = "";
+	string txt = "abc";
 
 	numero.setTelefone(number);
 	nome.setNome(carlos);
 	ende.setEndereco(local);
 	date.setData(7, 4, 2018);
 	senha.setSenha("A2cArlg3", nome.getNome());
+	texto.setTexto("Qu@lquer cois@ pro texto.");
 
 	number = numero.getTelefone();
 	alex = nome.getNome();
 	unb = ende.getEndereco();
 	date.getData(data);
 	password = senha.getSenha();
+	txt = texto.getTexto();
 
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
 	printf("%s\n", unb.c_str());
 	printf("%d/%d/%d\n", data[0], data[1], data[2]);
 	printf("%s\n", password.c_str());
+	printf("%s\n", txt.c_str());
 
 	return 0; 
 }

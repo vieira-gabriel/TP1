@@ -112,19 +112,19 @@ public:
 	string getIdioma();
 	
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Classe Termo.
 
 class Classe_de_termo{
 private:
-	char classe[2];
-	void validar(char) throw (invalid_argument);
+	string classe;
+	void validar(string) throw (invalid_argument);
 
 public:
-	Classe_de_termo();
-	void setClasse_de_termo(char classe[]) throw (invalid_argument);
-	void getClasse_de_termo(Classe_de_termo objeto);	
+	Classe_de_termo() {};
+	void setClasse(string) throw (invalid_argument);
+	string getClasse();	
 };
-*/
+
 #endif // DOMINIOS_H_INCLUDED

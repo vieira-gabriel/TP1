@@ -370,29 +370,29 @@ void Idioma::setIdioma(string idioma) throw (invalid_argument){
 string Idioma::getIdioma(){
 	return idioma;
 }
-/*
+
 //--------------------------------------------------------------------------- 
-//Classe Termo.
+//Classe Classe_de_Termo.
 
-void Classe_de_termo::validar(char classe[]) throw (invalid_argument){
-	if(classe != "PT\0" || classe != "NP\0") throw invalid_argument("Argumento inválido. As entradas válidas são PT (preferred term) ou NP (non preferred term).");
-}
-
-void Classe_de_termo::setClasse_de_termpo(char idioma[]) throw (invalid_argument){
-	validar(idioma);
-	for (int i = 0; i < 3; ++i){ //O valor 3 é o numero de caracteres que define o idioma
-		this->idioma[i] = idioma[i];
+void Classe_de_termo::validar(string classe) throw (invalid_argument){
+	// Verifica se é uma entrada válida.
+	if(strcmp(classe.c_str(), "PT") && strcmp(classe.c_str(), "NP")) {
+		throw invalid_argument("Classe de termo inválido. As entradas válidas são PT(preferred term) ou NP(non preferred term).");
 	}
 }
 
-void Classe_de_termo::getClasse_de_termpo(Classe_de_termo objeto){
-	//FAZER ESSE CÓDIGO
+void Classe_de_termo::setClasse(string classe) throw (invalid_argument){
+	validar(classe);
+	this->classe = classe;
 }
 
-*/
+string Classe_de_termo::getClasse(){
+	return classe;
+}
 
 
 
+//---------------------------------------------------------------------------
 // Main de teste.
 int main(){
 	Nome nome;
@@ -402,6 +402,7 @@ int main(){
 	Senha senha;
 	Texto texto;
 	Idioma idioma;
+	Classe_de_termo classe;
 
 	string number = "11222223333"; 
 	string carlos = "Carl";
@@ -412,6 +413,7 @@ int main(){
 	string password = "";
 	string txt = "abc";
 	string speek = "";
+	string claxe = "";
 
 	numero.setTelefone(number);
 	nome.setNome(carlos);
@@ -420,6 +422,7 @@ int main(){
 	senha.setSenha("A2cArlg3", nome.getNome());
 	texto.setTexto("Qu@lquer cois@ pro texto.");
 	idioma.setIdioma("ITA");
+	classe.setClasse("NP");
 
 	number = numero.getTelefone();
 	alex = nome.getNome();
@@ -428,6 +431,7 @@ int main(){
 	password = senha.getSenha();
 	txt = texto.getTexto();
 	speek = idioma.getIdioma();
+	claxe = classe.getClasse();
 
 	printf("%s\n", number.c_str());
 	printf("%s\n", alex.c_str());
@@ -436,6 +440,7 @@ int main(){
 	printf("%s\n", password.c_str());
 	printf("%s\n", txt.c_str());
 	printf("%s\n", speek.c_str());
+	printf("%s\n", claxe.c_str());
 
 	return 0; 
 }

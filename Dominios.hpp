@@ -55,9 +55,24 @@ private:
 	int dia, mes, ano;
 	void validar(int, int, int) throw (invalid_argument);
 public:
+	static const int JANEIRO = 		1;
+	static const int FEVEREIRO = 	2;
+	static const int MARCO = 		3;
+	static const int ABRIL = 		4;
+	static const int MAIO = 		5;
+	static const int JUNHO = 		6;
+	static const int JULHO = 		7;
+	static const int AGOSTO = 		8;
+	static const int SETEMBRO = 	9;
+	static const int OUTUBRO = 		10;
+	static const int NOVEMBRO = 	11;
+	static const int DEZEMBRO = 	12;
+
 	Data() {};
 	void setData(int, int, int) throw (invalid_argument);
-	void getData(int*);	
+	int getDay();
+	int getMonth();
+	int getYear();	
 };
 
 //--------------------------------------------------------------------------- 

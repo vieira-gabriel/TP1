@@ -128,13 +128,13 @@ void Data::validar(int dia, int mes, int ano) throw (invalid_argument){
 
 	// Validação quanto ao dia.
 	switch(mes){
-		case 1:
+		case JANEIRO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Janeiro.");
 			}
 		break;
 
-		case 2:		// Verificar ano bissexto.
+		case FEVEREIRO:		// Verificar ano bissexto.
 			if (ano%4 == 0) {		// Multiplo de 4.
 				if (ano%100 == 0) {		// Multiplo de 4 e 100.
 					if (ano%400 == 0) {		// Multiplo de 4 e 100 e 400.
@@ -161,61 +161,61 @@ void Data::validar(int dia, int mes, int ano) throw (invalid_argument){
 			}
 		break;
 		
-		case 3:
+		case MARCO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Março.");
 			}
 		break;
 
-		case 4:
+		case ABRIL:
 			if(dia < 1 || dia > 30) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Abril.");
 			}
 		break;
 		
-		case 5:
+		case MAIO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Maio.");
 			}
 		break;
 		
-		case 6:
+		case JUNHO:
 			if(dia < 1 || dia > 30) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Junho.");
 			}
 		break;
 		
-		case 7:
+		case JULHO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Julho.");
 			}
 		break;
 		
-		case 8:
+		case AGOSTO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Agosto.");
 			}
 		break;
 		
-		case 9:
+		case SETEMBRO:
 			if(dia < 1 || dia > 30) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Setembro.");
 			}
 		break;
 		
-		case 10:
+		case OUTUBRO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Outubro.");
 			}
 		break;
 		
-		case 11:
+		case NOVEMBRO:
 			if(dia < 1 || dia > 30) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Novembro.");
 			}
 		break;
 		
-		case 12:
+		case DEZEMBRO:
 			if(dia < 1 || dia > 31) {
 				throw invalid_argument("Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Dezembro.");
 			}
@@ -233,10 +233,16 @@ void Data::setData(int dia, int mes, int ano) throw (invalid_argument){
 	this->ano = ano;
 }
 
-void Data::getData(int* data){
-	data[0] = dia;
-	data[1] = mes;
-	data[2] = ano;
+int Data::getDay(){
+	return dia;
+}
+
+int Data::getMonth(){
+	return mes;
+}
+
+int Data::getYear(){
+	return ano;
 }
 
 //--------------------------------------------------------------------------- 

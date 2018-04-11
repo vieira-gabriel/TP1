@@ -81,22 +81,22 @@ private:
 	
 };
 
-class Data{  //data de criação das entidades abaixo
+class DataCriacao{  //data de criação das entidades abaixo
 private:
 	Data nascimento;
 
-	void validarData(Data);
+	void validarDataCriacao(DataCriacao);
 
 public:
-	Data();
+	DataCriacao();
 
-	void setData(const Data &nascimento);
-	Data getData() const{
+	void setDataCriacao(const Data &nascimento);
+	Data getDataCriacao() const{
 		return nascimento;
 	}
 };
 
-class Vocabilario : public Data{
+class Vocabilario : public DataCriacao{
 private:
 	Nome nome;
 	Idioma idioma;
@@ -107,19 +107,19 @@ private:
 public:
 	Vocabilario();
 
-	void setData(const Data &nascimento);
-	Data getData() const{
-		return nascimento;
+	void setNome(const Nome &nome);
+	Nome getNome() const{
+		return nome;
 	}
 
-	void setData(const Data &nascimento);
-	Data getData() const{
-		return nascimento;
+	void setIdioma(const Idioma &idioma);
+	Idioma getIdioma() const{
+		return idioma;
 	}
 
 };
 
-class Termo : public Data{
+class Termo : public DataCriacao{
 private:
 	Nome nome;
 	Classe_de_termo classe;
@@ -141,14 +141,14 @@ public:
 	}
 };
 
-class Definição : public Data{
+class Definicao : public DataCriacao{
 private:	
 	Texto texto;
 
 	void validarTexto(Texto);
 
 public:
-	Definição();
+	Definicao();
 
 	void setTexto(const Texto &texto);
 	Texto getTexto() const{

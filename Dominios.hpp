@@ -6,7 +6,6 @@
 #include <cstring>
 #include <stdio.h>
 #include <stdbool.h>
-#include "Dominios.cpp"
 
 using namespace std;
 
@@ -96,10 +95,10 @@ public:
 class Senha{
 private:
 	string senha;
-	void validar(string, string) throw (invalid_argument);
+	void validar(string) throw (invalid_argument);
 public:
 	Senha() {};
-	void setSenha(string, string) throw (invalid_argument);
+	void setSenha(string) throw (invalid_argument);
 	string getSenha();
 };
 

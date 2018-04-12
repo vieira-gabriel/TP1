@@ -1,4 +1,4 @@
-
+#include "Entidades.hpp"
 
 void Leitor::validarSenha(Senha senha, Nome nome) throw (invalid_argument){
 	string senha_usuario = senha.getSenha();

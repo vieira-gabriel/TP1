@@ -1,10 +1,6 @@
 #ifndef ENTIDADES_H_INCLUDED
 #define ENTIDADES_H_INCLUDED
 
-#include "Dominios.hpp"
-#include "Entidades.cpp"
-
-
 //--------------------------------------------------------------------------- 
 //Classe Leitor.
 

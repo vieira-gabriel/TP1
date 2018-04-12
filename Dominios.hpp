@@ -5,6 +5,8 @@
 #include <string>
 #include <cstring>
 #include <stdio.h>
+#include <stdbool.h>
+#include "Dominios.cpp"
 
 using namespace std;
 

@@ -2,7 +2,11 @@
 #define ENTIDADES_H_INCLUDED
 
 #include "Dominios.hpp"
+#include "Entidades.cpp"
 
+
+//--------------------------------------------------------------------------- 
+//Classe Leitor.
 
 class Leitor{ //Dados requeridos para leitor (usuário mais básico)
 private:
@@ -10,7 +14,7 @@ private:
 	Email email;
 	Senha senha;
 
-	void validarSenha(Senha) throw (invalid_argument);
+	void validarSenha(Senha, Nome) throw (invalid_argument);
 
 public:
 	Leitor();
@@ -36,11 +40,14 @@ public:
 		return email;
 	}
 
-	void setSenha(const Senha &senha) throw (invalid_argument);	//definida no arquivo .cpp
+	void setSenha(const Senha &senha, const Nome &nome) throw (invalid_argument);	//definida no arquivo .cpp
 	Senha getSenha() const{
 		return senha;
 	}
 };
+
+//--------------------------------------------------------------------------- 
+//Classe Desenvolvidor.
 
 class Desenvolvedor : public Leitor{
 private:
@@ -57,6 +64,9 @@ public:
 	}
 	
 };
+
+//--------------------------------------------------------------------------- 
+//Classe Administrador.
 
 class Administrador : public Desenvolvedor{
 public:

@@ -1,5 +1,6 @@
 
 #include "Dominios.hpp"
+
 //--------------------------------------------------------------------------- 
 //Classe Nome.
 
@@ -321,7 +322,7 @@ string Email::getEmail(){
 //--------------------------------------------------------------------------- 
 //Classe Senha.
 
-void Senha::validar(string senha) throw (invalid_argument){
+void Senha::validar(string senha, string nome) throw (invalid_argument){
 	bool digit_ok = false, upper_ok = false, lower_ok = false;
 
 	// Verifica tamanho da senha.
@@ -354,10 +355,18 @@ void Senha::validar(string senha) throw (invalid_argument){
 		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo uma letra minúscula.");
 	}
 
+	// Verifica se nome do usuário está contido na senha. Sem muita persistência.
+	if (strstr(senha.c_str(), nome.c_str()) != NULL) {
+		throw invalid_argument("Senha inválida. Senha não pode conter o nome do usuário.");
+	}
+	nome.at(0) = nome.at(0) + 32;	// Transforma primeira letra em mińúscula e compara novamente.
+	if (strstr(senha.c_str(), nome.c_str()) != NULL) {
+		throw invalid_argument("Senha inválida. Senha não pode conter o nome do usuário.");
+	}
 }
 
-void Senha::setSenha(string senha) throw (invalid_argument){
-	validar(senha);
+void Senha::setSenha(string senha, string nome) throw (invalid_argument){
+	validar(senha, nome);
 	this->senha = senha;
 }
 

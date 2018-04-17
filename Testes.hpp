@@ -105,29 +105,19 @@ public:
 	void run();
 	
 };
-
+/*
 //--------------------------------------------------------------------------- 
 //Teste Classe Email.
 
-class Teste_Email : public Testes{
+class TesteEmail : public Testes{
 private:
-	Email email;
-
-	// Caso de sucesso
-	void emailValido();
-	// Caso de Falha
-	void emailPontoNoComeco();
-	void emailPontoNoFinal();
-	void emailCaractereInvalido();
-	void emailDominioHifem();
-	void emailDominioInvalido();
-	void emailDominioSoDigito();
+	Email *email;
 
 public:
-	void run();
+	TesteEmail();
 	
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Teste Classe Senha.
 

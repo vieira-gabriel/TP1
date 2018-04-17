@@ -378,16 +378,16 @@ void Teste_Data::run(){
 	iniciar();
 
 	// Casos de sucesso.
-	dataValido();
-	dataBissexto();
+	void dataValido();
+	void dataBissexto();
 	// Casos de falha.
-	dataAnoPequeno();
-	dataAnoGrande();
-	dataMesPequeno();
-	dataMesGrande();
-	dataDiaPequeno();
-	dataDiaGrande();
-	dataNaoBissexto();
+	void dataAnoPequeno();
+	void dataAnoGrande();
+	void dataMesPequeno();
+	void dataMesGrande();
+	void dataDiaPequeno();
+	void dataDiaGrande();
+	void dataNaoBissexto();
 
 	if(resultado_teste == SUCESSO)
     {
@@ -401,106 +401,3 @@ void Teste_Data::run(){
 
 //--------------------------------------------------------------------------- 
 //Teste Classe Email.
-
-void Teste_Email::emailValido(){
-	try{
-		email.setEmail("email9@teste");
-		if ((email.getEmail() != "email9@teste")){
-			resultado_teste = FALHA;
-		}
-	}
-	catch(invalid_argument){
-		resultado_teste = FALHA;
-	}
-}
-
-void Teste_Email::emailPontoNoComeco(){
-	try{
-		email.setEmail(".email@ehinvalido");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::emailPontoNoFinal(){
-	try{
-		email.setEmail("email.@ehinvalido");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::emailCaractereInvalido(){
-	try{
-		email.setEmail("esse email@ehinvalido");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::emailDominioHifem(){
-	try{
-		email.setEmail("dominio@-invadilo");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-
-	try{
-		email.setEmail("dominio@invadilo-");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::emailDominioInvalido(){
-	try{
-		email.setEmail("dominio@eh!invalido");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::emailDominioDigito(){
-	try{
-		email.setEmail("dominio@1997");
-		resultado_teste = FALHA;
-	}
-	catch(invalid_argument){
-		return;
-	}
-}
-
-void Teste_Email::run(){
-	iniciar();
-
-	// Caso de sucesso
-	emailValido();
-	// Caso de Falha
-	emailPontoNoComeco();
-	emailPontoNoFinal();
-	emailCaractereInvalido();
-	emailDominioHifem();
-	emailDominioInvalido();
-	emailDominioSoDigito();
-
-	if(resultado_teste == SUCESSO)
-    {
-        printf("Teste da Classe Email: Sucesso.\n");
-    }
-    else
-    {
-        printf("Teste da Classe Email: Falha.\n");
-    }
-}

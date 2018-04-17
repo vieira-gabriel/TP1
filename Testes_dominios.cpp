@@ -1,4 +1,4 @@
-#include "Testes.hpp"
+#include "Testes_dominios.hpp"
 
 void Testes::iniciar(){
 	resultado_teste = SUCESSO;

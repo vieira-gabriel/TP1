@@ -17,7 +17,7 @@ private:
 	string nome;
 	void validar(string) throw (invalid_argument);
 public:
-	Nome() {};
+	Nome() {}
 	void setNome(string) throw (invalid_argument);
 	string getNome();
 };
@@ -30,7 +30,7 @@ private:
 	string telefone; 
 	void validar(string) throw (invalid_argument);
 public:
-	Telefone() {}; 
+	Telefone() {} 
 	void setTelefone(string) throw (invalid_argument); 
 	string getTelefone();
 };
@@ -43,7 +43,7 @@ private:
 	string endereco;
 	void validar(string) throw (invalid_argument);
 public:
-	Endereco() {};
+	Endereco() {}
 	void setEndereco(string endereco) throw (invalid_argument);
 	string getEndereco();
 };
@@ -69,7 +69,7 @@ public:
 	static const int NOVEMBRO = 	11;
 	static const int DEZEMBRO = 	12;
 
-	Data() {};
+	Data() {}
 	void setData(int, int, int) throw (invalid_argument);
 	int getDay();
 	int getMonth();
@@ -84,7 +84,7 @@ private:
 	string email;
 	void validar(string) throw (invalid_argument);
 public:
-	Email() {};
+	Email() {}
 	void setEmail(string) throw (invalid_argument);
 	string getEmail();	
 };
@@ -97,7 +97,7 @@ private:
 	string senha;
 	void validar(string, string) throw (invalid_argument);
 public:
-	Senha() {};
+	Senha() {}
 	void setSenha(string, string) throw (invalid_argument);
 	string getSenha();
 };
@@ -110,7 +110,7 @@ private:
 	string texto;
 	void validar(string) throw (invalid_argument);
 public:
-	Texto() {};
+	Texto() {}
 	void setTexto(string) throw (invalid_argument);
 	string getTexto();	
 };
@@ -123,7 +123,7 @@ private:
 	string idioma;
 	void validar(string) throw (invalid_argument);
 public:
-	Idioma() {};
+	Idioma() {}
 	void setIdioma(string) throw (invalid_argument);
 	string getIdioma();
 	
@@ -138,7 +138,7 @@ private:
 	void validar(string) throw (invalid_argument);
 
 public:
-	Classe_de_termo() {};
+	Classe_de_termo() {}
 	void setClasse(string) throw (invalid_argument);
 	string getClasse();	
 };

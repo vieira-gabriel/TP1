@@ -85,7 +85,7 @@ public:
 //--------------------------------------------------------------------------- 
 //Teste Classe Data.
 
-class Teste_Data : public Testes{
+class Teste_Data : private Testes{
 private:
 	Data data;
 
@@ -105,66 +105,113 @@ public:
 	void run();
 	
 };
-/*
+
 //--------------------------------------------------------------------------- 
 //Teste Classe Email.
 
-class TesteEmail : public Testes{
+class Teste_Email : private Testes{
 private:
-	Email *email;
+	Email email;
+
+	// Casos de sucesso.
+	void emailValido();
+	// Casos de falha.
+	void emailLocalIniciaPonto();
+	void emailLocalTerminaPonto();
+	void emailLocalCaracterInvalido();
+	void emailDominioIniciaHifem();
+	void emailDominioTerminaHifem();
+	void emailDominioOnlyNum();
+	void emailDominioNaoHifemAlfanum();
 
 public:
-	TesteEmail();
+	void run();
 	
 };
 
 //--------------------------------------------------------------------------- 
 //Teste Classe Senha.
 
-class TesteSenha : public Testes{
+class Teste_Senha : private Testes{
 private:
-	Senha *senha;
+	Senha senha;
+	Nome nome;
+
+	void iniciar();
+
+	// Casos de sucesso.
+	void senhaValido();
+	// Casos de falha.
+	void senhaPequeno();
+	void senhaGrande();
+	void senhaNoNum();
+	void senhaNoMaiusculo();
+	void senhaNoMinusculo();
+	void senhaContemUsuario();
+	void senhaNaoAlfanum();
 
 public:
-	TesteSenha();
+	void run();
 	
 };
 
 //--------------------------------------------------------------------------- 
 //Teste Classe Texto.
 
-class TesteTexto : public Testes{
+class Teste_Texto : private Testes{
 private:
-	Texto *texto;
+	Texto texto;
+
+	// Casos de sucesso.
+	void textoValido();
+	// Casos de falha.
+	void textoPequeno();
+	void textoGrande();
 
 public:
-	TesteTexto();
+	void run();
 	
 };
 
 //--------------------------------------------------------------------------- 
 //Teste Classe Idioma.
 
-class TesteIdioma : public Testes{
+class Teste_Idioma : private Testes{
 private:
-	Idioma *idioma;
+	Idioma idioma;
+
+	// Casos de sucesso.
+	void idiomaEng();
+	void idiomaFra();
+	void idiomaGer();
+	void idiomaIta();
+	void idiomaPor();
+	void idiomaSpa();
+	// Casos de falha.
+	void idiomaInvalido();
 
 public:
-	TesteIdioma();
+	void run();
 	
 };
 
 //--------------------------------------------------------------------------- 
 //Teste Classe Termo.
 
-class TesteClasse_de_termo : public Testes{
+class Teste_Classe_de_termo : private Testes{
 private:
-	Classe_de_termo *classe;
+	Classe_de_termo classe;
+
+	// Casos de sucesso.
+	void classePT();
+	void classeNP();
+	// Casos de falha.
+	void classeInvalido();
 
 public:
-	TesteClasse_de_termo();
+	void run();
 	
 };
-*/
+
 
 #endif // TESTES_H_INCLUDED

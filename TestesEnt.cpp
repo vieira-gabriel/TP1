@@ -89,3 +89,52 @@ void Teste_Desenvolvedor::run(){
     }
 }
 
+//--------------------------------------------------------------------------- 
+//Teste Entidade Administrador.
+
+void Teste_Administrador::admValido(){
+	try{
+		adm.getNome().setNome("Mario");
+		if (adm.getNome().getNome() != "Mario"){
+			resultado_teste = FALHA;
+		}
+
+		adm.getSobrenome().setNome("Olavo");
+		if (adm.getSobrenome().getNome() != "Olavo"){
+			resultado_teste = FALHA;
+		}
+
+		adm.getEmail().setEmail("MaOlav@email");
+		if (adm.getEmail().getEmail() != "MaOlav@email"){
+			resultado_teste = FALHA;
+		}
+
+		adm.getData().setData(10, 9, 2018);
+		if (adm.getData().getDay() != 10 || adm.getData().getMonth() != 9 || adm.getData().getYear() != 2018){
+			resultado_teste = FALHA;
+		}
+
+		adm.getTelefone().setTelefone("61981705486");
+		if (adm.getTelefone().getTelefone() != "61981705486"){
+			resultado_teste = FALHA;
+		}
+	}
+	catch(invalid_argument){
+		resultado_teste = FALHA;
+	}
+}
+
+void Teste_Administrador::run(){
+	iniciar();
+
+	admValido();
+
+	if(resultado_teste == SUCESSO)
+    {
+        printf("Teste da Entidade Administrador: Sucesso.\n");
+    }
+    else
+    {
+        printf("Teste da Entidade Administrador: Falha.\n");
+    }
+}

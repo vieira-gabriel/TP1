@@ -45,4 +45,17 @@ public:
 	void run();
 };
 
+//--------------------------------------------------------------------------- 
+//Teste Entidade Administrador.
+
+class Teste_Administrador : private TestesEnt{
+private:
+	Administrador adm;
+
+	void admValido();
+
+public:
+	void run();
+};
+
 #endif // TESTESENT_H_INCLUDED

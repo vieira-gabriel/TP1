@@ -73,11 +73,11 @@ public:
 //Classe Administrador.
 
 class Administrador : public Desenvolvedor{
-public:
+private:
 	Telefone telefone;
 	Endereco endereco;
 
-private:
+public:
 	Administrador() {};
 
 	void setTelefone(const Telefone& telefone){

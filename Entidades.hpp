@@ -8,7 +8,10 @@
 #include <stdbool.h>
 
 //--------------------------------------------------------------------------- 
-//Classe Leitor.
+/**
+* Classe Leitor.
+* Essa classe cria a entidade Leitor.
+*/
 
 class Leitor{ //Dados requeridos para leitor (usuário mais básico)
 private:
@@ -52,7 +55,10 @@ public:
 };
 
 //--------------------------------------------------------------------------- 
-//Classe Desenvolvedor.
+/**
+* Classe Desenvolvedor.
+* Essa classe cria a entidade Desenvolvedor, que recebe caracteristicas de Leitor.
+*/
 
 class Desenvolvedor : public Leitor{
 private:
@@ -70,7 +76,10 @@ public:
 };
 
 //--------------------------------------------------------------------------- 
-//Classe Administrador.
+/**
+* Classe Administrador.
+* Essa classe cria a entidade Administrador, que recebe caracteristicas de Desenvolvedor.
+*/
 
 class Administrador : public Desenvolvedor{
 private:
@@ -96,7 +105,10 @@ public:
 };
 
 //--------------------------------------------------------------------------- 
-//Classe DataCriacao.
+/**
+* Classe Data de Criação.
+* Essa classe cria a entidade Data de Criação.
+*/
 
 class DataCriacao{  //data de criação das entidades abaixo 
 private: 
@@ -114,7 +126,10 @@ public:
 }; 
 
 //--------------------------------------------------------------------------- 
-//Classe Vocabulario_controlado.
+/**
+* Classe Vocabulário Controlado.
+* Essa classe cria a entidade Vocabulário Controlado, que recebe caracteristicas de DataCriacao.
+*/
 
 class Vocabulario_controlado : public DataCriacao{
 private:
@@ -140,7 +155,10 @@ public:
 };
 
 //--------------------------------------------------------------------------- 
-//Classe Termo.
+/**
+* Classe Termo.
+* Essa classe cria a entidade Termo, que recebe caracteristicas de DataCriacao.
+*/
 
 class Termo : public DataCriacao{
 private:
@@ -166,7 +184,10 @@ public:
 };
 
 //--------------------------------------------------------------------------- 
-//Classe Definicao.
+/**
+* Classe Definição.
+* Essa classe cria a entidade Definição, que recebe caracteristicas de DataCriacao.
+*/
 
 class Definicao : public DataCriacao{
 private:	

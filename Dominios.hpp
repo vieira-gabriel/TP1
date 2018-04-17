@@ -23,7 +23,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	* Construtor.
+	* Construtor da classe.
 	*/
 	Nome() {}
 
@@ -48,14 +48,14 @@ public:
 class Telefone{
 private:
 	string telefone; 
-	
+
 	/**
 	* Teste para validar a variável de acordo com as expecificações dadas no material base para o trabalho.
 	*/
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Telefone() {} 
 
@@ -87,7 +87,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Endereco() {}
 
@@ -127,7 +127,7 @@ public:
 	static const int DEZEMBRO = 	12;
 
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Data() {}
 
@@ -166,7 +166,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Email() {}
 	void setEmail(string) throw (invalid_argument);
@@ -189,7 +189,7 @@ private:
 	void validar(string, string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Senha() {}
 	void setSenha(string, string) throw (invalid_argument);
@@ -216,7 +216,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Texto() {}
 
@@ -244,7 +244,7 @@ private:
 	void validar(string) throw (invalid_argument);
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Idioma() {}
 
@@ -276,7 +276,7 @@ private:
 
 public:
 	/**
-	*Construtor.
+	*Construtor da classe.
 	*/
 	Classe_de_termo() {}
 

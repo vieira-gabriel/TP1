@@ -728,8 +728,8 @@ void Teste_Idioma::idiomaIta(){
 
 void Teste_Idioma::idiomaPor(){
 	try{
-		idioma.setIdioma("ENG");
-		if (idioma.getIdioma() != "ENG"){
+		idioma.setIdioma("POR");
+		if (idioma.getIdioma() != "POR"){
 			resultado_teste = FALHA;
 		}
 	}

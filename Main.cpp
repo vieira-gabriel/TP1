@@ -5,17 +5,17 @@
 
 int main(){
 
-	printf("Teste dos dominios:\n");
+	printf("-- Teste dos dominios:\n");
 	//Teste dos dominios
-	Teste_Nome TesteA;
-	Teste_Telefone TesteB;
-	Teste_Endereco TesteC;
-	Teste_Data TesteD;
-	Teste_Email TesteE;
-	Teste_Senha TesteF;
-	Teste_Texto TesteG;
-	Teste_Idioma TesteH;
-	Teste_Classe_de_termo TesteI;
+	Teste_Nome 				TesteA;
+	Teste_Telefone 			TesteB;
+	Teste_Endereco 			TesteC;
+	Teste_Data 				TesteD;
+	Teste_Email 			TesteE;
+	Teste_Senha 			TesteF;
+	Teste_Texto 			TesteG;
+	Teste_Idioma 			TesteH;
+	Teste_Classe_de_termo 	TesteI;
 
 	printf("\t");
 	TesteA.run();
@@ -36,15 +36,15 @@ int main(){
 	printf("\t");
 	TesteI.run();
 
-	printf("\nTeste das entidades\n");
+	printf("\n-- Teste das entidades:\n");
 	//Teste das entidades
-	Teste_Leitor Teste1;
+	Teste_Leitor 		Teste1;
 	Teste_Desenvolvedor Teste2;
 	Teste_Administrador Teste3;
-	Teste_DataCriacao Teste4;
-	Teste_Vocabulario Teste5;
-	Teste_Termo Teste6;
-	Teste_Definicao Teste7;
+	Teste_DataCriacao 	Teste4;
+	Teste_Vocabulario 	Teste5;
+	Teste_Termo 		Teste6;
+	Teste_Definicao 	Teste7;
 
 	printf("\t");
 	Teste1.run();

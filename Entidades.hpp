@@ -131,7 +131,7 @@ public:
 		return nome;
 	}
 
-	void setIdioma(const Idioma& nome){
+	void setIdioma(const Idioma& idioma){
 		this->idioma = idioma;
 	}
 	Idioma getIdioma() const{

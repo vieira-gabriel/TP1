@@ -32,4 +32,17 @@ public:
 	void run();
 };
 
+//--------------------------------------------------------------------------- 
+//Teste Entidade Desenvolvedor.
+
+class Teste_Desenvolvedor : private TestesEnt{
+private:
+	Desenvolvedor desenvolvedor;
+
+	void desenvolvedorValido();
+
+public:
+	void run();
+};
+
 #endif // TESTESENT_H_INCLUDED

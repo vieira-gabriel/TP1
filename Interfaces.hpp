@@ -13,13 +13,13 @@ class ILNDesenvolvedor;
 class ILNAdministrador;
 
 // -----------------------------------------------------------------------------------------------------
-// Interface entre o ḿódulo e o stub de autenticação.
+// Declaração de interface para serviço de autenticação na camada de serviço.
 
-class ISAutenticacao{
+/*class ISAutenticacao{
 public:
 	/// Método por meio do qual é solicitado o serviço.
 
-    virtual void autenticar() throw(runtime_error) = 0;
+    virtual int autenticar() throw(runtime_error) = 0;
 
     // Método por meio do qual é estabelecida ligação (link) com a controladora na camada de serviço.
 
@@ -28,26 +28,30 @@ public:
     /// Método destrutor virtual.
 
     virtual ~ISAutenticacao(){}
-};
+};*/
 
 // -----------------------------------------------------------------------------------------------------
 // Declaração de interface para serviço de autenticação na camada de serviço.
 
 class ILNAutenticacao {
 public:
-
+/*
     // Método por meio do qual é solicitado o serviço.
 
-    virtual Leitor autenticar(const Email&, const Senha&) throw(runtime_error)= 0;
+    virtual int autenticar(string, string) throw(runtime_error)= 0;
 
     // Método destrutor virtual.
 
     virtual ~ILNAutenticacao(){}
+*/
+	virtual int autenticar(string, string) throw(runtime_error) = 0;
+
 };
 
 // -----------------------------------------------------------------------------------------------------
 // Interface entre o ḿódulo e o stub de usuário.
 
+/*
 class ISUsuario{
 public:
 
@@ -63,7 +67,7 @@ public:
 // -----------------------------------------------------------------------------------------------------
 // Interface para leitor.
 
-class ISLeitor:public ISUsuario{
+class ISLeitor:public ISsuario{
 public:
 
     // Método por meio do qual é estabelecida ligação (link) com a controladora de negócio.
@@ -75,7 +79,7 @@ public:
 // -----------------------------------------------------------------------------------------------------
 // Interface para desenvolvedor.
 
-class ISDesenvolvedor:public ISUsuario{
+class ISDesenvolvedor:public ISsuario{
 public:
 
     // Método por meio do qual é estabelecida ligação (link) com a controladora de negócio.
@@ -87,7 +91,7 @@ public:
 // -----------------------------------------------------------------------------------------------------
 // Interface para Administrador.
 
-class ISAdm:public ISUsuario{
+class ISAdm:public ISsuario{
 public:
 
     // Método por meio do qual é estabelecida ligação (link) com a controladora de negócio.
@@ -135,10 +139,11 @@ public:
 
 
 };
+
 // -----------------------------------------------------------------------------------------------------
 // Interface entre o ḿódulo e o stub de usuário (administrador).
 
-class ILNAdministrador:public ILNDesenvolvedor{
+class ILNAdm:public ILNDesenvolvedor{
 public:
 
 	// Métodos por meio dos quais são solicitados os serviços.
@@ -149,5 +154,10 @@ public:
 
 
 };
+
+// -----------------------------------------------------------------------------------------------------
+// Interface entre
+
+*/
 
 #endif // INTERFACES_H_INCLUDED

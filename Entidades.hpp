@@ -1,12 +1,6 @@
 #ifndef ENTIDADES_H_INCLUDED
 #define ENTIDADES_H_INCLUDED
 
-#include <stdexcept>
-#include <string>
-#include <cstring>
-#include <stdio.h>
-#include <stdbool.h>
-
 //--------------------------------------------------------------------------- 
 /**
 * Classe Leitor.

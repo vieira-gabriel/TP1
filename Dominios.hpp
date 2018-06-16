@@ -187,11 +187,13 @@ private:
 	* Teste para validar a variável de acordo com as expecificações dadas no material base para o trabalho.
 	*/
 	void validar(string, string) throw (invalid_argument);
+	void validar(string) throw (invalid_argument);
 public:
 	/**
 	*Construtor da classe.
 	*/
 	Senha() {}
+	void setSenha(string) throw (invalid_argument);
 	void setSenha(string, string) throw (invalid_argument);
 	string getSenha();
 };

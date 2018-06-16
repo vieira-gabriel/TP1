@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#include "Dominios.cpp"
+
 //--------------------------------------------------------------------------- 
 /**
 * Classe Leitor.

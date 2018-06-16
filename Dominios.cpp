@@ -12,7 +12,7 @@ void Nome::validar(string nome) throw (invalid_argument){
 	}
 
 	// Lanca excecao se nao for um alfabetico.
-	for (int i = 0; i < nome.size(); i++) {
+	for (unsigned int i = 0; i < nome.size(); i++) {
 		if (!isalpha(nome.at(i))) {
 			throw invalid_argument("Nome inválido. Usar apenas caracteres alfabéticos.");
 		}
@@ -40,7 +40,7 @@ void Telefone::validar(string telefone) throw (invalid_argument){
 	if (telefone.size() != 11) { 
 		throw invalid_argument("Telefone inválido. O telefone deve ter 11 digitos."); 
 	} 
-	for (int i = 0; i < telefone.size(); i++) { 
+	for (unsigned int i = 0; i < telefone.size(); i++) { 
 		if (!isdigit(telefone.at(i))) { 
 			throw invalid_argument("Telefone inválido. É valido apenas digitos de 0 a 9."); 
 		} 
@@ -56,7 +56,7 @@ void Telefone::setTelefone(string telefone) throw (invalid_argument){
 	valor[13] = '\0';
    
 	//Esse loop for é para guardar o valor no formato AA NNNNN-NNNN. 
-	for (int posicao1 = 0, posicao2 = 0; posicao2 < telefone.size(); posicao1++, posicao2++){ 
+	for (unsigned int posicao1 = 0, posicao2 = 0; posicao2 < telefone.size(); posicao1++, posicao2++){ 
 		if (posicao1 == 2 || posicao1 == 8) {
 			posicao1++;
 		}
@@ -85,7 +85,7 @@ void Endereco::validar(string endereco) throw (invalid_argument){
 	}
 
 	// Lanca excecao se nao for um alfabetico ou tiver espaços seguidos.
-	for (int i = 0; i < endereco.size(); i++) {
+	for (unsigned int i = 0; i < endereco.size(); i++) {
 		if (!isalpha(endereco.at(i))) {
 			if (endereco.at(i) == ' ') {
 				if (endereco.at(i - 1) == ' ') {
@@ -245,21 +245,32 @@ int Data::getYear(){
 //Classe Email.
 
 void Email::validar(string email) throw (invalid_argument){
-	int arroba;
+	unsigned int arroba;
 	const char* pt;
 	bool dom_ndigit_ok = false;
 
 	// Acha a separação do local e do domínio.
 	pt = strchr(email.c_str(), '@');
 	arroba = pt - email.c_str();
+	if (pt == NULL) {
+		throw invalid_argument("Email inválido. Falta o indicador de domínio @.");
+	}
 
+	// Checa existencia de local e dominio.
+	if (arroba == 0) {
+		throw invalid_argument("Email inválido. Local nulo.");
+	}
+	if (arroba == email.size() - 1) {
+		throw invalid_argument("Email inválido. Dominio nulo.");
+	}
+	
 	// Chacagem do local.
 		// Verifica se local começa ou termina com ponto final.
 	if (email.at(0) == '.' || email.at(arroba - 1) == '.') {
 		throw invalid_argument("Email inválido. O local do email não pode começar nem terminar com ponto final.");
 	}
 		// Verifica conteúdo do local.
-	for (int i = 0; i < arroba; i++) {
+	for (unsigned int i = 0; i < arroba; i++) {
 		if (!isalnum(email.at(i))) {
 			if (email.at(i) != '!' &&
 				email.at(i) != '#' &&
@@ -293,7 +304,7 @@ void Email::validar(string email) throw (invalid_argument){
 		throw invalid_argument("Email inválido. O domínio do email não pode começar nem terminar com hífem.");
 	}
 		// Verifica conteúdo do domínio.
-	for (int i = arroba + 1; i < email.size(); i++) {
+	for (unsigned int i = arroba + 1; i < email.size(); i++) {
 		if (!isdigit(email.at(i))) {
 			dom_ndigit_ok = true;
 
@@ -331,7 +342,7 @@ void Senha::validar(string senha, string nome) throw (invalid_argument){
 	}
 
 	// Verifica conteúdo de senha.
-	for (int i = 0; i < senha.size(); i++) {
+	for (unsigned int i = 0; i < senha.size(); i++) {
 		if (isdigit(senha.at(i))) {
 			digit_ok = true;
 		}
@@ -365,8 +376,47 @@ void Senha::validar(string senha, string nome) throw (invalid_argument){
 	}
 }
 
+void Senha::validar(string senha) throw (invalid_argument){
+	bool digit_ok = false, upper_ok = false, lower_ok = false;
+
+	// Verifica tamanho da senha.
+	if (senha.size() != 8) {
+		throw invalid_argument("Senha inválida. Senha deve possuir 8 caracteres.");
+	}
+
+	// Verifica conteúdo de senha.
+	for (unsigned int i = 0; i < senha.size(); i++) {
+		if (isdigit(senha.at(i))) {
+			digit_ok = true;
+		}
+		else if (isupper(senha.at(i))) {
+			upper_ok = true;
+		}
+		else if (islower(senha.at(i))) {
+			lower_ok = true;
+		}
+		else {
+			throw invalid_argument("Senha inválida. Senha deve possuir apenas caracteres alfabéticos e digitos de 0 a 9.");
+		}
+	}
+	if (!digit_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo um número.");
+	}
+	if (!upper_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo uma letra maiúscula.");
+	}
+	if (!lower_ok) {
+		throw invalid_argument("Senha inválida. Senha precisa conter no mínimo uma letra minúscula.");
+	}
+}
+
 void Senha::setSenha(string senha, string nome) throw (invalid_argument){
 	validar(senha, nome);
+	this->senha = senha;
+}
+
+void Senha::setSenha(string senha) throw (invalid_argument){
+	validar(senha);
 	this->senha = senha;
 }
 

@@ -16,7 +16,7 @@
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe FrontPage.
+* Classe NavFrontPage.
 * Essa classe é a primeira tela de interação com o usuário, perguntando se deseja fazer login ou se cadastrar na plataforma.
 */
 class NavFrontPage: public InterUI {
@@ -33,7 +33,7 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe Login.
+* Classe NavLogin.
 * Essa classe é responsável pela janela de login.
 */
 class NavLogin: public InterUI {
@@ -47,7 +47,7 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe SignUp.
+* Classe NavSignUp.
 * Essa classe é responsável pela janela de cadastro.
 */
 class NavSignUp: public InterUI {
@@ -65,7 +65,7 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe SULeitor.
+* Classe NavSULeitor.
 * Essa classe é responsável pela janela de cadastro de leitor.
 */
 class NavSULeitor: public InterUI {
@@ -79,7 +79,7 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe SUDev.
+* Classe NavSUDev.
 * Essa classe é responsável pela janela de cadastro de desenvolvedor.
 */
 class NavSUDev: public InterUI {
@@ -93,7 +93,7 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe SUAdmin.
+* Classe NavSUAdmin.
 * Essa classe é responsável pela janela de cadastro de administrador.
 */
 class NavSUAdmin: public InterUI {
@@ -102,6 +102,29 @@ private:
 
 public:
 	NavSUAdmin(){}
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavUserLeitor.
+* Essa classe é responsável pela janela de usario nivel Leitor.
+*/
+class NavUserLeitor: public InterUI {
+private:
+	static const unsigned int US_SHOW_USER		= 1;
+	static const unsigned int US_EDIT_USER		= 2;
+	static const unsigned int US_DELETE_USER	= 3;
+	static const unsigned int US_LIST_VOCAB		= 4;
+	static const unsigned int US_SHOW_VOCAB		= 5;
+	static const unsigned int US_SHOW_TERMO		= 6;
+	static const unsigned int US_SHOW_DEFIN		= 7;
+	static const unsigned int US_EXIT			= 8;
+	Email email;
+	void showOption();
+
+public:
+	NavUserLeitor(Email e){ email = e; }
 	void execute();
 };
 

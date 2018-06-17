@@ -75,6 +75,30 @@ void NavLogin::execute(){
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+
+	CmdLogin cmd(email, senha);
+
+	try {
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	switch (cmd.getResult()){
+		case CmdLogin::LG_LEITOR:
+		break;
+
+		case CmdLogin::LG_DEV:
+		break;
+
+		case CmdLogin::LG_ADMIN:
+		break;
+
+		default:
+		break;
+	}
 }
 
 //--------------------------------------------------------------------------- 
@@ -167,6 +191,18 @@ void NavSULeitor::execute(){
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+
+	CmdSULeitor cmd(nome, sobrenome, email, senha);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de leitor criada." << endl;
 }
 
 //--------------------------------------------------------------------------- 
@@ -218,6 +254,18 @@ void NavSUDev::execute(){
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+
+	CmdSUDev cmd(nome, sobrenome, email, senha, nascimento);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de desenvolvedor criada." << endl;
 }
 
 //--------------------------------------------------------------------------- 
@@ -277,4 +325,16 @@ void NavSUAdmin::execute(){
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+
+	CmdSUAdmin cmd(nome, sobrenome, email, senha, nascimento, telefone, endereco);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de administrador criada." << endl;
 }

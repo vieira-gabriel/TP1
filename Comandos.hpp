@@ -16,7 +16,7 @@
 
 //--------------------------------------------------------------------------- 
 /**
-* Declaração das structs Ctermo e Vocabulario que irão formar a estrutura de dados.
+* Declaração das structs Stermo, Sdefin e Vocabulario que irão formar a estrutura de dados.
 */
 
 struct Stermo {
@@ -196,6 +196,56 @@ private:
 
 public:
 	CmdDeleteVocab(Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdNewTermo.
+* Essa classe realiza o servico de criacao de termo.
+*/
+class CmdNewTermo: public CmdBase{
+private:
+	Email user;
+	Nome vocab;
+	Termo termo;
+
+public:
+	CmdNewTermo(Termo, Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditTermo.
+* Essa classe realiza o servico de edicao de termo.
+*/
+class CmdEditTermo: public CmdBase{
+private:
+	Email user;
+	Nome vocab;
+	Termo termo;
+
+public:
+	CmdEditTermo(Termo, Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdDeleteTermo.
+* Essa classe realiza o servico de exclusao de termo.
+*/
+class CmdDeleteTermo: public CmdBase{
+private:
+	Email user;
+	Nome vocab;
+	Nome termo;
+
+public:
+	CmdDeleteTermo(Nome, Nome, Email);
 	void execute() throw (invalid_argument);
 };
 

@@ -248,3 +248,124 @@ void CmdDeleteVocab::execute() throw (invalid_argument){
 
 	throw invalid_argument("***Vocabulario inexistente!");
 }
+
+
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe CmdNewTermo.
+
+CmdNewTermo::CmdNewTermo(Termo a, Nome b, Email c){
+	termo = a;
+	user = c;
+	vocab = b;
+}
+
+void CmdNewTermo::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome().getNome()){
+					throw invalid_argument("***Termo ja existe!");
+				}
+			}
+
+			Stermo stermo;
+			stermo.termo = termo;
+
+			if (user.getEmail() == itVocab->administrador.getEmail()){
+				itVocab->termo.insert(itVocab->termo.end(), stermo);
+				return;
+			}
+			for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+				if (itMail->getEmail() == user.getEmail()){
+					itVocab->termo.insert(itVocab->termo.end(), stermo);
+					return;
+				}
+			}
+
+			throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdEditTermo.
+
+CmdEditTermo::CmdEditTermo(Termo a, Nome b, Email c){
+	termo = a;
+	user = c;
+	vocab = b;
+}
+
+void CmdEditTermo::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome().getNome()){
+					Stermo stermo;
+					stermo.termo = termo;
+
+					if (user.getEmail() == itVocab->administrador.getEmail()){
+						itVocab->termo.insert(itVocab->termo.end(), stermo);
+						return;
+					}
+					for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+						if (itMail->getEmail() == user.getEmail()){
+							itVocab->termo.insert(itVocab->termo.end(), stermo);
+							return;
+						}
+					}
+
+					throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+				}
+			}
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdDeleteTermo.
+
+CmdDeleteTermo::CmdDeleteTermo(Nome a, Nome c, Email b){
+	termo = a;
+	user = b;
+	vocab = c;
+}
+
+void CmdDeleteTermo::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()){
+					
+					if (user.getEmail() == itVocab->administrador.getEmail()){
+						itVocab->termo.erase(itTermo);
+						return;
+					}
+					for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+						if (itMail->getEmail() == user.getEmail()){
+							itVocab->termo.erase(itTermo);
+							return;
+						}
+					}
+
+					throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+				}
+			}
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+
+
+
+
+

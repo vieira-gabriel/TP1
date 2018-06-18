@@ -483,29 +483,26 @@ void NavUserDev::execute() {
 			break;
 
 			case US_NEW_TERMO:
-			/*
 			{
 				NavNewTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
+
 			case US_EDIT_TERMO:
-			/*
 			{
 				NavEditTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
+
 			case US_DELETE_TERMO:
-			/*
 			{
 				NavDeleteTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
+
 			case US_NEW_DEFIN:
 			break;
 			
@@ -587,29 +584,25 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_NEW_TERMO:
-			/*
 			{
 				NavNewTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
+
 			case US_EDIT_TERMO:
-			/*
 			{
 				NavEditTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
+
 			case US_DELETE_TERMO:
-			/*
 			{
 				NavDeleteTermo nav(email);
 				nav.execute();
 				break;
 			}
-			*/
 			
 			case US_NEW_DEFIN:
 			break;
@@ -833,7 +826,7 @@ void NavDeleteVocab::execute(){
 	cout << "Vocabulario controlado excluido." << endl;
 }
 
-/*
+
 //--------------------------------------------------------------------------- 
 //--------------------------------------------------------------------------- 
 // Classe NavNewTermo.
@@ -843,20 +836,23 @@ void NavNewTermo::showOption(){
 }
 
 void NavNewTermo::execute(){
-	string itermo, iclasse;
+	string itermo, iclasse, ivocab;
 	int idia, imes, iano;
 
 	Termo termo;
+	Nome vocab;
 
 	showOption();
 
 	// Obtem input valido.
 	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
 		cout << "Nome do termo: ";
-		cin >> ivocab;
+		getline(cin, itermo);
 		cout << "-opcao de classe: PT ou NP." << endl;
 		cout << "Classe do termo: ";
-		cin >> iclasse;
+		getline(cin, iclasse);
 		cout << "Dia: ";
 		cin >> idia;
 		cout << "Mes: ";
@@ -864,22 +860,22 @@ void NavNewTermo::execute(){
 		cout << "Ano: ";
 		cin >> iano;
 
-
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			termo.setNome(itermo);
 			termo.setClasse(iclasse);
 			termo.setDataCriacao(idia, imes, iano);
+			vocab.setNome(ivocab);
 			break;
 		}
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
-	CmdNewTermo cmd(termo, user);
+	CmdNewTermo cmd(termo, vocab, user);
 
 	try{
 		cmd.execute();
@@ -900,20 +896,23 @@ void NavEditTermo::showOption(){
 }
 
 void NavEditTermo::execute(){
-	string itermo, iclasse;
+	string itermo, iclasse, ivocab;
 	int idia, imes, iano;
 
 	Termo termo;
+	Nome vocab;
 
 	showOption();
 
 	// Obtem input valido.
 	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
 		cout << "Nome do termo: ";
-		cin >> ivocab;
+		getline(cin, itermo);
 		cout << "-opcao de classe: PT ou NP." << endl;
 		cout << "Nova classe do termo: ";
-		cin >> iclasse;
+		getline(cin, iclasse);
 		cout << "Novo dia: ";
 		cin >> idia;
 		cout << "Novo mes: ";
@@ -922,21 +921,22 @@ void NavEditTermo::execute(){
 		cin >> iano;
 
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			termo.setNome(itermo);
 			termo.setClasse(iclasse);
 			termo.setDataCriacao(idia, imes, iano);
+			vocab.setNome(ivocab);
 			break;
 		}
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
-	CmdEditTermo cmd(termo, user);
+	CmdEditTermo cmd(termo, vocab, user);
 
 	try{
 		cmd.execute();
@@ -957,19 +957,22 @@ void NavDeleteTermo::showOption(){
 }
 
 void NavDeleteTermo::execute(){
-	string itermo;
-	Nome nome;
+	string itermo, ivocab;
+	Nome nome, vocab;
 
 	showOption();
 
 	// Obtem input valido.
 	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
 		cout << "Nome do termo: ";
-		cin >> itermo;
+		getline(cin, itermo);
 
 
 		try{
-			nome.setNome(termo);
+			nome.setNome(itermo);
+			vocab.setNome(ivocab);
 			break;
 		}
 		catch (invalid_argument exp) {
@@ -980,7 +983,7 @@ void NavDeleteTermo::execute(){
 		}
 	}	
 	
-	CmdDeleteVocab cmd(nome, user);
+	CmdDeleteTermo cmd(nome, vocab, user);
 
 	try{
 		cmd.execute();
@@ -993,4 +996,3 @@ void NavDeleteTermo::execute(){
 	cout << "Termo excluido." << endl;
 }
 
-*/

@@ -245,6 +245,52 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavNewTermo.
+* Essa classe é responsável pela janela de criacao de termo.
+*/
+class NavNewTermo: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavNewTermo(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavEditTermo.
+* Essa classe é responsável pela janela de edicao de termo.
+*/
+class NavEditTermo: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavEditTermo(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavDeleteTermo.
+* Essa classe é responsável pela janela de exclusao de termo.
+*/
+class NavDeleteTermo: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavDeleteTermo(Email e){ user = e; }
+	void execute();
+};
+
 
 
 

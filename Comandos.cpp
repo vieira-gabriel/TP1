@@ -145,6 +145,7 @@ void CmdLogin::execute() throw (invalid_argument){
 		if(itDev->getEmail().getEmail() == email.getEmail()){
 			if (itDev->getSenha().getSenha() == senha.getSenha()){
 				result = LG_DEV;
+				return;
 			} else {
 				result = LG_ERROR;
 				throw invalid_argument("***Senha Errada!");
@@ -156,6 +157,7 @@ void CmdLogin::execute() throw (invalid_argument){
 		if(itAdm->getEmail().getEmail() == email.getEmail()){
 			if (itAdm->getSenha().getSenha() == senha.getSenha()){
 				result = LG_ADMIN;
+				return;
 			} else {
 				result = LG_ERROR;
 				throw invalid_argument("***Senha Errada!");

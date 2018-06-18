@@ -16,17 +16,44 @@
 
 //--------------------------------------------------------------------------- 
 /**
+* Declaração das structs Ctermo e Vocabulario que irão formar a estrutura de dados.
+*/
+
+struct Ctermo {
+	Termo termo;
+	list<Definicao> definicao;
+};
+typedef struct Ctermo Ctermo;
+
+struct Vocabulario {
+	Vocabulario_controlado vocabulario;
+	Definicao definicao;
+	Email administrador;
+	list<Email> desenvolvedor;
+	list<Ctermo> termo; 
+};
+typedef struct Vocabulario Vocabulario;
+
+//--------------------------------------------------------------------------- 
+/**
 * Classe CmdBase.
 * Essa classe abstrata fornece a estrutura de dados base para as demais classes de comando.
 */
 class CmdBase: public InterCMD{
 protected:
+	// usuario.
 	static list<Leitor>			userLer;
 	static list<Desenvolvedor>	userDev;
 	static list<Administrador>	userAdm;
 	static list<Leitor>::iterator			itLer;
 	static list<Desenvolvedor>::iterator	itDev;
 	static list<Administrador>::iterator	itAdm;
+	// vocabulario.
+	static list<Vocabulario>				listVocabulario;
+	static list<Vocabulario>::iterator		itVocab;
+	static list<Email>::iterator			itMail;
+	static list<Ctermo>::iterator			itTermo;
+	static list<Definicao>::iterator		itDef;
 };
 
 // definicao das variaveis estaticas de CmdBase.
@@ -36,6 +63,12 @@ list<Administrador>		CmdBase::userAdm;
 list<Leitor>::iterator			CmdBase::itLer;
 list<Desenvolvedor>::iterator	CmdBase::itDev;
 list<Administrador>::iterator	CmdBase::itAdm;
+
+list<Vocabulario>				CmdBase::listVocabulario;
+list<Vocabulario>::iterator		CmdBase::itVocab;
+list<Email>::iterator			CmdBase::itMail;
+list<Ctermo>::iterator			CmdBase::itTermo;
+list<Definicao>::iterator		CmdBase::itDef;
 
 //--------------------------------------------------------------------------- 
 /**

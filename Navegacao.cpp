@@ -6,9 +6,9 @@
 
 void NavFrontPage::showOption(){
 	cout << endl << "Pagina inicial - Opcoes:" << endl;
-	cout << "1 - Login." << endl;
-	cout << "2 - Sign Up." << endl;
-	cout << "3 - Exit." << endl;
+	cout << "1 - \tLogin." << endl;
+	cout << "2 - \tSign Up." << endl;
+	cout << "3 - \tExit." << endl;
 }
 void NavFrontPage::execute(){
 	unsigned int opcao;
@@ -34,7 +34,7 @@ void NavFrontPage::execute(){
 			break;
 			
 			default:
-				cout << endl << "Opcao invalida." << endl;
+				cout << endl << "***Opcao invalida." << endl;
 				cin.clear();
 				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
@@ -77,7 +77,6 @@ void NavLogin::execute(){
 	}
 
 	CmdLogin cmd(email, senha);
-
 	try {
 		cmd.execute();
 	}
@@ -86,15 +85,28 @@ void NavLogin::execute(){
 		return;
 	}
 
+
 	switch (cmd.getResult()){
 		case CmdLogin::LG_LEITOR:
-		break;
+		{
+			NavUserLeitor user(email);
+			user.execute();
+			break;
+		}
 
 		case CmdLogin::LG_DEV:
-		break;
+		{
+			NavUserDev user(email);
+			user.execute();
+			break;
+		}
 
 		case CmdLogin::LG_ADMIN:
-		break;
+		{
+			NavUserAdmin user(email);
+			user.execute();
+			break;
+		}
 
 		default:
 		break;
@@ -106,10 +118,10 @@ void NavLogin::execute(){
 
 void NavSignUp::showOption(){
 	cout << endl << "Pagina de cadastro - Qual nivel de usuario deseja cadastrar:" << endl;
-	cout << "1 - Leitor." << endl;
-	cout << "2 - Desenvolvedor." << endl;
-	cout << "3 - Administrador." << endl;
-	cout << "4 - Retornar pagina inicial." << endl;
+	cout << "1 - \tLeitor." << endl;
+	cout << "2 - \tDesenvolvedor." << endl;
+	cout << "3 - \tAdministrador." << endl;
+	cout << "4 - \tRetornar pagina inicial." << endl;
 }
 void NavSignUp::execute(){
 	unsigned int opcao;
@@ -143,7 +155,7 @@ void NavSignUp::execute(){
 			break;
 			
 			default:
-				cout << endl << "Opcao invalida." << endl;
+				cout << endl << "***Opcao invalida." << endl;
 				cin.clear();
 				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
@@ -338,3 +350,392 @@ void NavSUAdmin::execute(){
 
 	cout << "Conta de administrador criada." << endl;
 }
+
+//--------------------------------------------------------------------------- 
+// Classe NavUserLeitor.
+
+void NavUserLeitor::showOption(){
+	cout << endl << "Pagina de usuario leitor - acoes disponiveis:" << endl;
+	cout << "1 - \tApresentar dados do usuario." << endl;
+	cout << "2 - \tEditar dados do usario." << endl;
+	cout << "3 - \tExcluir conta." << endl;
+	cout << "4 - \tListar vocabularios controlados." << endl;
+	cout << "5 - \tConsultar vocabulario controlado." << endl;
+	cout << "6 - \tConsultar termo." << endl;
+	cout << "7 - \tConsultar definicao de termo." << endl;
+	cout << "8 - \tSair da conta." << endl;
+}
+
+void NavUserLeitor::execute() {
+	int opcao;
+
+	while (true) {
+		showOption();
+		cout << "Escolha opcao: ";
+		cin >> opcao;
+
+		switch (opcao) {
+			case US_SHOW_USER:
+			break;
+
+			case US_EDIT_USER:
+			break;
+
+			case US_DELETE_USER:
+			break;
+
+			case US_LIST_VOCAB:
+			break;
+
+			case US_SHOW_VOCAB:
+			break;
+
+			case US_SHOW_TERMO:
+			break;
+
+			case US_SHOW_DEFIN:
+			break;
+
+			case US_EXIT:
+				return;
+			break;
+			
+			default:
+				cout << endl << "***Opcao invalida." << endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+	}
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavUserDev.
+
+void NavUserDev::showOption(){
+	cout << endl << "Pagina de usuario desenvolvedor - acoes disponiveis:" << endl;
+	cout << "1 - \tApresentar dados do usuario." << endl;
+	cout << "2 - \tEditar dados do usario." << endl;
+	cout << "3 - \tExcluir conta." << endl;
+	cout << "4 - \tListar vocabularios controlados." << endl;
+	cout << "5 - \tConsultar vocabulario controlado." << endl;
+	cout << "6 - \tConsultar termo." << endl;
+	cout << "7 - \tConsultar definicao de termo." << endl;
+	cout << "8 - \tCadastrar como desenvolvedor de vocabulario." << endl;
+	cout << "9 - \tCriar termo." << endl;
+	cout << "10 - \tEditar termo." << endl;
+	cout << "11 - \tExcluir termo." << endl;
+	cout << "12 - \tCriar definicao de termo." << endl;
+	cout << "13 - \tEditar definicao de termo." << endl;
+	cout << "14 - \tExcluir definicao de termo." << endl;
+	cout << "15 - \tSair da conta." << endl;
+}
+
+void NavUserDev::execute() {
+	int opcao;
+
+	while (true) {
+		showOption();
+		cout << "Escolha opcao: ";
+		cin >> opcao;
+
+		switch (opcao) {
+			case US_SHOW_USER:
+			break;
+
+			case US_EDIT_USER:
+			break;
+
+			case US_DELETE_USER:
+			break;
+
+			case US_LIST_VOCAB:
+			break;
+
+			case US_SHOW_VOCAB:
+			break;
+
+			case US_SHOW_TERMO:
+			break;
+
+			case US_SHOW_DEFIN:
+			break;
+
+			case US_SU_VOCAB:
+			break;
+
+			case US_NEW_TERMO:
+			break;
+			
+			case US_EDIT_TERMO:
+			break;
+			
+			case US_DELETE_TERMO:
+			break;
+			
+			case US_NEW_DEFIN:
+			break;
+			
+			case US_EDIT_DEFIN:
+			break;
+			
+			case US_DELETE_DEFIN:
+			break;
+
+			case US_EXIT:
+				return;
+			break;
+			
+			default:
+				cout << endl << "***Opcao invalida." << endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+	}
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavUserAdmin.
+
+void NavUserAdmin::showOption(){
+	cout << endl << "Pagina de usuario desenvolvedor - acoes disponiveis:" << endl;
+	cout << "1 - \tApresentar dados do usuario." << endl;
+	cout << "2 - \tEditar dados do usario." << endl;
+	cout << "3 - \tExcluir conta." << endl;
+	cout << "4 - \tListar vocabularios controlados." << endl;
+	cout << "5 - \tConsultar vocabulario controlado." << endl;
+	cout << "6 - \tConsultar termo." << endl;
+	cout << "7 - \tConsultar definicao de termo." << endl;
+	cout << "8 - \tCadastrar como desenvolvedor de vocabulario." << endl;
+	cout << "9 - \tCriar termo." << endl;
+	cout << "10 - \tEditar termo." << endl;
+	cout << "11 - \tExcluir termo." << endl;
+	cout << "12 - \tCriar definicao de termo." << endl;
+	cout << "13 - \tEditar definicao de termo." << endl;
+	cout << "14 - \tExcluir definicao de termo." << endl;
+	cout << "15 - \tCriar vocabulario." << endl;
+	cout << "16 - \tEditar vocabulario." << endl;
+	cout << "17 - \tExcluir vocabulario." << endl;
+	cout << "18 - \tSair da conta." << endl;
+}
+
+void NavUserAdmin::execute() {
+	int opcao;
+
+	while (true) {
+		showOption();
+		cout << "Escolha opcao: ";
+		cin >> opcao;
+
+		switch (opcao) {
+			case US_SHOW_USER:
+			break;
+
+			case US_EDIT_USER:
+			break;
+
+			case US_DELETE_USER:
+			break;
+
+			case US_LIST_VOCAB:
+			break;
+
+			case US_SHOW_VOCAB:
+			break;
+
+			case US_SHOW_TERMO:
+			break;
+
+			case US_SHOW_DEFIN:
+			break;
+
+			case US_SU_VOCAB:
+			break;
+
+			case US_NEW_TERMO:
+			break;
+			
+			case US_EDIT_TERMO:
+			break;
+			
+			case US_DELETE_TERMO:
+			break;
+			
+			case US_NEW_DEFIN:
+			break;
+			
+			case US_EDIT_DEFIN:
+			break;
+			
+			case US_DELETE_DEFIN:
+			break;
+
+			case US_NEW_VOCAB:
+			{
+				NavNewVocab nav(email);
+				nav.execute();
+			}
+			
+			case US_EDIT_VOCAB:
+			break;
+			
+			case US_DELETE_VOCAB:
+			break;
+
+			case US_EXIT:
+				return;
+			break;
+			
+			default:
+				cout << endl << "***Opcao invalida." << endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+	}
+}
+
+
+
+//##############################################################################################
+//############################### Acoes de usuario #############################################
+//##############################################################################################
+
+//--------------------------------------------------------------------------- 
+// Classe NavNewVocab.
+
+void NavNewVocab::showOption(){
+	cout << endl << "Criacao de vocabulario controlado - Informe os dados a seguir:" << endl;
+}
+
+void NavNewVocab::execute(){
+	string ivocab, iidioma, idefin;
+	int idia, imes, iano;
+
+	Vocabulario_controlado vocab;
+	Definicao defin;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do vocabulario: ";
+		cin >> ivocab;
+		cout << "-opcao de idioma: ENG, FRA, GER, ITA, POR e SPA." << endl;
+		cout << "Idioma do vocabulario: ";
+		cin >> iidioma;
+		cout << "Definicao do vocabulario: ";
+		cin >> idefin;
+		cout << "dia: ";
+		cin >> idia;
+		cout << "mes: ";
+		cin >> imes;
+		cout << "ano: ";
+		cin >> iano;
+
+
+		try{
+			vocab.getNome().setNome(ivocab);
+			vocab.getIdioma().setIdioma(iidioma);
+			defin.getTexto().setTexto(idefin);
+			vocab.getDataCriacao().setData(idia, imes, iano);
+			defin.getDataCriacao().setData(idia, imes, iano);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	cout << "Vocabulario controlado criado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavEditVocab.
+
+void NavEditVocab::showOption(){
+	cout << endl << "Edicao de vocabulario controlado - Informe os dados a seguir:" << endl;
+}
+
+void NavEditVocab::execute(){
+	string ivocab, iidioma, idefin;
+	int idia, imes, iano;
+
+	Vocabulario_controlado vocab;
+	Definicao defin;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do vocabulario: ";
+		cin >> ivocab;
+		cout << "-opcao de idioma: ENG, FRA, GER, ITA, POR e SPA." << endl;
+		cout << "Idioma do vocabulario: ";
+		cin >> iidioma;
+		cout << "Definicao do vocabulario: ";
+		cin >> idefin;
+		cout << "dia: ";
+		cin >> idia;
+		cout << "mes: ";
+		cin >> imes;
+		cout << "ano: ";
+		cin >> iano;
+
+
+		try{
+			vocab.getNome().setNome(ivocab);
+			vocab.getIdioma().setIdioma(iidioma);
+			defin.getTexto().setTexto(idefin);
+			vocab.getDataCriacao().setData(idia, imes, iano);
+			defin.getDataCriacao().setData(idia, imes, iano);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	cout << "Vocabulario controlado editado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavDeleteVocab.
+
+void NavDeleteVocab::showOption(){
+	cout << endl << "Exclusao de vocabulario controlado - Informe os dados a seguir:" << endl;
+}
+
+void NavDeleteVocab::execute(){
+	string ivocab;
+	Nome nome;
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do vocabulario: ";
+		cin >> ivocab;
+
+
+		try{
+			nome.setNome(ivocab);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}	
+	
+	cout << "Vocabulario controlado excluido." << endl;
+}
+

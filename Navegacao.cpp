@@ -15,6 +15,36 @@ void NavFrontPage::execute(){
 	NavLogin nLogin;
 	NavSignUp nSignUp;
 
+	// pre-made users.
+	Nome nome, sobrenome;
+	Email email;
+	Senha senha;
+	Data nascimento;
+	Telefone telefone;
+	Endereco endereco;
+	nome.setNome("Leitor");
+	sobrenome.setNome("Leitor");
+	email.setEmail("l@dom");
+	senha.setSenha("Senha123");
+	CmdSULeitor cmd1(nome, sobrenome, email, senha);
+	cmd1.execute();
+	nome.setNome("Dev");
+	sobrenome.setNome("Dev");
+	email.setEmail("d@dom");
+	senha.setSenha("Senha123");
+	nascimento.setData(21, 12, 1990);
+	CmdSUDev cmd2(nome, sobrenome, email, senha, nascimento);
+	cmd2.execute();
+	nome.setNome("Admin");
+	sobrenome.setNome("Admin");
+	email.setEmail("a@dom");
+	senha.setSenha("Senha123");
+	nascimento.setData(6, 6, 2006);
+	telefone.setTelefone("12345678901");
+	endereco.setEndereco("Casa da sua mae");
+	CmdSUAdmin cmd3(nome, sobrenome, email, senha, nascimento, telefone, endereco);
+	cmd3.execute();	
+
 	while (true) {
 		showOption();
 		cout << "Escolha opcao: ";

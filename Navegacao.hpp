@@ -203,7 +203,7 @@ public:
 //--------------------------------------------------------------------------- 
 /**
 * Classe NavNewVocab.
-* Essa classe é responsável pela janela de cadastro de administrador.
+* Essa classe é responsável pela janela de criacao de vocabulario.
 */
 class NavNewVocab: public InterUI {
 private:
@@ -217,29 +217,31 @@ public:
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe NavNewVocab.
-* Essa classe é responsável pela janela de cadastro de administrador.
+* Classe NavEditVocab.
+* Essa classe é responsável pela janela de edicao de vocabulario.
 */
 class NavEditVocab: public InterUI {
 private:
+	Email user;
 	void showOption();
 
 public:
-	NavEditVocab(){}
+	NavEditVocab(Email e){ user = e; }
 	void execute();
 };
 
 //--------------------------------------------------------------------------- 
 /**
-* Classe NavNewVocab.
-* Essa classe é responsável pela janela de cadastro de administrador.
+* Classe NavDeleteVocab.
+* Essa classe é responsável pela janela de exclusao de vocabulario.
 */
 class NavDeleteVocab: public InterUI {
 private:
+	Email user;
 	void showOption();
 
 public:
-	NavDeleteVocab(){}
+	NavDeleteVocab(Email e){ user = e; }
 	void execute();
 };
 

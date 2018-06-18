@@ -575,13 +575,22 @@ void NavUserAdmin::execute() {
 			{
 				NavNewVocab nav(email);
 				nav.execute();
+				break;
 			}
 			
 			case US_EDIT_VOCAB:
-			break;
+			{
+				NavEditVocab nav(email);
+				nav.execute();
+				break;
+			}
 			
 			case US_DELETE_VOCAB:
-			break;
+			{
+				NavDeleteVocab nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_EXIT:
 				return;
@@ -627,20 +636,20 @@ void NavNewVocab::execute(){
 		cin >> iidioma;
 		cout << "Definicao do vocabulario: ";
 		cin >> idefin;
-		cout << "dia: ";
+		cout << "Dia: ";
 		cin >> idia;
-		cout << "mes: ";
+		cout << "Mes: ";
 		cin >> imes;
-		cout << "ano: ";
+		cout << "Ano: ";
 		cin >> iano;
 
 
 		try{
-			vocab.getNome().setNome(ivocab);
-			vocab.getIdioma().setIdioma(iidioma);
-			defin.getTexto().setTexto(idefin);
-			vocab.getDataCriacao().setData(idia, imes, iano);
-			defin.getDataCriacao().setData(idia, imes, iano);
+			vocab.setNome(ivocab);
+			vocab.setIdioma(iidioma);
+			defin.setTexto(idefin);
+			vocab.setDataCriacao(idia, imes, iano);
+			defin.setDataCriacao(idia, imes, iano);
 			break;
 		}
 		catch (invalid_argument exp) {
@@ -649,6 +658,16 @@ void NavNewVocab::execute(){
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
+	}
+
+	CmdNewVocab cmd(vocab, defin, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
 	}
 
 	cout << "Vocabulario controlado criado." << endl;
@@ -675,24 +694,24 @@ void NavEditVocab::execute(){
 		cout << "Nome do vocabulario: ";
 		cin >> ivocab;
 		cout << "-opcao de idioma: ENG, FRA, GER, ITA, POR e SPA." << endl;
-		cout << "Idioma do vocabulario: ";
+		cout << "Novo idioma do vocabulario: ";
 		cin >> iidioma;
-		cout << "Definicao do vocabulario: ";
+		cout << "Nova definicao do vocabulario: ";
 		cin >> idefin;
-		cout << "dia: ";
+		cout << "Novo dia: ";
 		cin >> idia;
-		cout << "mes: ";
+		cout << "Novo mes: ";
 		cin >> imes;
-		cout << "ano: ";
+		cout << "Novo ano: ";
 		cin >> iano;
 
 
 		try{
-			vocab.getNome().setNome(ivocab);
-			vocab.getIdioma().setIdioma(iidioma);
-			defin.getTexto().setTexto(idefin);
-			vocab.getDataCriacao().setData(idia, imes, iano);
-			defin.getDataCriacao().setData(idia, imes, iano);
+			vocab.setNome(ivocab);
+			vocab.setIdioma(iidioma);
+			defin.setTexto(idefin);
+			vocab.setDataCriacao(idia, imes, iano);
+			defin.setDataCriacao(idia, imes, iano);
 			break;
 		}
 		catch (invalid_argument exp) {
@@ -701,6 +720,16 @@ void NavEditVocab::execute(){
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
+	}
+
+	CmdEditVocab cmd(vocab, defin, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
 	}
 
 	cout << "Vocabulario controlado editado." << endl;
@@ -716,6 +745,7 @@ void NavDeleteVocab::showOption(){
 void NavDeleteVocab::execute(){
 	string ivocab;
 	Nome nome;
+
 	showOption();
 
 	// Obtem input valido.
@@ -736,6 +766,16 @@ void NavDeleteVocab::execute(){
 		}
 	}	
 	
+	CmdDeleteVocab cmd(nome, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
 	cout << "Vocabulario controlado excluido." << endl;
 }
 

@@ -49,7 +49,7 @@ protected:
 	static list<Desenvolvedor>::iterator	itDev;
 	static list<Administrador>::iterator	itAdm;
 	// vocabulario.
-	static list<Vocabulario>				listVocabulario;
+	static list<Vocabulario>				listVocab;
 	static list<Vocabulario>::iterator		itVocab;
 	static list<Email>::iterator			itMail;
 	static list<Ctermo>::iterator			itTermo;
@@ -64,7 +64,7 @@ list<Leitor>::iterator			CmdBase::itLer;
 list<Desenvolvedor>::iterator	CmdBase::itDev;
 list<Administrador>::iterator	CmdBase::itAdm;
 
-list<Vocabulario>				CmdBase::listVocabulario;
+list<Vocabulario>				CmdBase::listVocab;
 list<Vocabulario>::iterator		CmdBase::itVocab;
 list<Email>::iterator			CmdBase::itMail;
 list<Ctermo>::iterator			CmdBase::itTermo;
@@ -140,6 +140,58 @@ public:
 	int getResult(){ return result; }
 };
 
+
+
+//##############################################################################################
+//############################### Acoes de usuario #############################################
+//##############################################################################################
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdNewVocab.
+* Essa classe realiza o servico de criacao de vocabulario.
+*/
+class CmdNewVocab: public CmdBase{
+private:
+	Email user;
+	Vocabulario_controlado vocab;
+	Definicao defin;
+
+public:
+	CmdNewVocab(Vocabulario_controlado, Definicao, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditVocab.
+* Essa classe realiza o servico de edicao de vocabulario.
+*/
+class CmdEditVocab: public CmdBase{
+private:
+	Email user;
+	Vocabulario_controlado vocab;
+	Definicao defin;
+
+public:
+	CmdEditVocab(Vocabulario_controlado, Definicao, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdDeleteVocab.
+* Essa classe realiza o servico de exclusao de vocabulario.
+*/
+class CmdDeleteVocab: public CmdBase{
+private:
+	Email user;
+	Nome vocab;
+
+public:
+	CmdDeleteVocab(Nome, Email);
+	void execute() throw (invalid_argument);
+};
 
 
 #endif // COMANDOS_H_INCLUDED

@@ -27,6 +27,9 @@ public:
 	void setNome(const Nome& nome){
 		this->nome = nome;
 	}
+	void setNome(string nome){
+		this->nome.setNome(nome);
+	}
 	Nome getNome() const{
 		return nome;
 	}
@@ -34,12 +37,18 @@ public:
 	void setSobrenome(const Nome& sobrenome){
 		this->sobrenome = sobrenome;
 	}
+	void setSobrenome(string sobrenome){
+		this->sobrenome.setNome(sobrenome);
+	}
 	Nome getSobrenome() const{
 		return sobrenome;
 	}
 
 	void setEmail(const Email& email){
 		this->email = email;
+	}
+	void setEmail(string email){
+		this->email.setEmail(email);
 	}
 	Email getEmail() const{
 		return email;
@@ -50,6 +59,9 @@ public:
 	}
 	void setSenha(string senha){
 		this->senha.setSenha(senha, nome.getNome());
+	}
+	void setSenha(string senha, string nome){
+		this->senha.setSenha(senha, nome);
 	}
 	Senha getSenha() const{
 		return senha;
@@ -71,6 +83,9 @@ public:
 
 	void setData(const Data& nascimento){
 		this->nascimento = nascimento;
+	}
+	void setData(int dia, int mes, int ano){
+		this->nascimento.setData(dia, mes, ano);
 	}
 	Data getData() const{
 		return nascimento;
@@ -94,12 +109,18 @@ public:
 	void setTelefone(const Telefone& telefone){
 		this->telefone = telefone;
 	}
+	void setTelefone(string telefone){
+		this->telefone.setTelefone(telefone);
+	}
 	Telefone getTelefone() const{
 		return telefone;
 	}
 
 	void setEndereco(const Endereco& endereco){
 		this->endereco = endereco;
+	}
+	void setEndereco(string endereco){
+		this->endereco.setEndereco(endereco);
 	}
 	Endereco getEndereco() const{
 		return endereco;
@@ -121,6 +142,9 @@ public:
 
 	void setDataCriacao(const Data& criacao){
 		this->criacao = criacao;
+	}
+	void setDataCriacao(int dia, int mes, int ano){
+		this->criacao.setData(dia, mes, ano);
 	} 
 	Data getDataCriacao() const{
 		return criacao;
@@ -144,12 +168,18 @@ public:
 	void setNome(const Nome& nome){
 		this->nome = nome;
 	}
+	void setNome(string nome){
+		this->nome.setNome(nome);
+	}
 	Nome getNome() const{
 		return nome;
 	}
 
 	void setIdioma(const Idioma& idioma){
 		this->idioma = idioma;
+	}
+	void setIdioma(string idioma){
+		this->idioma.setIdioma(idioma);
 	}
 	Idioma getIdioma() const{
 		return idioma;
@@ -173,12 +203,18 @@ public:
 	void setNome(const Nome& nome){
 		this->nome = nome;
 	}
+	void setNome(string nome){
+		this->nome.setNome(nome);
+	}
 	Nome getNome() const{
 		return nome;
 	}
 
 	void setClasse(const Classe_de_termo& classe){
 		this->classe = classe;
+	}
+	void setClasse(string classe){
+		this->classe.setClasse(classe);
 	}
 	Classe_de_termo getClasse() const{
 		return classe;
@@ -200,6 +236,9 @@ public:
 
 	void setTexto(const Texto& texto){
 		this->texto = texto;
+	}
+	void setTexto(string texto){
+		this->texto.setTexto(texto);
 	}
 	Texto getTexto() const{
 		return texto;

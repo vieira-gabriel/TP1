@@ -168,3 +168,83 @@ void CmdLogin::execute() throw (invalid_argument){
 	result = LG_ERROR;
 	throw invalid_argument("***Usuario inexistente.");
 }
+
+
+
+//##############################################################################################
+//############################### Acoes de usuario #############################################
+//##############################################################################################
+
+//--------------------------------------------------------------------------- 
+// Classe CmdNewVocab.
+
+CmdNewVocab::CmdNewVocab(Vocabulario_controlado a, Definicao b, Email c){
+	vocab = a;
+	defin = b;
+	user = c;
+}
+
+void CmdNewVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome().getNome()) {
+			throw invalid_argument("***Vocabulario ja existente!");
+		}
+	}
+
+	Vocabulario input;
+	input.vocabulario = vocab;
+	input.definicao = defin;
+	input.administrador = user;
+
+	listVocab.insert(listVocab.end(), input);
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdEditVocab.
+
+CmdEditVocab::CmdEditVocab(Vocabulario_controlado a, Definicao b, Email c){
+	vocab = a;
+	defin = b;
+	user = c;
+}
+
+void CmdEditVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome().getNome()) {
+			if (itVocab->administrador.getEmail() == user.getEmail()){
+				itVocab->vocabulario = vocab;
+				itVocab->definicao = defin;
+				return;
+			}
+			else {
+				throw invalid_argument("***Usuario nao eh administrador desse vocabulario!");
+			}
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdDeleteVocab.
+
+CmdDeleteVocab::CmdDeleteVocab(Nome a, Email b){
+	vocab = a;
+	user = b;
+}
+
+void CmdDeleteVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) { 
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()) {
+			if (itVocab->administrador.getEmail() == user.getEmail()){
+				listVocab.erase(itVocab);
+				return;
+			}
+			else {
+				throw invalid_argument("***Usuario nao eh administrador desse vocabulario!");
+			}
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}

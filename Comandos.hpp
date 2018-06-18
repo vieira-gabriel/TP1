@@ -19,9 +19,15 @@
 * Declaração das structs Ctermo e Vocabulario que irão formar a estrutura de dados.
 */
 
-struct Ctermo {
+struct Stermo {
 	Termo termo;
 	list<Definicao> definicao;
+};
+typedef struct Stermo Stermo;
+
+struct Sdefin {
+	Definicao defin;
+	Nome preferedT;
 };
 typedef struct Ctermo Ctermo;
 
@@ -30,7 +36,7 @@ struct Vocabulario {
 	Definicao definicao;
 	Email administrador;
 	list<Email> desenvolvedor;
-	list<Ctermo> termo; 
+	list<Stermo> termo; 
 };
 typedef struct Vocabulario Vocabulario;
 
@@ -52,7 +58,7 @@ protected:
 	static list<Vocabulario>				listVocab;
 	static list<Vocabulario>::iterator		itVocab;
 	static list<Email>::iterator			itMail;
-	static list<Ctermo>::iterator			itTermo;
+	static list<Stermo>::iterator			itTermo;
 	static list<Definicao>::iterator		itDef;
 };
 
@@ -67,7 +73,7 @@ list<Administrador>::iterator	CmdBase::itAdm;
 list<Vocabulario>				CmdBase::listVocab;
 list<Vocabulario>::iterator		CmdBase::itVocab;
 list<Email>::iterator			CmdBase::itMail;
-list<Ctermo>::iterator			CmdBase::itTermo;
+list<Stermo>::iterator			CmdBase::itTermo;
 list<Definicao>::iterator		CmdBase::itDef;
 
 //--------------------------------------------------------------------------- 

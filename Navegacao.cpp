@@ -20,6 +20,8 @@ void NavFrontPage::execute(){
 		cout << "Escolha opcao: ";
 		cin >> opcao;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case OP_LOGIN:
 				nLogin.execute();
@@ -35,8 +37,6 @@ void NavFrontPage::execute(){
 			
 			default:
 				cout << endl << "***Opcao invalida." << endl;
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
@@ -59,9 +59,11 @@ void NavLogin::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "E-mail: ";
-		cin >> iemail;
+		getline(cin, iemail);
+		//cin >> iemail;
 		cout << "Senha: ";
-		cin >> isenha;
+		getline(cin, isenha);
+		//cin >> isenha;
 
 		try{
 			email.setEmail(iemail);
@@ -134,6 +136,8 @@ void NavSignUp::execute(){
 		cout << "Escolha opcao: ";
 		cin >> opcao;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case SU_LEITOR:
 				nLeitor.execute();
@@ -156,8 +160,6 @@ void NavSignUp::execute(){
 			
 			default:
 				cout << endl << "***Opcao invalida." << endl;
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
@@ -181,13 +183,17 @@ void NavSULeitor::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome: ";
-		cin >> inome;
+		getline(cin, inome);
+		//cin >> inome;
 		cout << "Sobrenome: ";
-		cin >> isobre;
+		getline(cin, isobre);
+		//cin >> isobre;
 		cout << "E-mail: ";
-		cin >> iemail;
+		getline(cin, iemail);
+		//cin >> iemail;
 		cout << "Senha: ";
-		cin >> isenha;
+		getline(cin, isenha);
+		//cin >> isenha;
 
 		try{
 			nome.setNome(inome);
@@ -237,13 +243,17 @@ void NavSUDev::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome: ";
-		cin >> inome;
+		getline(cin, inome);
+		//cin >> inome;
 		cout << "Sobrenome: ";
-		cin >> isobre;
+		getline(cin, isobre);
+		//cin >> isobre;
 		cout << "E-mail: ";
-		cin >> iemail;
+		getline(cin, iemail);
+		//cin >> iemail;
 		cout << "Senha: ";
-		cin >> isenha;
+		getline(cin, isenha);
+		//cin >> isenha;
 		cout << "Dia nascimento: ";
 		cin >> idia;
 		cout << "Mes nascimento: ";
@@ -251,6 +261,8 @@ void NavSUDev::execute(){
 		cout << "Ano nascimento: ";
 		cin >> iano;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			nome.setNome(inome);
 			sobrenome.setNome(isobre);
@@ -262,8 +274,6 @@ void NavSUDev::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -302,24 +312,32 @@ void NavSUAdmin::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome: ";
-		cin >> inome;
+		getline(cin, inome);
+		//cin >> inome;
 		cout << "Sobrenome: ";
-		cin >> isobre;
+		getline(cin, isobre);
+		//cin >> isobre;
 		cout << "E-mail: ";
-		cin >> iemail;
+		getline(cin, iemail);
+		//cin >> iemail;
 		cout << "Senha: ";
-		cin >> isenha;
+		getline(cin, isenha);
+		//cin >> isenha;
+		cout << "Telefone: ";
+		getline(cin, itelefone);
+		//cin >> itelefone;
+		cout << "Endereco: ";
+		getline(cin, iendereco);
+		//cin >> iendereco;
 		cout << "Dia nascimento: ";
 		cin >> idia;
 		cout << "Mes nascimento: ";
 		cin >> imes;
 		cout << "Ano nascimento: ";
 		cin >> iano;
-		cout << "Telefone: ";
-		cin >> itelefone;
-		cout << "Endereco: ";
-		cin >> iendereco;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			nome.setNome(inome);
 			sobrenome.setNome(isobre);
@@ -333,8 +351,6 @@ void NavSUAdmin::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -374,6 +390,8 @@ void NavUserLeitor::execute() {
 		cout << "Escolha opcao: ";
 		cin >> opcao;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
 			break;
@@ -402,8 +420,6 @@ void NavUserLeitor::execute() {
 			
 			default:
 				cout << endl << "***Opcao invalida." << endl;
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
@@ -439,6 +455,8 @@ void NavUserDev::execute() {
 		cout << "Escolha opcao: ";
 		cin >> opcao;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
 			break;
@@ -465,14 +483,29 @@ void NavUserDev::execute() {
 			break;
 
 			case US_NEW_TERMO:
-			break;
-			
+			/*
+			{
+				NavNewTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			case US_EDIT_TERMO:
-			break;
-			
+			/*
+			{
+				NavEditTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			case US_DELETE_TERMO:
-			break;
-			
+			/*
+			{
+				NavDeleteTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			case US_NEW_DEFIN:
 			break;
 			
@@ -488,8 +521,6 @@ void NavUserDev::execute() {
 			
 			default:
 				cout << endl << "***Opcao invalida." << endl;
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
@@ -528,6 +559,8 @@ void NavUserAdmin::execute() {
 		cout << "Escolha opcao: ";
 		cin >> opcao;
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
 			break;
@@ -554,13 +587,29 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_NEW_TERMO:
-			break;
-			
+			/*
+			{
+				NavNewTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			case US_EDIT_TERMO:
-			break;
-			
+			/*
+			{
+				NavEditTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			case US_DELETE_TERMO:
-			break;
+			/*
+			{
+				NavDeleteTermo nav(email);
+				nav.execute();
+				break;
+			}
+			*/
 			
 			case US_NEW_DEFIN:
 			break;
@@ -598,8 +647,6 @@ void NavUserAdmin::execute() {
 			
 			default:
 				cout << endl << "***Opcao invalida." << endl;
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
@@ -630,12 +677,15 @@ void NavNewVocab::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome do vocabulario: ";
-		cin >> ivocab;
+		getline(cin, ivocab);
+		//cin >> ivocab;
 		cout << "-opcao de idioma: ENG, FRA, GER, ITA, POR e SPA." << endl;
 		cout << "Idioma do vocabulario: ";
-		cin >> iidioma;
+		getline(cin, iidioma);
+		//cin >> iidioma;
 		cout << "Definicao do vocabulario: ";
-		cin >> idefin;
+		getline(cin, idefin);
+		//cin >> idefin;
 		cout << "Dia: ";
 		cin >> idia;
 		cout << "Mes: ";
@@ -644,6 +694,8 @@ void NavNewVocab::execute(){
 		cin >> iano;
 
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			vocab.setNome(ivocab);
 			vocab.setIdioma(iidioma);
@@ -655,8 +707,6 @@ void NavNewVocab::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -692,12 +742,15 @@ void NavEditVocab::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome do vocabulario: ";
-		cin >> ivocab;
+		getline(cin, ivocab);
+		//cin >> ivocab;
 		cout << "-opcao de idioma: ENG, FRA, GER, ITA, POR e SPA." << endl;
 		cout << "Novo idioma do vocabulario: ";
-		cin >> iidioma;
+		getline(cin, iidioma);
+		//cin >> iidioma;
 		cout << "Nova definicao do vocabulario: ";
-		cin >> idefin;
+		getline(cin, idefin);
+		//cin >> idefin;
 		cout << "Novo dia: ";
 		cin >> idia;
 		cout << "Novo mes: ";
@@ -706,6 +759,8 @@ void NavEditVocab::execute(){
 		cin >> iano;
 
 
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			vocab.setNome(ivocab);
 			vocab.setIdioma(iidioma);
@@ -717,8 +772,6 @@ void NavEditVocab::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -751,7 +804,8 @@ void NavDeleteVocab::execute(){
 	// Obtem input valido.
 	while(true) {
 		cout << "Nome do vocabulario: ";
-		cin >> ivocab;
+		getline(cin, ivocab);
+		//cin >> ivocab;
 
 
 		try{
@@ -779,3 +833,164 @@ void NavDeleteVocab::execute(){
 	cout << "Vocabulario controlado excluido." << endl;
 }
 
+/*
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe NavNewTermo.
+
+void NavNewTermo::showOption(){
+	cout << endl << "Criacao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavNewTermo::execute(){
+	string itermo, iclasse;
+	int idia, imes, iano;
+
+	Termo termo;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do termo: ";
+		cin >> ivocab;
+		cout << "-opcao de classe: PT ou NP." << endl;
+		cout << "Classe do termo: ";
+		cin >> iclasse;
+		cout << "Dia: ";
+		cin >> idia;
+		cout << "Mes: ";
+		cin >> imes;
+		cout << "Ano: ";
+		cin >> iano;
+
+
+		try{
+			termo.setNome(itermo);
+			termo.setClasse(iclasse);
+			termo.setDataCriacao(idia, imes, iano);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdNewTermo cmd(termo, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Termo criado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavEditTermo.
+
+void NavEditTermo::showOption(){
+	cout << endl << "Edicao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavEditTermo::execute(){
+	string itermo, iclasse;
+	int idia, imes, iano;
+
+	Termo termo;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do termo: ";
+		cin >> ivocab;
+		cout << "-opcao de classe: PT ou NP." << endl;
+		cout << "Nova classe do termo: ";
+		cin >> iclasse;
+		cout << "Novo dia: ";
+		cin >> idia;
+		cout << "Novo mes: ";
+		cin >> imes;
+		cout << "Novo ano: ";
+		cin >> iano;
+
+
+		try{
+			termo.setNome(itermo);
+			termo.setClasse(iclasse);
+			termo.setDataCriacao(idia, imes, iano);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdEditTermo cmd(termo, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Vocabulario controlado editado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavDeleteVocab.
+
+void NavDeleteTermo::showOption(){
+	cout << endl << "Exclusao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavDeleteTermo::execute(){
+	string itermo;
+	Nome nome;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Nome do termo: ";
+		cin >> itermo;
+
+
+		try{
+			nome.setNome(termo);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}	
+	
+	CmdDeleteVocab cmd(nome, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Termo excluido." << endl;
+}
+
+*/

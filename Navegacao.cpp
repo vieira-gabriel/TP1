@@ -43,7 +43,8 @@ void NavFrontPage::execute(){
 	telefone.setTelefone("12345678901");
 	endereco.setEndereco("Casa da sua mae");
 	CmdSUAdmin cmd3(nome, sobrenome, email, senha, nascimento, telefone, endereco);
-	cmd3.execute();	
+	cmd3.execute();
+	// -----------------------	
 
 	while (true) {
 		showOption();
@@ -534,14 +535,26 @@ void NavUserDev::execute() {
 			}
 
 			case US_NEW_DEFIN:
-			break;
+			{
+				NavNewDefin nav(email);
+				nav.execute();
+				break;
+			}
 			
 			case US_EDIT_DEFIN:
-			break;
+			{
+				NavEditDefin nav(email);
+				nav.execute();
+				break;
+			}
 			
 			case US_DELETE_DEFIN:
-			break;
-
+			{
+				NavDeleteDefin nav(email);
+				nav.execute();
+				break;
+			}
+			
 			case US_EXIT:
 				return;
 			break;
@@ -635,13 +648,25 @@ void NavUserAdmin::execute() {
 			}
 			
 			case US_NEW_DEFIN:
-			break;
+			{
+				NavNewDefin nav(email);
+				nav.execute();
+				break;
+			}
 			
 			case US_EDIT_DEFIN:
-			break;
+			{
+				NavEditDefin nav(email);
+				nav.execute();
+				break;
+			}
 			
 			case US_DELETE_DEFIN:
-			break;
+			{
+				NavDeleteDefin nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_NEW_VOCAB:
 			{
@@ -976,11 +1001,11 @@ void NavEditTermo::execute(){
 		return;
 	}
 
-	cout << "Vocabulario controlado editado." << endl;
+	cout << "Termo editado." << endl;
 }
 
 //--------------------------------------------------------------------------- 
-// Classe NavDeleteVocab.
+// Classe NavDeleteTermo.
 
 void NavDeleteTermo::showOption(){
 	cout << endl << "Exclusao de termo - Informe os dados a seguir:" << endl;
@@ -1026,3 +1051,177 @@ void NavDeleteTermo::execute(){
 	cout << "Termo excluido." << endl;
 }
 
+
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe NavNewDefin.
+
+void NavNewDefin::showOption(){
+	cout << endl << "Criacao de definicao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavNewDefin::execute(){
+	string itexto, ivocab, itermo;
+	int idia, imes, iano;
+
+	Definicao defin;
+	Nome vocab, termo;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
+		cout << "De qual termo eh: ";
+		getline(cin, itermo);
+		cout << "Definicao: ";
+		getline(cin, itexto);
+		cout << "Dia: ";
+		cin >> idia;
+		cout << "Mes: ";
+		cin >> imes;
+		cout << "Ano: ";
+		cin >> iano;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		try{
+			defin.setTexto(itexto);
+			defin.setDataCriacao(idia, imes, iano);
+			vocab.setNome(ivocab);
+			termo.setNome(itermo);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+		}
+	}
+
+	CmdNewDefin cmd(defin, vocab, termo, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Definicao criado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavEditDefin.
+
+void NavEditDefin::showOption(){
+	cout << endl << "Edicao de definicao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavEditDefin::execute(){
+	string itexto, ivocab, itermo, iotexto;
+	int idia, imes, iano;
+
+	Definicao defin;
+	Nome vocab, termo;
+	Texto old;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
+		cout << "De qual termo eh: ";
+		getline(cin, itermo);
+		cout << "Qual definicao eh: ";
+		getline(cin, iotexto);
+		cout << "Nova definicao: ";
+		getline(cin, itexto);
+		cout << "Novo dia: ";
+		cin >> idia;
+		cout << "Novo mes: ";
+		cin >> imes;
+		cout << "Novo ano: ";
+		cin >> iano;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		try{
+			defin.setTexto(itexto);
+			defin.setDataCriacao(idia, imes, iano);
+			vocab.setNome(ivocab);
+			termo.setNome(itermo);
+			old.setTexto(iotexto);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+		}
+	}
+
+	CmdEditDefin cmd(defin, old, vocab, termo, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Definicao editado." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavDeleteDefin.
+
+void NavDeleteDefin::showOption(){
+	cout << endl << "Exclusao de definicao de termo - Informe os dados a seguir:" << endl;
+}
+
+void NavDeleteDefin::execute(){
+	string itermo, ivocab, idefin;
+	Nome vocab, termo;
+	Texto defin;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
+		cout << "De qual termo eh: ";
+		getline(cin, itermo);
+		cout << "Definicao: ";
+		getline(cin, idefin);
+
+
+		try{
+			defin.setTexto(idefin);
+			vocab.setNome(ivocab);
+			termo.setNome(itermo);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}	
+	
+	CmdDeleteDefin cmd(defin, vocab, termo, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Definicao excluido." << endl;
+}

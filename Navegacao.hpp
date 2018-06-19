@@ -292,6 +292,53 @@ public:
 };
 
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavNewDefin.
+* Essa classe é responsável pela janela de criacao de definicao de termo.
+*/
+class NavNewDefin: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavNewDefin(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavEditDefin.
+* Essa classe é responsável pela janela de edicao de definicao de termo.
+*/
+class NavEditDefin: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavEditDefin(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavDeleteDefin.
+* Essa classe é responsável pela janela de exclusao de definicao de termo.
+*/
+class NavDeleteDefin: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavDeleteDefin(Email e){ user = e; }
+	void execute();
+};
+
+
 
 
 

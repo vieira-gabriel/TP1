@@ -365,6 +365,153 @@ void CmdDeleteTermo::execute() throw (invalid_argument){
 }
 
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe CmdNewDefin.
+
+CmdNewDefin::CmdNewDefin(Definicao a, Nome b, Nome c, Email d){
+	defin = a;
+	termo = c;
+	user = d;
+	vocab = b;
+}
+
+void CmdNewDefin::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()){
+					if (itTermo->definicao.size() >= 5){
+						throw invalid_argument("***Termo com definicoes lotada(5)!");
+					}
+
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						if (itDef->getTexto().getTexto() == defin.getTexto().getTexto()){
+							throw invalid_argument("***Definicao ja existe!");
+						}
+					}
+
+					if (user.getEmail() == itVocab->administrador.getEmail()){
+						itTermo->definicao.insert(itTermo->definicao.end(), defin);
+						return;
+					}
+					for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+						if (itMail->getEmail() == user.getEmail()){
+							itTermo->definicao.insert(itTermo->definicao.end(), defin);
+							return;
+						}
+					}
+
+					throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+
+					
+				}
+			}
+
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdEditDefin.
+
+CmdEditDefin::CmdEditDefin(Definicao a, Texto e, Nome b, Nome c, Email d){
+	defin = a;
+	termo = c;
+	user = d;
+	vocab = b;
+	old = e;
+}
+
+void CmdEditDefin::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()){
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						if (itDef->getTexto().getTexto() == defin.getTexto().getTexto()){
+							throw invalid_argument("***Nova definicao ja existe!");
+						}
+					}					
+
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						if (itDef->getTexto().getTexto() == old.getTexto()){
+							
+							if (user.getEmail() == itVocab->administrador.getEmail()){
+								itDef->setTexto(defin.getTexto());
+								itDef->setDataCriacao(defin.getDataCriacao());
+								return;
+							}
+							for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+								if (itMail->getEmail() == user.getEmail()){
+									itDef->setTexto(defin.getTexto());
+									itDef->setDataCriacao(defin.getDataCriacao());
+									return;
+								}
+							}
+
+							throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+
+						}
+					}
+
+					throw invalid_argument("***Definicao inexistente!");
+				}
+			}
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdDeleteDefin.
+
+CmdDeleteDefin::CmdDeleteDefin(Texto a, Nome b, Nome c, Email d){
+	defin = a;
+	termo = c;
+	user = d;
+	vocab = b;
+}
+
+void CmdDeleteDefin::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()){
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						if (itDef->getTexto().getTexto() == defin.getTexto()){
+
+							if (user.getEmail() == itVocab->administrador.getEmail()){
+								itTermo->definicao.erase(itDef);
+								return;
+							}
+							for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+								if (itMail->getEmail() == user.getEmail()){
+									itTermo->definicao.erase(itDef);
+									return;
+								}
+							}
+
+							throw invalid_argument("***Usuario nao eh desenvolvedor/admin desse vocabulario!");
+
+						}
+					}
+					throw invalid_argument("***Definicao inexistente!");
+				}
+			}
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+
+
 
 
 

@@ -250,4 +250,55 @@ public:
 };
 
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdNewDefin.
+* Essa classe realiza o servico de criacao de definicao de termo.
+*/
+class CmdNewDefin: public CmdBase{
+private:
+	Email user;
+	Nome vocab, termo;
+	Definicao defin;
+
+public:
+	CmdNewDefin(Definicao, Nome, Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditDefin.
+* Essa classe realiza o servico de edicao de definicao de termo.
+*/
+class CmdEditDefin: public CmdBase{
+private:
+	Email user;
+	Nome vocab, termo;
+	Definicao defin;
+	Texto old;
+
+public:
+	CmdEditDefin(Definicao, Texto, Nome, Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdDeleteDefin.
+* Essa classe realiza o servico de exclusao de definicao de termo.
+*/
+class CmdDeleteDefin: public CmdBase{
+private:
+	Email user;
+	Nome vocab, termo;
+	Texto defin;
+
+public:
+	CmdDeleteDefin(Texto, Nome, Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+
 #endif // COMANDOS_H_INCLUDED

@@ -12,12 +12,6 @@ Smoke Test Login
 		
 			***Usuario inexistente.
 
-			Pagina inicial - Opcoes:
-			1 - 	Login.
-			2 - 	Sign Up.
-			3 - 	Exit.
-			Escolha opcao:
-
 	Teste 2:
 		Entrada:
 			* E-mail: l@dom
@@ -44,12 +38,6 @@ Smoke Test Login
 		Saida:
 		
 			***Senha Errada!
-
-			Pagina inicial - Opcoes:
-			1 - 	Login.
-			2 - 	Sign Up.
-			3 - 	Exit.
-			Escolha opcao:
 
 	Teste 4:
 		Entrada:

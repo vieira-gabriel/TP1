@@ -32,7 +32,6 @@ Smoke Test Leitor
 			Editor de leitor - Informe os dados para edicao:
 
 		Entradas:
-			* Editor de leitor - Informe os dados para edicao:
 			* Novo nome: Novo
 			* Novo sobrenome: Nome
 			* Novo e-mail: novo@dom
@@ -184,8 +183,8 @@ Smoke Test Leitor
 
 		Saida:
 
-			Nome: Nome
-			Sobrenome: Sobrenome
-			Email: l@dom
-			Senha: Senha123
+			Nome: Novo
+			Sobrenome: Nome
+			Email: novo@dom
+			Senha: Senha321
 			Fim dos detalhes.

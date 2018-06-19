@@ -5,11 +5,11 @@ Smoke Test Menu Principal
 				 Pagina inicial - Opcoes:
 				 1 - 	Login.
 				 2 - 	Sign Up.
-				 3 - 	Exit.
-				 Escolha opcao:"
+				 3 - 	Exit."
 
 	Teste 1:
-		Entrada: 1
+		Entrada:
+			* Escolha opcao: 1
 
 		Saida:
 
@@ -17,27 +17,31 @@ Smoke Test Menu Principal
 			E-mail:
 
 	Teste 2:
-		Entrada: 2
+		Entrada: 
+			* Escolha opcao: 2
 
 		Saida:
 
 			Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
 
 	Teste 3:
-		Entrada: 3
+		Entrada:
+			* Escolha opcao: 3
 
 		Saida:
 
 			(Encerra execução do programa)
 
 	Teste 4:
-		Entrada: hfjds
+		Entrada:
+			* Escolha opcao: hfjds
 		Saida:
 
 			***Opcao invalida.
 
 	Teste 5:
-		Entrada: 4
+		Entrada: 
+			* Escolha opcao: 4
 		
 		Saida:
 

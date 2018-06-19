@@ -441,7 +441,11 @@ void NavUserLeitor::execute() {
 			}
 
 			case US_SHOW_VOCAB:
-			break;
+			{
+				NavShowVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_TERMO:
 			break;
@@ -510,7 +514,11 @@ void NavUserDev::execute() {
 			}
 
 			case US_SHOW_VOCAB:
-			break;
+			{
+				NavShowVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_TERMO:
 			break;
@@ -631,7 +639,11 @@ void NavUserAdmin::execute() {
 			}
 
 			case US_SHOW_VOCAB:
-			break;
+			{
+				NavShowVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_TERMO:
 			break;
@@ -1313,4 +1325,64 @@ void NavListVocab::execute(){
 		cout << "\t- " << it->getNome() << endl;
 	}
 	cout << "Fim da listagem." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowVocab.
+
+void NavShowVocab::showOption(){
+	cout << endl << "Detalhes de vocabulario." << endl;
+}
+
+void NavShowVocab::execute(){
+	string ivocab;
+	Vocabulario_controlado vocab;
+	Definicao defin;
+	list<Nome> termo;
+	list<Nome>::iterator it;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Vocabulario desejado: ";
+		getline(cin, ivocab);
+
+		try{
+			vocab.setNome(ivocab);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdShowVocab cmd(vocab.getNome(), termo);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	vocab = cmd.getResultVocab();
+	defin = cmd.getResultDefin();
+
+	cout << endl << "Nome do vocabulario: " << vocab.getNome().getNome() << endl;
+	cout << "Idioma do vocabulario: " << vocab.getIdioma().getIdioma() << endl;
+	cout << "Definicao do vocabulario: " << defin.getTexto().getTexto() << endl;
+	cout << "Ultima modificacao: " 	<< vocab.getDataCriacao().getDay() << "/" \
+									<< vocab.getDataCriacao().getMonth() << "/" \
+									<< vocab.getDataCriacao().getYear() << endl;
+	cout << "Lista de termos: " << endl;
+	cout << "Numero de termos registrados - " << termo.size() << endl;
+	for (it = termo.begin(); it != termo.end(); it++) {
+		cout << "\t- " << it->getNome() << endl;
+	}
+	cout << "Fim dos detalhes." << endl;
 }

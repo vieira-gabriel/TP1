@@ -370,6 +370,20 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowVocab.
+* Essa classe é responsável pela janela de detalhes do vocabulario.
+*/
+class NavShowVocab: public InterUI {
+private:
+	void showOption();
+
+public:
+	NavShowVocab(){}
+	void execute();
+};
+
 
 
 

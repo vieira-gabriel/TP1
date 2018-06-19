@@ -333,5 +333,28 @@ public:
 	void execute() throw (invalid_argument);
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowVocab.
+* Essa classe realiza o servico de fornecer detalhes do vocabulario.
+*/
+class CmdShowVocab: public CmdBase{
+private:
+	list<Nome> *lista;
+	Nome vocab;
+	Vocabulario_controlado resultadoVoc;
+	Definicao resultadoDef;
+
+public:
+	CmdShowVocab(Nome, list<Nome>&);
+	void execute() throw (invalid_argument);
+	Vocabulario_controlado getResultVocab(){
+		return resultadoVoc;
+	}
+	Definicao getResultDefin(){
+		return resultadoDef;
+	}
+};
+
 
 #endif // COMANDOS_H_INCLUDED

@@ -561,3 +561,27 @@ void CmdListVocab::execute() throw (invalid_argument){
 	}
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdShowVocab.
+
+CmdShowVocab::CmdShowVocab(Nome a, list<Nome> &l){
+	lista = &l;
+	vocab = a;
+}
+
+void CmdShowVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			resultadoVoc = itVocab->vocabulario;
+			resultadoDef = itVocab->definicao;
+
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				lista->insert(lista->end(), itTermo->termo.getNome());
+			}
+			return;
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+

@@ -3,7 +3,6 @@ Smoke Test Criação Termo
 								"Criacao de termo - Informe os dados a seguir:
 								De qual vocabulario eh:"
 
-	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
 
 	Teste 1:
 		Entradas:
@@ -22,7 +21,7 @@ Smoke Test Criação Termo
 
 	Teste 2:
 		Entradas:
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Galho
 			* Classe do termo: PT
 			* Dia: 01
@@ -37,8 +36,8 @@ Smoke Test Criação Termo
 
 	Teste 3:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* Nome do termo: Galho
+			* De qual vocabulario eh: Vocabulario
+			* Nome do termo: Termo
 			* Classe do termo: NP
 			* Dia: 01
 			* Mes: 01
@@ -52,7 +51,7 @@ Smoke Test Criação Termo
 
 	Teste 4:
 		Entradas:
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Verde
 			* Classe do termo: NP
 			* Dia: 02
@@ -82,7 +81,7 @@ Smoke Test Criação Termo
 
 	Teste 6:
 		Entradas:
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Folha
 			* Classe do termo: PT
 			* Dia: 01
@@ -102,13 +101,12 @@ Smoke Test Edição de Termo
 								"Edicao de termo - Informe os dados a seguir:
 								De qual vocabulario eh:"
 
-	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
 
 	Teste 1:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
-			* Nome do termo: Folha
+			* De qual vocabulario eh: Vocabulario
+			* Nome do termo: Termo
 			* Nova classe do termo: PT
 			* Novo dia: 15
 			* Novo mes: 06
@@ -121,7 +119,7 @@ Smoke Test Edição de Termo
 	Teste 2:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Pedra
 			* Nova classe do termo: PT
 			* Novo dia: 4
@@ -136,7 +134,7 @@ Smoke Test Edição de Termo
 		Entrada: 
 		
 			* De qual vocabulario eh: GAlhos
-			* Nome do termo: Galhotas
+			* Nome do termo: Raizes
 			* Nova classe do termo: NP
 			* Novo dia: 05
 			* Novo mes: 10
@@ -149,8 +147,8 @@ Smoke Test Edição de Termo
 	Teste 4:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
-			* Nome do termo: Folha
+			* De qual vocabulario eh: Vocabulario
+			* Nome do termo: Termo
 			* Nova classe do termo: PT
 			* Novo dia: 40
 			* Novo mes: 01
@@ -164,7 +162,7 @@ Smoke Test Edição de Termo
 	Teste 5:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Folha
 			* Nova classe do termo: PT
 			* Novo dia: 12
@@ -176,6 +174,20 @@ Smoke Test Edição de Termo
 			Ano inválido. Ano deve ser um valor inteiro entre 1900 e 2099.
 			Entrada invalida. Informe novamente os dados:
 
+	Teste 6: (Após vocábulo "Vocabulario" ser excluido)
+		Entrada: 
+		
+			* De qual vocabulario eh: Vocabulario
+			* Nome do termo: Termo
+			* Nova classe do termo: PT
+			* Novo dia: 12
+			* Novo mes: 01
+			* Novo ano: 2001
+
+		Saida:
+
+			***Vocabulario inexistente!
+
 -------------------------------------------------------------------------------------------------------------------------------
 
 Smoke Test Exclusão de Termo
@@ -183,13 +195,12 @@ Smoke Test Exclusão de Termo
 								"Edicao de termo - Informe os dados a seguir:
 								De qual vocabulario eh:"
 								
-	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
 
 	Teste 1:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
-			* Nome do termo: Galho
+			* De qual vocabulario eh: Vocabulario
+			* Nome do termo: Termo
 
 		Saida:
 
@@ -198,7 +209,7 @@ Smoke Test Exclusão de Termo
 	Teste 2:
 		Entrada: 
 		
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* Nome do termo: Love
 
 		Saida:
@@ -210,6 +221,45 @@ Smoke Test Exclusão de Termo
 		
 			* De qual vocabulario eh: Galhos
 			* Nome do termo: Galhotas
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Consulta de Termo
+
+								"Detalhes de termo."
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* Termo desejado: Termo
+
+		Saida:
+
+			Nome do termo: Termo
+			Classe do termo: NP
+			Ultima modificacao: 2/2/2002
+			Lista de definicoes: 
+			Numero de definicoes registradas - 1
+				- definicao termo
+			Fim dos detalhes.
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* Termo desejado: Verde
+
+		Saida:
+
+			***Termo inexistente!
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Teste
+			* Termo desejado: Termo
 
 		Saida:
 

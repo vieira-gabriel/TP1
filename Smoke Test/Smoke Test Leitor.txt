@@ -16,49 +16,79 @@ Smoke Test Leitor
 			* Opção: 1
 
 		Saida:
-			
+
+			Nome: Leitor
+			Sobrenome: Leitor
+			Email: l@dom
+			Senha: Senha123
+			Fim dos detalhes.
 
 	Teste 2:
 		Entrada:
 			* Opção: 2
 
 		Saida:
-			
+		
+			Editor de leitor - Informe os dados para edicao:
+
+		Entradas:
+			* Editor de leitor - Informe os dados para edicao:
+			* Novo nome: Novo
+			* Novo sobrenome: Nome
+			* Novo e-mail: novo@dom
+			* Nova senha: Senha321
+
+		Saida:
+		
+			Conta de leitor editada.
 
 	Teste 3:
 		Entrada:
 			* Opção: 3
-
-		Saida:
 			
+		Saida:
+
+			Usuario deletado.
+
 
 	Teste 4:
 		Entrada:
 			* Opção: 4
-
-		Saida:
 			
+		Saida:
+		
+			Listagem de vocabularios:
+			Numero de vocabularios registrados - 1
+				- Vocabulario
+			Fim da listagem.
+
 
 	Teste 5:
 		Entrada:
 			* Opção: 5
-
-		Saida:
 			
+		Saida:
+
+			Detalhes de vocabulario.
+			Vocabulario desejado:
+
 
 	Teste 6:
 		Entrada:
 			* Opção: 6
-
+			
 		Saida:
 			
+			Detalhes de termo.
+
 
 	Teste 7:
 		Entrada:
 			* Opção: 7
-
-		Saida:
 			
+		Saida:
+
+			Detalhes de definicao.
 
 	Teste 8:
 		Entrada:
@@ -87,3 +117,75 @@ Smoke Test Leitor
 		Saida:
 			
 			***Opcao invalida.
+
+	Teste 11:
+		Entrada:
+			* Opção: 2
+
+		Saida:
+		
+			Editor de leitor - Informe os dados para edicao:
+
+		Entradas:
+			* Editor de leitor - Informe os dados para edicao:
+			* Novo nome: nome
+			* Novo sobrenome: Minusculo
+			* Novo e-mail: l@dom
+			* Nova senha: Senha123
+
+		Saida:
+		
+			Nome inválido. Primeira letra deve ser maiúscula.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 12:
+		Entrada:
+			* Opção: 2
+
+		Saida:
+		
+			Editor de leitor - Informe os dados para edicao:
+
+		Entradas:
+			* Editor de leitor - Informe os dados para edicao:
+			* Novo nome: nome
+			* Novo sobrenome: Minusculo
+			* Novo e-mail: l@dom
+			* Nova senha: senha123
+
+		Saida:
+		
+			Senha inválida. Senha precisa conter no mínimo uma letra maiúscula.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 13:
+		Entrada:
+			* Opção: 2
+
+		Saida:
+		
+			Editor de leitor - Informe os dados para edicao:
+
+		Entradas:
+			* Editor de leitor - Informe os dados para edicao:
+			* Novo nome: nome
+			* Novo sobrenome: Minusculo
+			* Novo e-mail: l@dom
+			* Nova senha: Senhanha
+
+		Saida:
+		
+			Senha inválida. Senha precisa conter no mínimo um número.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 14: (após editar dados no Teste 2)
+		Entrada:
+			* Opção: 1
+
+		Saida:
+
+			Nome: Nome
+			Sobrenome: Sobrenome
+			Email: l@dom
+			Senha: Senha123
+			Fim dos detalhes.

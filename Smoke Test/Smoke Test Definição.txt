@@ -2,13 +2,11 @@ Smoke Test Criação Definição
 
 											"Criacao de definicao de termo - Informe os dados a seguir:"
 
-	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde"
-
 	Teste 1:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
-			* Definicao: folha verde eh tudo 
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao: nova definicao 
 			* Dia: 10
 			* Mes: 10
 			* Ano: 2001
@@ -45,8 +43,8 @@ Smoke Test Criação Definição
 
 	Teste 4 (Termo ja possui 5 definições):
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
 			* Definicao: Testando mais uma vez
 			* Dia: 8
 			* Mes: 7
@@ -58,9 +56,9 @@ Smoke Test Criação Definição
 
 	Teste 5 :
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
-			* Definicao: folha verde eh tudo 
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao: definicao termo 
 			* Dia: 5
 			* Mes: 6
 			* Ano: 2014
@@ -75,14 +73,13 @@ Smoke Test Edição de Definição
 
 										"Edicao de definicao de termo - Informe os dados a seguir:"
 
-	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde" e definição "folha verde eh tudo"
 
 	Teste 1:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
-			* Qual definicao eh: folha verde eh tudo
-			* Nova definicao: Folha verde nem eh tudo
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Qual definicao eh: definicao termo
+			* Nova definicao: Definicao Termo
 			* Novo dia: 10
 			* Novo mes: 12
 			* Novo ano: 2008
@@ -107,7 +104,7 @@ Smoke Test Edição de Definição
 
 	Teste 3:
 		Entradas:
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* De qual termo eh: Vermelho
 			* Qual definicao eh: Folha verde nem eh tudo
 			* Nova definicao: folha verde eh tudo
@@ -121,13 +118,27 @@ Smoke Test Edição de Definição
 
 	Teste 4:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Vermelho
-			* Qual definicao eh: Folha verde nem eh tudo
-			* Nova definicao: folha verde eh tudo
-			* Novo dia: 5
-			* Novo mes: 9
-			* Novo ano: 2018
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Qual definicao eh: Definicao Termo
+			* Nova definicao: definicao termo
+			* Novo dia: 10
+			* Novo mes: 12
+			* Novo ano: 2008
+
+		Saida:
+		
+			Definicao editado.
+
+	Teste 5: (Após termo "Termo" do vocábulo "Vocabulario" ser excluido)
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Qual definicao eh: Definicao Termo
+			* Nova definicao: definicao termo
+			* Novo dia: 10
+			* Novo mes: 12
+			* Novo ano: 2008
 
 		Saida:
 		
@@ -139,13 +150,12 @@ Smoke Test Exclusão de Definição
 
 										"Exclusao de definicao de termo - Informe os dados a seguir:"
 
-	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde" e definição "Folha verde nem eh tudo"
 
 	Teste 1:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
-			* Definicao: Folha verde nem eh tudo
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao: definicao termo
 
 		Saida:
 		
@@ -153,9 +163,9 @@ Smoke Test Exclusão de Definição
 
 	Teste 2:
 		Entradas:
-			* De qual vocabulario eh: Folha
-			* De qual termo eh: Verde
-			* Definicao: Folha eh tudo
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao: definicao de termo
 
 		Saida:
 		
@@ -165,7 +175,7 @@ Smoke Test Exclusão de Definição
 		Entradas:
 			* De qual vocabulario eh: Fola
 			* De qual termo eh: Verde
-			* Definicao: Folha verde nem eh tudo
+			* Definicao: definicao termo
 
 		Saida:
 		
@@ -173,10 +183,61 @@ Smoke Test Exclusão de Definição
 
 	Teste 4:
 		Entradas:
-			* De qual vocabulario eh: Folha
+			* De qual vocabulario eh: Vocabulario
 			* De qual termo eh: Testar
 			* Definicao: arvore
 
 		Saida:
 		
 			***Termo inexistente!
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Consulta de Definição
+
+										"Detalhes de definicao."
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao desejada: definicao termo
+
+		Saida:
+
+			Definicao: definicao termo
+			Ultima modificacao: 3/3/2003
+			Lista de termos associados: 
+			Numero de termos associados - 1
+				- Termo
+			Fim dos detalhes.
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao desejada: definicao errada
+
+		Saida:
+
+			***Definicao inexistente neste termo!
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Errado
+			* Definicao desejada: definicao termo
+
+		Saida:
+
+			***Termo inexistente!
+
+	Teste 4:
+		Entradas:
+			* De qual vocabulario eh: Vocabulario
+			* De qual termo eh: Termo
+			* Definicao desejada: definicao termo
+
+		Saida:
+
+			***Vocabulario inexistente!

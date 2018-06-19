@@ -1,0 +1,208 @@
+Smoke Test Criação de Vocábulo
+
+										"Criacao de vocabulario controlado - Informe os dados a seguir:"
+
+	Teste 1:
+		Entradas:
+
+			* Nome do vocabulario: Folha
+			* Idioma do vocabulario: POR
+			* Definicao do vocabulario: Esse vocabulo eh um vocabulo de teste1
+			* Dia: 02
+			* Mes: 5
+			* Ano: 2001
+
+		Saida:
+
+			Texto de definição inválido. Texto deve possuir de 1 a 30 caracteres.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 2:
+		Entradas:
+
+			* Nome do vocabulario: Folha
+			* Idioma do vocabulario: por
+			* Definicao do vocabulario: Vocabulo eh teste1
+			* Dia: 02
+			* Mes: 5
+			* Ano: 2001
+
+		Saida:
+
+			Idioma inválido. As entradas válidas são ENG(inglês), FRA(francês), GER(alemão), ITA(italiano), POR(português) ou SPA(espanhol).
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 3:
+		Entradas:
+
+			* Nome do vocabulario: Folha
+			* Idioma do vocabulario: POR
+			* Definicao do vocabulario: Vocabulo eh teste1
+			* Dia: 02
+			* Mes: 5
+			* Ano: 2001
+
+		Saida:
+
+			Vocabulario controlado criado.
+
+	Teste 4:
+		Entradas:
+
+			* Nome do vocabulario: GGGG
+			* Idioma do vocabulario: ENG
+			* Definicao do vocabulario: Mais um teste
+			* Dia: 01
+			* Mes: 01
+			* Ano: 2001
+
+		Saida:
+
+			Vocabulario controlado criado.
+
+	Teste 5:
+		Entradas:
+
+			* Nome do vocabulario: FF Gol
+			* Idioma do vocabulario: FRA
+			* Definicao do vocabulario: Terceiro teste
+			* Dia: 10
+			* Mes: 11
+			* Ano: 2012
+
+		Saida:
+
+			Nome inválido. Usar apenas caracteres alfabéticos.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 6:
+		Entradas:
+
+			* Nome do vocabulario: Folha
+			* Idioma do vocabulario: SPA
+			* Definicao do vocabulario: Testar conflito
+			* Dia: 05
+			* Mes: 10
+			* Ano: 2006
+
+		Saida:
+
+			***Vocabulario ja existente!
+
+	Teste 7:
+		Entradas:
+
+			* Nome do vocabulario: Teste
+			* Idioma do vocabulario: GER
+			* Definicao do vocabulario: Mais um teste
+			* Dia: 01
+			* Mes: 05
+			* Ano: 2018
+
+		Saida:
+
+			Vocabulario controlado criado.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Edição de Vocábulo
+
+										"Edicao de vocabulario controlado - Informe os dados a seguir:"
+
+	Para esse teste, foram criados os vocábulos "Folha" e "Teste" anteriormente
+
+	Teste 1:
+		Entradas:
+
+			* Nome do vocabulario: Folha
+			* Novo idioma do vocabulario: ITA
+			* Nova definicao do vocabulario: Nova definicao
+			* Novo dia: 01
+			* Novo mes: 05
+			* Novo ano: 2016
+
+		Saida:
+		
+			Vocabulario controlado editado.
+
+	Teste 2:
+		Entradas:
+
+			* Nome do vocabulario: Gado
+			* Novo idioma do vocabulario: ITA
+			* Nova definicao do vocabulario: Ele nao existe
+			* Novo dia: 01
+			* Novo mes: 01
+			* Novo ano: 2001
+
+		Saida:
+		
+			***Vocabulario inexistente!
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Exclusão de Vocábulo
+
+										"Exclusao de vocabulario controlado - Informe os dados a seguir:"
+
+	Teste 1:
+		Entrada: Folha
+
+		Saida:
+
+			Vocabulario controlado excluido.		
+
+	Teste 2:
+		Entrada: Folga
+
+		Saida:
+
+			***Vocabulario inexistente!		
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Cadastro de Desenvolvedor em Vocabulario
+
+										"Cadastro de desenvolvedor em vocabulario - Informe os dados a seguir:"
+
+	#Obs: Para esse teste, foram criados pelo a@dom os vocábulos "Folha" e "Teste" anteriormente
+
+	Teste 1: (usuário: a@dom)
+		Entrada:
+			* Vocabulario desejado: Folha
+
+		Saida:
+
+			***Usuario ja eh administrador do vocabulario!
+
+	Teste 2: (usuário: d@dom)
+		Entrada:
+			* Vocabulario desejado: Folha
+
+		Saida:
+
+			Registrado como desenvolvedor do vocabulario.
+
+	Teste 3: (usuário: d@dom)
+		Entrada:
+			* Vocabulario desejado: Praia
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+	Teste 4: (usuário: d@dom)
+		Entrada:
+			* Vocabulario desejado: Praia
+
+		Saida:
+
+			Registrado como desenvolvedor do vocabulario.
+
+	Teste 5: (usuário: d@dom)
+		Entrada:
+			* Vocabulario desejado: Teste
+
+		Saida:
+
+			Registrado como desenvolvedor do vocabulario.

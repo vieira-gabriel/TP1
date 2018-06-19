@@ -1,0 +1,42 @@
+Smoke Test Menu Principal
+
+				"	Bem Vindo.
+
+				 Pagina inicial - Opcoes:
+				 1 - 	Login.
+				 2 - 	Sign Up.
+				 3 - 	Exit.
+				 Escolha opcao:"
+
+	Teste 1:
+		Entrada: 1
+
+		Saida:
+
+			Pagina de login - Informe os seguintes dados:
+			E-mail:
+
+	Teste 2:
+		Entrada: 2
+
+		Saida:
+
+			Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
+
+	Teste 3:
+		Entrada: 3
+
+		Saida:
+
+	Teste 4:
+		Entrada: hfjds
+		Saida:
+
+			***Opcao invalida.
+
+	Teste 5:
+		Entrada: 4
+		
+		Saida:
+
+			***Opcao invalida.

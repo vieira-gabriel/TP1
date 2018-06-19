@@ -1,0 +1,216 @@
+Smoke Test Criação Termo
+
+								"Criacao de termo - Informe os dados a seguir:
+								De qual vocabulario eh:"
+
+	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Forma
+			* Nome do termo: Verde
+			* Classe do termo: PT
+			* Dia: 10
+			* Mes: 07
+			* Ano: 2018
+
+
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Galho
+			* Classe do termo: PT
+			* Dia: 01
+			* Mes: 01
+			* Ano: 2010
+
+
+
+		Saida:
+
+			Termo criado.
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Galho
+			* Classe do termo: NP
+			* Dia: 01
+			* Mes: 01
+			* Ano: 2011
+
+
+
+		Saida:
+
+			***Termo ja existe!
+
+	Teste 4:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Verde
+			* Classe do termo: NP
+			* Dia: 02
+			* Mes: 01
+			* Ano: 2010
+
+
+
+		Saida:
+
+			Termo criado.
+
+	Teste 5:
+		Entradas:
+			* De qual vocabulario eh: Teste
+			* Nome do termo: Galho
+			* Classe do termo: PT
+			* Dia: 01
+			* Mes: 01
+			* Ano: 2000
+
+
+
+		Saida:
+
+			Termo criado.
+
+	Teste 6:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Folha
+			* Classe do termo: PT
+			* Dia: 01
+			* Mes: 06
+			* Ano: 2005
+
+
+
+		Saida:
+
+			Termo criado.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Edição de Termo
+
+								"Edicao de termo - Informe os dados a seguir:
+								De qual vocabulario eh:"
+
+	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
+
+	Teste 1:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Folha
+			* Nova classe do termo: PT
+			* Novo dia: 15
+			* Novo mes: 06
+			* Novo ano: 2013
+
+		Saida:
+
+			Vocabulario controlado editado.
+
+	Teste 2:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Pedra
+			* Nova classe do termo: PT
+			* Novo dia: 4
+			* Novo mes: 08
+			* Novo ano: 2007
+
+		Saida:
+
+			***Termo inexistente!
+
+	Teste 3:
+		Entrada: 
+		
+			* De qual vocabulario eh: GAlhos
+			* Nome do termo: Galhotas
+			* Nova classe do termo: NP
+			* Novo dia: 05
+			* Novo mes: 10
+			* Novo ano: 2015
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+	Teste 4:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Folha
+			* Nova classe do termo: PT
+			* Novo dia: 40
+			* Novo mes: 01
+			* Novo ano: 2001
+
+		Saida:
+
+			Dia inválido. Dia deve ser um valor inteiro entre 1 e 31 em Janeiro.
+			Entrada invalida. Informe novamente os dados:
+
+	Teste 5:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Folha
+			* Nova classe do termo: PT
+			* Novo dia: 12
+			* Novo mes: 01
+			* Novo ano: 0001
+
+		Saida:
+
+			Ano inválido. Ano deve ser um valor inteiro entre 1900 e 2099.
+			Entrada invalida. Informe novamente os dados:
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Exclusão de Termo
+
+								"Edicao de termo - Informe os dados a seguir:
+								De qual vocabulario eh:"
+								
+	#Obs.: Para esses testes, foram criados os vocábulos "Folha" e "Teste" anteriormente
+
+	Teste 1:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Galho
+
+		Saida:
+
+			Termo excluido.
+
+	Teste 2:
+		Entrada: 
+		
+			* De qual vocabulario eh: Folha
+			* Nome do termo: Love
+
+		Saida:
+
+			***Termo inexistente!
+
+	Teste 3:
+		Entrada: 
+		
+			* De qual vocabulario eh: Galhos
+			* Nome do termo: Galhotas
+
+		Saida:
+
+			***Vocabulario inexistente!

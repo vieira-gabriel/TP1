@@ -1,0 +1,182 @@
+Smoke Test Criação Definição
+
+											"Criacao de definicao de termo - Informe os dados a seguir:"
+
+	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde"
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Definicao: folha verde eh tudo 
+			* Dia: 10
+			* Mes: 10
+			* Ano: 2001
+
+		Saida:
+
+			Definicao criado.
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Forma
+			* De qual termo eh: Folha
+			* Definicao: Testando mais uma vez
+			* Dia: 4
+			* Mes: 5
+			* Ano: 2009
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Forma
+			* De qual termo eh: Folha
+			* Definicao: Testando mais uma vez
+			* Dia: 4
+			* Mes: 5
+			* Ano: 2009
+
+		Saida:
+
+			***Vocabulario inexistente!
+
+	Teste 4 (Termo ja possui 5 definições):
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Definicao: Testando mais uma vez
+			* Dia: 8
+			* Mes: 7
+			* Ano: 2006
+
+		Saida:
+
+			***Termo com definicoes lotada(5)!
+
+	Teste 5 :
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Definicao: folha verde eh tudo 
+			* Dia: 5
+			* Mes: 6
+			* Ano: 2014
+
+		Saida:
+
+			***Definicao ja existe!
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Edição de Definição
+
+										"Edicao de definicao de termo - Informe os dados a seguir:"
+
+	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde" e definição "folha verde eh tudo"
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Qual definicao eh: folha verde eh tudo
+			* Nova definicao: Folha verde nem eh tudo
+			* Novo dia: 10
+			* Novo mes: 12
+			* Novo ano: 2008
+
+		Saida:
+		
+			Definicao editado.
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Fola
+			* De qual termo eh: Verde
+			* Qual definicao eh: Folha verde nem eh tudo
+			* Nova definicao: folha verde eh tudo
+			* Novo dia: 10
+			* Novo mes: 11
+			* Novo ano: 2017
+
+		Saida:
+		
+			***Vocabulario inexistente!
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Vermelho
+			* Qual definicao eh: Folha verde nem eh tudo
+			* Nova definicao: folha verde eh tudo
+			* Novo dia: 5
+			* Novo mes: 9
+			* Novo ano: 2018
+
+		Saida:
+		
+			***Termo inexistente!
+
+	Teste 4:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Vermelho
+			* Qual definicao eh: Folha verde nem eh tudo
+			* Nova definicao: folha verde eh tudo
+			* Novo dia: 5
+			* Novo mes: 9
+			* Novo ano: 2018
+
+		Saida:
+		
+			***Termo inexistente!
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Exclusão de Definição
+
+										"Exclusao de definicao de termo - Informe os dados a seguir:"
+
+	#Obs.: Para esses testes, foi criado anteriormente o vocábulo "Folha" com o termo "Verde" e definição "Folha verde nem eh tudo"
+
+	Teste 1:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Definicao: Folha verde nem eh tudo
+
+		Saida:
+		
+			Definicao excluido.
+
+	Teste 2:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Verde
+			* Definicao: Folha eh tudo
+
+		Saida:
+		
+			***Definicao inexistente!
+
+	Teste 3:
+		Entradas:
+			* De qual vocabulario eh: Fola
+			* De qual termo eh: Verde
+			* Definicao: Folha verde nem eh tudo
+
+		Saida:
+		
+			***Vocabulario inexistente!
+
+	Teste 4:
+		Entradas:
+			* De qual vocabulario eh: Folha
+			* De qual termo eh: Testar
+			* Definicao: arvore
+
+		Saida:
+		
+			***Termo inexistente!

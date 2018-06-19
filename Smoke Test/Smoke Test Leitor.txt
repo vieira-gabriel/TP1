@@ -1,0 +1,89 @@
+Smoke Test Leitor
+
+					"Pagina de usuario leitor - acoes disponiveis:
+					1 - 	Apresentar dados do usuario.
+					2 - 	Editar dados do usario.
+					3 - 	Excluir conta.
+					4 - 	Listar vocabularios controlados.
+					5 - 	Consultar vocabulario controlado.
+					6 - 	Consultar termo.
+					7 - 	Consultar definicao de termo.
+					8 - 	Sair da conta.
+					Escolha opcao:"
+
+	Teste 1:
+		Entrada:
+			* Opção: 1
+
+		Saida:
+			(Não implementado)
+
+	Teste 2:
+		Entrada:
+			* Opção: 2
+
+		Saida:
+			(Não implementado)
+
+	Teste 3:
+		Entrada:
+			* Opção: 3
+
+		Saida:
+			(Não implementado)
+
+	Teste 4:
+		Entrada:
+			* Opção: 4
+
+		Saida:
+			(Não implementado)
+
+	Teste 5:
+		Entrada:
+			* Opção: 5
+
+		Saida:
+			(Não implementado)
+
+	Teste 6:
+		Entrada:
+			* Opção: 6
+
+		Saida:
+			(Não implementado)
+
+	Teste 7:
+		Entrada:
+			* Opção: 7
+
+		Saida:
+			(Não implementado)
+
+	Teste 8:
+		Entrada:
+			* Opção: 8
+
+		Saida:
+			
+			Pagina inicial - Opcoes:
+			1 - 	Login.
+			2 - 	Sign Up.
+			3 - 	Exit.
+			Escolha opcao:
+
+	Teste 9:
+		Entrada:
+			* Opção: 9
+
+		Saida:
+			
+			***Opcao invalida.
+
+	Teste 10:
+		Entrada:
+			* Opção: a
+
+		Saida:
+			
+			***Opcao invalida.

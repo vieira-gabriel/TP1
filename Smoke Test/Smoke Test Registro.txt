@@ -1,0 +1,273 @@
+Smoke Test Registro (Sign Up)
+
+								"Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
+								1 - 	Leitor.
+								2 - 	Desenvolvedor.
+								3 - 	Administrador.
+								4 - 	Retornar pagina inicial.
+								Escolha opcao:"
+
+	Teste 1:
+		Entradas:
+			* Opção: 1
+			* Nome: Usuario1
+			* Sobrenome: Leitor1
+			* Email: UsuLei@domin
+			* Senha: Leitor123
+
+		Saida:
+
+			Nome inválido. Usar apenas caracteres alfabéticos.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 2:
+		Entradas:
+			* Opção: 1
+			* Nome: Usuario
+			* Sobrenome: Leitor
+			* Email: UsuLei@domin
+			* Senha: Leitor123
+
+		Saida:
+
+			Senha inválida. Senha deve possuir 8 caracteres.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 3:
+		Entradas:
+			* Opção: 1
+			* Nome: Usuario
+			* Sobrenome: Leitor
+			* Email: UsuLei@domin
+			* Senha: UsLei123
+
+		Saida:
+
+			Conta de leitor criada. 
+
+
+	Teste 4:
+		Entradas:
+			* Opção: 2
+			* Nome: Desen
+			* Sobrenome: Volvedor
+			* Email: UsuLei@domin
+			* Senha: UsLei123
+			* Dia nascimento: 32
+			* Mês nascimento: 4
+			* Ano nascimento: 2001
+
+		Saida:
+
+			Dia inválido. Dia deve ser um valor inteiro entre 1 e 30 em Abril.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 5:
+		Entradas:
+			* Opção: 2
+			* Nome: Desen
+			* Sobrenome: Volvedor
+			* Email: UsuLei@domin
+			* Senha: UsLei123
+			* Dia nascimento: 30
+			* Mês nascimento: 2
+			* Ano nascimento: 2001
+
+		Saida:
+
+			Dia inválido. Dia deve ser um valor inteiro entre 1 e 28 nesse mês de Fevereiro.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 6:
+		Entradas:
+			* Opção: 2
+			* Nome: Desen
+			* Sobrenome: Volvedor
+			* Email: UsuLei@domin
+			* Senha: UsLei123
+			* Dia nascimento: 12
+			* Mês nascimento: 15
+			* Ano nascimento: 2001
+
+		Saida:
+
+			Mês inválido. Mês deve ser um valor inteiro entre 1 e 12.
+			Emailntrada invalida. Informe novamente os dados:
+
+
+	Teste 7:
+		Entradas:
+			* Opção: 2
+			* Nome: Desen
+			* Sobrenome: Volvedor
+			* Email: UsuLei@domin
+			* Senha: UsLei123
+			* Dia nascimento: 10
+			* Mês nascimento: 09
+			* Ano nascimento: 2002
+
+		Saida:
+
+			Conta de desenvolvedor criada. 
+
+
+	Teste 8:
+		Entradas:
+			* Opção: 3
+			* Nome: Adm
+			* Sobrenome: Inistrador
+			* E-mail: Adm@domin
+			* Senha: Senha159
+			* Telefone: 88441125
+			* Endereco: Rua 1
+			* Dia nascimento: 5
+			* Mes nascimento: 0012
+			* Ano nascimento: 1987
+
+
+		Saida:
+
+			Telefone inválido. O telefone deve ter 11 digitos.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 9:
+		Entradas:
+			* Opção: 3
+			* Nome: Adm
+			* Sobrenome: Inistrador
+			* E-mail: Adm@domin
+			* Senha: Senha159
+			* Telefone: 61845123658
+			* Endereco: Rua 1
+			* Dia nascimento: 19
+			* Mes nascimento: 03
+			* Ano nascimento: 1997
+
+
+		Saida:
+
+			Endereço inválido. Usar apenas caracteres alfabeticos e espaço.
+			Entrada invalida. Informe novamente os dados:
+
+
+	Teste 10:
+		Entradas:
+			* Opção: 3
+			* Nome: Adm
+			* Sobrenome: Inistrador
+			* E-mail: Adm@domin
+			* Senha: Senha159
+			* Telefone: 61845123658
+			* Endereco: Rua de Cima
+			* Dia nascimento: 19
+			* Mes nascimento: 03
+			* Ano nascimento: 1997
+
+
+		Saida:
+
+			Conta de administrador criada.
+
+
+	Teste 11:
+		Entradas:
+			* Opção: 4
+
+
+		Saida:
+
+			***Opcao invalida.
+
+			Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
+			1 - 	Leitor.
+			2 - 	Desenvolvedor.
+			3 - 	Administrador.
+			4 - 	Retornar pagina inicial.
+			Escolha opcao:
+
+
+	Teste 12:
+		Entradas:
+			* Opção: 
+			* Nome: Usuario
+			* Sobrenome: Leitor
+			* Email: l@dom
+			* Senha: UsLei123
+
+
+		Saida:
+
+			***Usuario com este email ja existe.
+
+
+	Teste 13:
+		Entradas:
+			* Opção: 2
+			* Nome: Dev
+			* Sobrenome: Volve
+			* Email: d@dom
+			* Senha: UsLei123
+			* Dia nascimento: 10
+			* Mês nascimento: 09
+			* Ano nascimento: 2002
+
+
+		Saida:
+
+			***Usuario com este email ja existe.
+
+
+	Teste 14:
+		Entradas:
+			* Opção: 3
+			* Nome: Admin
+			* Sobrenome: Adm
+			* E-mail: a@dom
+			* Senha: Senha159
+			* Telefone: 61845123658
+			* Endereco: Rua de Baixo
+			* Dia nascimento: 13
+			* Mes nascimento: 08
+			* Ano nascimento: 1970
+
+
+		Saida:
+
+			***Usuario com este email ja existe.
+
+
+	Teste 15:
+		Entradas:
+			* Opção: 1
+			* Nome: Dami
+			* Sobrenome: Mia
+			* E-mail: a@dom
+			* Senha: Senha159
+
+
+		Saida:
+
+			***Usuario com este email ja existe.
+
+
+	Teste 16:
+		Entradas:
+			* Opção: 2
+			* Nome: Dami
+			* Sobrenome: Mia
+			* E-mail: a@domi
+			* Senha: S154enha
+			* Dia nascimento: 15
+			* Mês nascimento: 07
+			* Ano nascimento: 2012
+
+
+
+		Saida:
+
+			Conta de desenvolvedor criada.

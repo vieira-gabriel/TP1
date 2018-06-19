@@ -1,0 +1,162 @@
+Smoke Test Desenvolvedor
+
+					"Pagina de usuario desenvolvedor - acoes disponiveis:
+					1 - 	Apresentar dados do usuario.
+					2 - 	Editar dados do usario.
+					3 - 	Excluir conta.
+					4 - 	Listar vocabularios controlados.
+					5 - 	Consultar vocabulario controlado.
+					6 - 	Consultar termo.
+					7 - 	Consultar definicao de termo.
+					8 - 	Cadastrar como desenvolvedor de vocabulario.
+					9 - 	Criar termo.
+					10 - 	Editar termo.
+					11 - 	Excluir termo.
+					12 - 	Criar definicao de termo.
+					13 - 	Editar definicao de termo.
+					14 - 	Excluir definicao de termo.
+					15 - 	Sair da conta.
+					Escolha opcao:"
+
+	Teste 1:
+		Entrada:
+			* Opção: 1
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 2:
+		Entrada:
+			* Opção: 2
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 3:
+		Entrada:
+			* Opção: 3
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 4:
+		Entrada:
+			* Opção: 4
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 5:
+		Entrada:
+			* Opção: 5
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 6:
+		Entrada:
+			* Opção: 6
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 7:
+		Entrada:
+			* Opção: 7
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 8:
+		Entrada:
+			* Opção: 8
+			
+		Saida:
+		
+			Cadastro de desenvolvedor em vocabulario - Informe os dados a seguir:
+
+	Teste 9:
+		Entrada:
+			* Opção: 9
+			
+		Saida:
+
+			Criacao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:
+
+	Teste 10:
+		Entrada:
+			* Opção: 10
+			
+		Saida:
+
+			Edicao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:
+
+	Teste 11:
+		Entrada:
+			* Opção: 11
+			
+		Saida:
+
+			Exclusao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:
+
+	Teste 12:
+		Entrada:
+			* Opção: 12
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 13:
+		Entrada:
+			* Opção: 13
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 14:
+		Entrada:
+			* Opção: 14
+			
+		Saida:
+
+			(Não implementado)
+
+	Teste 15:
+		Entrada:
+			* Opção: 15
+			
+		Saida:
+			
+			Pagina inicial - Opcoes:
+			1 - 	Login.
+			2 - 	Sign Up.
+			3 - 	Exit.
+			Escolha opcao:
+
+	Teste 16:
+		Entrada:
+			* Opção: 16
+
+		Saida:
+			
+			***Opcao invalida.
+
+	Teste 17:
+		Entrada:
+			* Opção: a
+
+		Saida:
+			
+			***Opcao invalida.

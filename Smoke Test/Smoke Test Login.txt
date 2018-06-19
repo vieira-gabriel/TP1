@@ -1,0 +1,105 @@
+Smoke Test Login
+
+				"Pagina de login - Informe os seguintes dados:
+				 E-mail: "
+
+	Teste 1:
+		Entrada:
+			* E-mail: nao@cadastrado
+			* Senha: 123456Ab
+
+		Saida:
+		
+			***Usuario inexistente.
+
+			Pagina inicial - Opcoes:
+			1 - 	Login.
+			2 - 	Sign Up.
+			3 - 	Exit.
+			Escolha opcao:
+
+	Teste 2:
+		Entrada:
+			* E-mail: l@dom
+			* Senha: Senha123
+
+		Saida:
+		
+			Pagina de usuario leitor - acoes disponiveis:
+			1 - 	Apresentar dados do usuario.
+			2 - 	Editar dados do usario.
+			3 - 	Excluir conta.
+			4 - 	Listar vocabularios controlados.
+			5 - 	Consultar vocabulario controlado.
+			6 - 	Consultar termo.
+			7 - 	Consultar definicao de termo.
+			8 - 	Sair da conta.
+			Escolha opcao:
+
+	Teste 3:
+		Entrada:
+			* E-mail: l@dom
+			* Senha: 123Senha
+
+		Saida:
+		
+			***Senha Errada!
+
+			Pagina inicial - Opcoes:
+			1 - 	Login.
+			2 - 	Sign Up.
+			3 - 	Exit.
+			Escolha opcao:
+
+	Teste 4:
+		Entrada:
+			* E-mail: d@dom
+			* Senha: Senha123
+
+		Saida:
+		
+			Pagina de usuario desenvolvedor - acoes disponiveis:
+			1 - 	Apresentar dados do usuario.
+			2 - 	Editar dados do usario.
+			3 - 	Excluir conta.
+			4 - 	Listar vocabularios controlados.
+			5 - 	Consultar vocabulario controlado.
+			6 - 	Consultar termo.
+			7 - 	Consultar definicao de termo.
+			8 - 	Cadastrar como desenvolvedor de vocabulario.
+			9 - 	Criar termo.
+			10 - 	Editar termo.
+			11 - 	Excluir termo.
+			12 - 	Criar definicao de termo.
+			13 - 	Editar definicao de termo.
+			14 - 	Excluir definicao de termo.
+			15 - 	Sair da conta.
+			Escolha opcao:
+
+	Teste 4:
+		Entrada:
+			* E-mail: a@dom
+			* Senha: Senha123
+
+		Saida:
+		
+			Pagina de usuario desenvolvedor - acoes disponiveis:
+			1 - 	Apresentar dados do usuario.
+			2 - 	Editar dados do usario.
+			3 - 	Excluir conta.
+			4 - 	Listar vocabularios controlados.
+			5 - 	Consultar vocabulario controlado.
+			6 - 	Consultar termo.
+			7 - 	Consultar definicao de termo.
+			8 - 	Cadastrar como desenvolvedor de vocabulario.
+			9 - 	Criar termo.
+			10 - 	Editar termo.
+			11 - 	Excluir termo.
+			12 - 	Criar definicao de termo.
+			13 - 	Editar definicao de termo.
+			14 - 	Excluir definicao de termo.
+			15 - 	Criar vocabulario.
+			16 - 	Editar vocabulario.
+			17 - 	Excluir vocabulario.
+			18 - 	Sair da conta.
+			Escolha opcao:

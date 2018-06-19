@@ -1,6 +1,6 @@
 Smoke Test Administrador
 
-					"Pagina de usuario leitor - acoes disponiveis:
+					"Pagina de usuario administrador - acoes disponiveis:
 					1 - 	Apresentar dados do usuario.
 					2 - 	Editar dados do usario.
 					3 - 	Excluir conta.
@@ -58,7 +58,7 @@ Smoke Test Administrador
 			
 		Saida:
 		
-			Editor de administrador - Informe os dados para edicao:
+			Conta de administrador editada.
 
 	Teste 3:
 		Entrada:

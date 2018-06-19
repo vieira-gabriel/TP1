@@ -15,13 +15,17 @@ void NavFrontPage::execute(){
 	NavLogin nLogin;
 	NavSignUp nSignUp;
 
-	// pre-made users.
+	// pre-made data.
 	Nome nome, sobrenome;
 	Email email;
 	Senha senha;
 	Data nascimento;
 	Telefone telefone;
 	Endereco endereco;
+	Vocabulario_controlado pvocab;
+	Termo ptermo;
+	Definicao pdefin;
+	
 	nome.setNome("Leitor");
 	sobrenome.setNome("Leitor");
 	email.setEmail("l@dom");
@@ -44,6 +48,26 @@ void NavFrontPage::execute(){
 	endereco.setEndereco("Casa da sua mae");
 	CmdSUAdmin cmd3(nome, sobrenome, email, senha, nascimento, telefone, endereco);
 	cmd3.execute();
+
+	pvocab.setNome("Vocabulario");
+	pvocab.setIdioma("SPA");
+	pvocab.setDataCriacao(1, 1, 2000);
+	pdefin.setTexto("definicao vocab.");
+	pdefin.setDataCriacao(1, 1, 2001);
+	email.setEmail("a@dom");
+	CmdNewVocab cmd4(pvocab, pdefin, email);
+	cmd4.execute();
+	ptermo.setNome("Termo");
+	ptermo.setClasse("NP");
+	ptermo.setDataCriacao(2, 2, 2002);
+	nome.setNome("Vocabulario");
+	CmdNewTermo cmd5(ptermo, nome, email);
+	cmd5.execute();
+	pdefin.setTexto("definicao termo");
+	pdefin.setDataCriacao(3, 3, 2003);
+	sobrenome.setNome("Termo");
+	CmdNewDefin cmd6(pdefin, nome, sobrenome, email);
+	cmd6.execute();
 	// -----------------------	
 
 	while (true) {

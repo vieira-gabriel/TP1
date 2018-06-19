@@ -319,5 +319,19 @@ public:
 	void execute() throw (invalid_argument);
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdListVocab.
+* Essa classe realiza o servico de listagem de vocabulario.
+*/
+class CmdListVocab: public CmdBase{
+private:
+	list<Nome> *lista;
+
+public:
+	CmdListVocab(list<Nome> &l);
+	void execute() throw (invalid_argument);
+};
+
 
 #endif // COMANDOS_H_INCLUDED

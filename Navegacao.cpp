@@ -434,7 +434,11 @@ void NavUserLeitor::execute() {
 			break;
 
 			case US_LIST_VOCAB:
-			break;
+			{
+				NavListVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_VOCAB:
 			break;
@@ -499,7 +503,11 @@ void NavUserDev::execute() {
 			break;
 
 			case US_LIST_VOCAB:
-			break;
+			{
+				NavListVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_VOCAB:
 			break;
@@ -616,7 +624,11 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_LIST_VOCAB:
-			break;
+			{
+				NavListVocab nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_VOCAB:
 			break;
@@ -1280,4 +1292,25 @@ void NavSUVocab::execute(){
 	cout << "Registrado como desenvolvedor do vocabulario." << endl;
 }
 
+//--------------------------------------------------------------------------- 
+// Classe NavListVocab.
 
+void NavListVocab::showOption(){
+	cout << endl << "Listagem de vocabularios:" << endl;
+}
+
+void NavListVocab::execute(){
+	list<Nome> vocab;
+	list<Nome>::iterator it;
+
+	showOption();
+
+	CmdListVocab cmd(vocab);
+	cmd.execute();
+
+	cout << "Numero de vocabularios registrados - " << vocab.size() << endl;
+	for (it = vocab.begin(); it != vocab.end(); it++) {
+		cout << "\t- " << it->getNome() << endl;
+	}
+	cout << "Fim da listagem." << endl;
+}

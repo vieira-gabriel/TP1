@@ -548,5 +548,16 @@ void CmdSUVocab::execute() throw (invalid_argument){
 	throw invalid_argument("***Vocabulario inexistente!");
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdListVocab.
 
+CmdListVocab::CmdListVocab(list<Nome> &l){
+	lista = &l;
+}
+
+void CmdListVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		lista->insert(lista->end(), itVocab->vocabulario.getNome());
+	}
+}
 

@@ -356,6 +356,20 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavListVocab.
+* Essa classe é responsável pela janela de listagem de vocabulario.
+*/
+class NavListVocab: public InterUI {
+private:
+	void showOption();
+
+public:
+	NavListVocab(){}
+	void execute();
+};
+
 
 
 

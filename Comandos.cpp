@@ -513,6 +513,40 @@ void CmdDeleteDefin::execute() throw (invalid_argument){
 
 
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe CmdSUVocab.
+
+CmdSUVocab::CmdSUVocab(Nome a, Email b){
+	vocab = a;
+	user = b;
+}
+
+void CmdSUVocab::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			if (itVocab->administrador.getEmail() == user.getEmail()) {
+				throw invalid_argument("***Usuario ja eh administrador do vocabulario!");
+			}
+
+			if (itVocab->desenvolvedor.size() >= 10) {
+				throw invalid_argument("***Vocabulario com capacidade maxima de desenvolvedores(10)!");
+			}
+
+			for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+				if (itMail->getEmail() == user.getEmail()) {
+					throw invalid_argument("***Usuario ja eh desenvolvedor do vocabulario!");
+				}
+			}
+
+			itVocab->desenvolvedor.insert(itVocab->desenvolvedor.end(), user);
+			return;
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
 
 
 

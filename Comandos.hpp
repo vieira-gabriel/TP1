@@ -301,4 +301,23 @@ public:
 };
 
 
+
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdSUVocab.
+* Essa classe realiza o servico de cadastro de desenvolvedor de vocabulario.
+*/
+class CmdSUVocab: public CmdBase{
+private:
+	Email user;
+	Nome vocab;
+
+public:
+	CmdSUVocab(Nome, Email);
+	void execute() throw (invalid_argument);
+};
+
+
 #endif // COMANDOS_H_INCLUDED

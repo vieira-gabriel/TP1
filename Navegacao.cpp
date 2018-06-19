@@ -511,7 +511,11 @@ void NavUserDev::execute() {
 			break;
 
 			case US_SU_VOCAB:
-			break;
+			{
+				NavSUVocab nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_NEW_TERMO:
 			{
@@ -558,7 +562,7 @@ void NavUserDev::execute() {
 			case US_EXIT:
 				return;
 			break;
-			
+
 			default:
 				cout << endl << "***Opcao invalida." << endl;
 			break;
@@ -624,7 +628,11 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_SU_VOCAB:
-			break;
+			{
+				NavSUVocab nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_NEW_TERMO:
 			{
@@ -1225,3 +1233,51 @@ void NavDeleteDefin::execute(){
 
 	cout << "Definicao excluido." << endl;
 }
+
+
+
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+// Classe NavSUVocab.
+
+void NavSUVocab::showOption(){
+	cout << endl << "Cadastro de desenvolvedor em vocabulario - Informe os dados a seguir:" << endl;
+}
+
+void NavSUVocab::execute(){
+	string ivocab;
+	Nome vocab;
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Vocabulario desejado: ";
+		getline(cin, ivocab);
+
+		try{
+			vocab.setNome(ivocab);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdSUVocab cmd(vocab, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Registrado como desenvolvedor do vocabulario." << endl;
+}
+
+

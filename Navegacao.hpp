@@ -339,6 +339,24 @@ public:
 };
 
 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavSUVocab.
+* Essa classe é responsável pela janela de cadastro de desenvolvedor em vocabulario.
+*/
+class NavSUVocab: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavSUVocab(Email e){ user = e; }
+	void execute();
+};
+
+
 
 
 

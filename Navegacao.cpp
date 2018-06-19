@@ -466,6 +466,7 @@ void NavUserLeitor::execute() {
 			{
 				NavEditLeitor nav(email);
 				nav.execute();
+				email = nav.nuser();
 				break;
 			}
 
@@ -562,6 +563,7 @@ void NavUserDev::execute() {
 			{
 				NavEditDev nav(email);
 				nav.execute();
+				email = nav.nuser();
 				break;
 			}
 
@@ -710,6 +712,7 @@ void NavUserAdmin::execute() {
 			{
 				NavEditAdmin nav(email);
 				nav.execute();
+				email = nav.nuser();
 				break;
 			}
 
@@ -1638,6 +1641,8 @@ void NavEditLeitor::execute(){
 		cout << "Nova senha: ";
 		getline(cin, isenha);
 		
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			nome.setNome(inome);
 			sobrenome.setNome(isobre);
@@ -1648,8 +1653,6 @@ void NavEditLeitor::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -1664,6 +1667,7 @@ void NavEditLeitor::execute(){
 	}
 
 	cout << "Conta de leitor editada." << endl;
+	user = email;
 }
 
 //--------------------------------------------------------------------------- 
@@ -1727,6 +1731,7 @@ void NavEditDev::execute(){
 	}
 
 	cout << "Conta de desenvolvedor editada." << endl;
+	user = email;
 }
 
 //--------------------------------------------------------------------------- 
@@ -1798,6 +1803,7 @@ void NavEditAdmin::execute(){
 	}
 
 	cout << "Conta de administrador editada." << endl;
+	user = email;
 }
 
 //--------------------------------------------------------------------------- 

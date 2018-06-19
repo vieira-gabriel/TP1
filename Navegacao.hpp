@@ -431,6 +431,9 @@ private:
 public:
 	NavEditLeitor(Email e){ user = e; }
 	void execute();
+	Email nuser(){
+		return user;
+	}
 };
 
 //--------------------------------------------------------------------------- 
@@ -446,6 +449,9 @@ private:
 public:
 	NavEditDev(Email e){ user = e; }
 	void execute();
+	Email nuser(){
+		return user;
+	}
 };
 
 //--------------------------------------------------------------------------- 
@@ -461,6 +467,9 @@ private:
 public:
 	NavEditAdmin(Email e){ user = e; }
 	void execute();
+	Email nuser(){
+		return user;
+	}
 };
 
 //--------------------------------------------------------------------------- 

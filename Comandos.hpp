@@ -395,6 +395,20 @@ public:
 	}
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdDeleteUser.
+* Essa classe realiza o servico de deletar o usuario.
+*/
+class CmdDeleteUser: public CmdBase{
+private:
+	Email user;
+
+public:
+	CmdDeleteUser(Email e){ user = e; }
+	void execute() throw (invalid_argument);
+};
+
 
 
 

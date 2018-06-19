@@ -658,3 +658,45 @@ void CmdShowDefin::execute() throw (invalid_argument){
 	throw invalid_argument("***Vocabulario inexistente!");
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdDeleteUser.
+
+void CmdDeleteUser::execute() throw (invalid_argument){
+	for(itLer = userLer.begin(); itLer != userLer.end(); itLer++){
+		if(itLer->getEmail().getEmail() == user.getEmail()){
+			userLer.erase(itLer);
+			return;
+		}
+	}
+	for(itDev = userDev.begin(); itDev != userDev.end(); itDev++){
+		if(itDev->getEmail().getEmail() == user.getEmail()){
+			userDev.erase(itDev);
+
+			for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+				for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+					if (itMail->getEmail() == user.getEmail()){
+						itMail = itVocab->desenvolvedor.erase(itMail);
+						itMail--;
+					}
+				}
+			}
+			return;
+		}
+	}
+	for(itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++){
+		if(itAdm->getEmail().getEmail() == user.getEmail()){
+			userAdm.erase(itAdm);
+
+			for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+				if (itVocab->administrador.getEmail() == user.getEmail()){
+					itVocab = listVocab.erase(itVocab);
+					itVocab--;
+				}
+			}
+			return;
+		}
+	}
+
+	throw invalid_argument("***Usuario inexistente!");
+}
+

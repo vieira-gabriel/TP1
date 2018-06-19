@@ -431,7 +431,14 @@ void NavUserLeitor::execute() {
 			break;
 
 			case US_DELETE_USER:
-			break;
+			{
+				CmdDeleteUser cmd(email);
+				cmd.execute();
+
+				cout << "Usuario deletado." << endl;
+				return;
+				break;
+			}
 
 			case US_LIST_VOCAB:
 			{
@@ -512,7 +519,14 @@ void NavUserDev::execute() {
 			break;
 
 			case US_DELETE_USER:
-			break;
+			{
+				CmdDeleteUser cmd(email);
+				cmd.execute();
+
+				cout << "Usuario deletado." << endl;
+				return;
+				break;
+			}
 
 			case US_LIST_VOCAB:
 			{
@@ -606,7 +620,7 @@ void NavUserDev::execute() {
 // Classe NavUserAdmin.
 
 void NavUserAdmin::showOption(){
-	cout << endl << "Pagina de usuario desenvolvedor - acoes disponiveis:" << endl;
+	cout << endl << "Pagina de usuario administrador - acoes disponiveis:" << endl;
 	cout << "1 - \tApresentar dados do usuario." << endl;
 	cout << "2 - \tEditar dados do usario." << endl;
 	cout << "3 - \tExcluir conta." << endl;
@@ -645,7 +659,14 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_DELETE_USER:
-			break;
+			{
+				CmdDeleteUser cmd(email);
+				cmd.execute();
+
+				cout << "Usuario deletado." << endl;
+				return;
+				break;
+			}
 
 			case US_LIST_VOCAB:
 			{

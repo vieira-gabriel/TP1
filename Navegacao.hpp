@@ -14,6 +14,12 @@
 #include "Interface.hpp"
 #include "Comandos.cpp"
 
+// Apenas para criar dados para testes.
+class Premade: public InterCMD {
+public:
+	void execute();
+};
+
 //--------------------------------------------------------------------------- 
 /**
 * Classe NavFrontPage.

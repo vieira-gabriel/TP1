@@ -1,21 +1,7 @@
 
 #include "Navegacao.hpp"
 
-//--------------------------------------------------------------------------- 
-// Classe FrontPage.
-
-void NavFrontPage::showOption(){
-	cout << endl << "Pagina inicial - Opcoes:" << endl;
-	cout << "1 - \tLogin." << endl;
-	cout << "2 - \tSign Up." << endl;
-	cout << "3 - \tExit." << endl;
-}
-void NavFrontPage::execute(){
-	unsigned int opcao;
-	NavLogin nLogin;
-	NavSignUp nSignUp;
-
-	// pre-made data.
+void Premade::execute() {
 	Nome nome, sobrenome;
 	Email email;
 	Senha senha;
@@ -68,7 +54,26 @@ void NavFrontPage::execute(){
 	sobrenome.setNome("Termo");
 	CmdNewDefin cmd6(pdefin, nome, sobrenome, email);
 	cmd6.execute();
-	// -----------------------	
+}
+
+
+//--------------------------------------------------------------------------- 
+// Classe FrontPage.
+
+void NavFrontPage::showOption(){
+	cout << endl << "Pagina inicial - Opcoes:" << endl;
+	cout << "1 - \tLogin." << endl;
+	cout << "2 - \tSign Up." << endl;
+	cout << "3 - \tExit." << endl;
+}
+void NavFrontPage::execute(){
+	unsigned int opcao;
+	NavLogin nLogin;
+	NavSignUp nSignUp;
+
+	//pre-made data.
+	Premade cmd;
+	cmd.execute();
 
 	while (true) {
 		showOption();

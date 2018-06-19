@@ -58,6 +58,8 @@ void Premade::execute() {
 
 
 //--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------- 
 // Classe FrontPage.
 
 void NavFrontPage::showOption(){
@@ -457,7 +459,11 @@ void NavUserLeitor::execute() {
 			break;
 
 			case US_EDIT_USER:
-			break;
+			{
+				NavEditLeitor nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_DELETE_USER:
 			{
@@ -545,7 +551,11 @@ void NavUserDev::execute() {
 			break;
 
 			case US_EDIT_USER:
-			break;
+			{
+				NavEditDev nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_DELETE_USER:
 			{
@@ -685,7 +695,11 @@ void NavUserAdmin::execute() {
 			break;
 
 			case US_EDIT_USER:
-			break;
+			{
+				NavEditAdmin nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_DELETE_USER:
 			{
@@ -1583,4 +1597,193 @@ void NavShowDefin::execute(){
 		cout << "\t- " << it->getNome() << endl;
 	}
 	cout << "Fim dos detalhes." << endl;
+}
+
+
+//--------------------------------------------------------------------------- 
+// Classe EditLeitor.
+
+void NavEditLeitor::showOption(){
+	cout << endl << "Editor de leitor - Informe os dados para edicao:" << endl;
+}
+void NavEditLeitor::execute(){
+	string inome, isobre, iemail, isenha;
+
+	Nome nome, sobrenome;
+	Email email;
+	Senha senha;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Novo nome: ";
+		getline(cin, inome);
+		cout << "Novo sobrenome: ";
+		getline(cin, isobre);
+		cout << "Novo e-mail: ";
+		getline(cin, iemail);
+		cout << "Nova senha: ";
+		getline(cin, isenha);
+		
+		try{
+			nome.setNome(inome);
+			sobrenome.setNome(isobre);
+			email.setEmail(iemail);
+			senha.setSenha(isenha, inome);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdEditLeitor cmd(nome, sobrenome, email, senha, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de leitor editada." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe EditDev.
+
+void NavEditDev::showOption(){
+	cout << endl << "Editor de desenvolvedor - Informe os dados para edicao:" << endl;
+}
+void NavEditDev::execute(){
+	string inome, isobre, iemail, isenha;
+	int idia, imes, iano;
+
+	Nome nome, sobrenome;
+	Email email;
+	Senha senha;
+	Data nascimento;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Novo nome: ";
+		getline(cin, inome);
+		cout << "Novo sobrenome: ";
+		getline(cin, isobre);
+		cout << "Novo e-mail: ";
+		getline(cin, iemail);
+		cout << "Nova Senha: ";
+		getline(cin, isenha);
+		cout << "Novo dia nascimento: ";
+		cin >> idia;
+		cout << "Novo mes nascimento: ";
+		cin >> imes;
+		cout << "Novo ano nascimento: ";
+		cin >> iano;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		try{
+			nome.setNome(inome);
+			sobrenome.setNome(isobre);
+			email.setEmail(iemail);
+			senha.setSenha(isenha, inome);
+			nascimento.setData(idia, imes, iano);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+		}
+	}
+
+	CmdEditDev cmd(nome, sobrenome, email, senha, nascimento, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de desenvolvedor editada." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe EditAdmin.
+
+void NavEditAdmin::showOption(){
+	cout << endl << "Editor de administrador - Informe os dados para edicao:" << endl;
+}
+void NavEditAdmin::execute(){
+	string inome, isobre, iemail, isenha, itelefone, iendereco;
+	int idia, imes, iano;
+
+	Nome nome, sobrenome;
+	Email email;
+	Senha senha;
+	Data nascimento;
+	Telefone telefone;
+	Endereco endereco;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "Novo nome: ";
+		getline(cin, inome);
+		cout << "Novo sobrenome: ";
+		getline(cin, isobre);
+		cout << "Novo e-mail: ";
+		getline(cin, iemail);
+		cout << "Nova senha: ";
+		getline(cin, isenha);
+		cout << "Novo telefone: ";
+		getline(cin, itelefone);
+		cout << "Novo endereco: ";
+		getline(cin, iendereco);
+		cout << "Novo dia nascimento: ";
+		cin >> idia;
+		cout << "Novo mes nascimento: ";
+		cin >> imes;
+		cout << "Novo ano nascimento: ";
+		cin >> iano;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		try{
+			nome.setNome(inome);
+			sobrenome.setNome(isobre);
+			email.setEmail(iemail);
+			senha.setSenha(isenha, inome);
+			nascimento.setData(idia, imes, iano);
+			telefone.setTelefone(itelefone);
+			endereco.setEndereco(iendereco);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+		}
+	}
+
+	CmdEditAdmin cmd(nome, sobrenome, email, senha, nascimento, telefone, endereco, user);
+
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	cout << "Conta de administrador editada." << endl;
 }

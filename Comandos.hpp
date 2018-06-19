@@ -409,6 +409,54 @@ public:
 	void execute() throw (invalid_argument);
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditLeitor.
+* Essa classe realiza o servico de editor de leitor.
+*/
+class CmdEditLeitor: public CmdBase{
+private:
+	Nome nome, sobrenome;
+	Email email, user;
+	Senha senha;
+public:
+	CmdEditLeitor(Nome, Nome, Email, Senha, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditDev.
+* Essa classe realiza o servico de editor de desenvolvedor.
+*/
+class CmdEditDev: public CmdBase{
+private:
+	Nome nome, sobrenome;
+	Email email, user;
+	Senha senha;
+	Data nascimento;
+public:
+	CmdEditDev(Nome, Nome, Email, Senha, Data, Email);
+	void execute() throw (invalid_argument);
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdEditAdmin.
+* Essa classe realiza o servico de editor de administrador.
+*/
+class CmdEditAdmin: public CmdBase{
+private:
+	Nome nome, sobrenome;
+	Email email, user;
+	Senha senha;
+	Data nascimento;
+	Telefone telefone;
+	Endereco endereco;
+public:
+	CmdEditAdmin(Nome, Nome, Email, Senha, Data, Telefone, Endereco, Email);
+	void execute() throw (invalid_argument);
+};
 
 
 

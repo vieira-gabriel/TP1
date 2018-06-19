@@ -418,6 +418,52 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavEditLeitor.
+* Essa classe é responsável pela janela de editor de leitor.
+*/
+class NavEditLeitor: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavEditLeitor(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavEditDev.
+* Essa classe é responsável pela janela de editor de desenvolvedor.
+*/
+class NavEditDev: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavEditDev(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavEditAdmin.
+* Essa classe é responsável pela janela de editor de administrador.
+*/
+class NavEditAdmin: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavEditAdmin(Email e){ user = e; }
+	void execute();
+};
+
+
 
 
 

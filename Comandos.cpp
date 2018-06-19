@@ -700,3 +700,171 @@ void CmdDeleteUser::execute() throw (invalid_argument){
 	throw invalid_argument("***Usuario inexistente!");
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdEditLeitor.
+
+CmdEditLeitor::CmdEditLeitor(Nome a, Nome b, Email e, Senha d, Email x){
+	nome = a;
+	sobrenome = b;
+	email = e;
+	senha = d;
+	user = x;
+}
+
+void CmdEditLeitor::execute() throw (invalid_argument){
+	Leitor leitor;
+
+	if (user.getEmail() != email.getEmail()){
+		for(itLer = userLer.begin(); itLer != userLer.end(); itLer++){
+			if(itLer->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itDev = userDev.begin(); itDev != userDev.end(); itDev++){
+			if(itDev->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++){
+			if(itAdm->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+	}
+	
+	leitor.setNome(nome);
+	leitor.setSobrenome(sobrenome);
+	leitor.setEmail(email);
+	leitor.setSenha(senha);
+
+	for (itLer = userLer.begin(); itLer != userLer.end(); itLer++){
+		if (itLer->getEmail().getEmail() == user.getEmail()){
+			userLer.erase(itLer);
+			break;
+		}
+	}
+
+	userLer.insert(userLer.end(), leitor);
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdEditDev.
+
+CmdEditDev::CmdEditDev(Nome a, Nome b, Email e, Senha d, Data f, Email x){
+	nome = a;
+	sobrenome = b;
+	email = e;
+	senha = d;
+	nascimento = f;
+	user = x;
+}
+
+void CmdEditDev::execute() throw (invalid_argument){
+	Desenvolvedor dev;
+
+	if (user.getEmail() != email.getEmail()){
+		for(itLer = userLer.begin(); itLer != userLer.end(); itLer++){
+			if(itLer->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itDev = userDev.begin(); itDev != userDev.end(); itDev++){
+			if(itDev->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++){
+			if(itAdm->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+	}
+
+	dev.setNome(nome);
+	dev.setSobrenome(sobrenome);
+	dev.setEmail(email);
+	dev.setSenha(senha);
+	dev.setData(nascimento);
+
+	for (itDev = userDev.begin(); itDev != userDev.end(); itDev++){
+		if (itDev->getEmail().getEmail() == user.getEmail()){
+			userDev.erase(itDev);
+			break;
+		}
+	}
+
+	userDev.insert(userDev.end(), dev);
+
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+			if (itMail->getEmail() == user.getEmail()) {
+				itMail->setEmail(dev.getEmail().getEmail());
+			}
+		}
+	}
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdEditAdmin.
+
+CmdEditAdmin::CmdEditAdmin(Nome a, Nome b, Email e, Senha d, Data f, Telefone g, Endereco h, Email x){
+	nome = a;
+	sobrenome = b;
+	email = e;
+	senha = d;
+	nascimento = f;
+	telefone = g;
+	endereco = h;
+	user = x;
+}
+
+void CmdEditAdmin::execute() throw (invalid_argument){
+	Administrador admin;
+
+	if (user.getEmail() != email.getEmail()){
+		for(itLer = userLer.begin(); itLer != userLer.end(); itLer++){
+			if(itLer->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itDev = userDev.begin(); itDev != userDev.end(); itDev++){
+			if(itDev->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+		for(itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++){
+			if(itAdm->getEmail().getEmail() == email.getEmail()){
+				throw invalid_argument("***Usuario com este email ja existe.");
+			}
+		}
+	}
+
+	admin.setNome(nome);
+	admin.setSobrenome(sobrenome);
+	admin.setEmail(email);
+	admin.setSenha(senha);
+	admin.setData(nascimento);
+	admin.setTelefone(telefone);
+	admin.setEndereco(endereco);
+
+	for (itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++){
+		if (itAdm->getEmail().getEmail() == user.getEmail()){
+			userAdm.erase(itAdm);
+			break;
+		}
+	}
+
+	userAdm.insert(userAdm.end(), admin);
+
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->administrador.getEmail() == user.getEmail()){
+			itVocab->administrador.setEmail(admin.getEmail().getEmail());
+		}
+
+		for (itMail = itVocab->desenvolvedor.begin(); itMail != itVocab->desenvolvedor.end(); itMail++) {
+			if (itMail->getEmail() == user.getEmail()) {
+				itMail->setEmail(admin.getEmail().getEmail());
+			}
+		}
+	}
+}

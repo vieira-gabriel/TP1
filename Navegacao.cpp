@@ -455,7 +455,11 @@ void NavUserLeitor::execute() {
 			}
 
 			case US_SHOW_DEFIN:
-			break;
+			{
+				NavShowDefin nav;
+				nav.execute();
+				break;
+			}
 
 			case US_EXIT:
 				return;
@@ -532,7 +536,11 @@ void NavUserDev::execute() {
 			}
 
 			case US_SHOW_DEFIN:
-			break;
+			{
+				NavShowDefin nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SU_VOCAB:
 			{
@@ -661,7 +669,11 @@ void NavUserAdmin::execute() {
 			}
 
 			case US_SHOW_DEFIN:
-			break;
+			{
+				NavShowDefin nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SU_VOCAB:
 			{
@@ -1448,7 +1460,7 @@ void NavShowTermo::execute(){
 	termo = cmd.getResult();
 
 	cout << endl << "Nome do termo: " << termo.getNome().getNome() << endl;
-	cout << "Classe do vocabulario: " << termo.getClasse().getClasse() << endl;
+	cout << "Classe do termo: " << termo.getClasse().getClasse() << endl;
 	cout << "Ultima modificacao: " 	<< termo.getDataCriacao().getDay() << "/" \
 									<< termo.getDataCriacao().getMonth() << "/" \
 									<< termo.getDataCriacao().getYear() << endl;
@@ -1456,6 +1468,69 @@ void NavShowTermo::execute(){
 	cout << "Numero de definicoes registradas - " << defin.size() << endl;
 	for (it = defin.begin(); it != defin.end(); it++) {
 		cout << "\t- " << it->getTexto() << endl;
+	}
+	cout << "Fim dos detalhes." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowDefin.
+
+void NavShowDefin::showOption(){
+	cout << endl << "Detalhes de definicao." << endl;
+}
+
+void NavShowDefin::execute(){
+	string itermo, ivocab, idefin;
+	Nome vocab, termo;	
+	Definicao defin;
+	list<Nome> atermo;
+	list<Nome>::iterator it;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
+		cout << "De qual termo eh: ";
+		getline(cin, itermo);
+		cout << "Definicao desejado: ";
+		getline(cin, idefin);
+
+		try{
+			vocab.setNome(ivocab);
+			termo.setNome(itermo);
+			defin.setTexto(idefin);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdShowDefin cmd(vocab, termo, defin.getTexto(), atermo);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	defin = cmd.getResult();
+
+	cout << endl << "Definicao: " << defin.getTexto().getTexto() << endl;
+	cout << "Ultima modificacao: " 	<< defin.getDataCriacao().getDay() << "/" \
+									<< defin.getDataCriacao().getMonth() << "/" \
+									<< defin.getDataCriacao().getYear() << endl;
+	cout << "Lista de termos associados: " << endl;
+	cout << "Numero de termos associados - " << atermo.size() << endl;
+	for (it = atermo.begin(); it != atermo.end(); it++) {
+		cout << "\t- " << it->getNome() << endl;
 	}
 	cout << "Fim dos detalhes." << endl;
 }

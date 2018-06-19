@@ -398,6 +398,20 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowDefin.
+* Essa classe é responsável pela janela de detalhes da definicao.
+*/
+class NavShowDefin: public InterUI {
+private:
+	void showOption();
+
+public:
+	NavShowDefin(){}
+	void execute();
+};
+
 
 
 

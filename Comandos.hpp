@@ -375,6 +375,26 @@ public:
 	}
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowDefin.
+* Essa classe realiza o servico de fornecer detalhes da definicao.
+*/
+class CmdShowDefin: public CmdBase{
+private:
+	list<Nome> *lista;
+	Nome vocab, termo;
+	Texto definicao;
+	Definicao resultado;
+
+public:
+	CmdShowDefin(Nome, Nome, Texto, list<Nome>&);
+	void execute() throw (invalid_argument);
+	Definicao getResult(){
+		return resultado;
+	}
+};
+
 
 
 

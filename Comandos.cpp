@@ -615,3 +615,46 @@ void CmdShowTermo::execute() throw (invalid_argument){
 	throw invalid_argument("***Vocabulario inexistente!");
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdShowDefin.
+
+CmdShowDefin::CmdShowDefin(Nome a, Nome b, Texto c, list<Nome> &l){
+	lista = &l;
+	vocab = a;
+	termo = b;
+	definicao = c;
+}
+
+void CmdShowDefin::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()) {
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						if (itDef->getTexto().getTexto() == definicao.getTexto()) {
+							resultado.setTexto(itDef->getTexto());
+							resultado.setDataCriacao(itDef->getDataCriacao());
+
+							for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+								for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+									if (itDef->getTexto().getTexto() == definicao.getTexto()) {
+										lista->insert(lista->end(), itTermo->termo.getNome());
+									}
+								}
+							}
+
+							return;
+						}
+					}
+
+					throw invalid_argument("***Definicao inexistente neste termo!");
+				}
+			}
+
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+

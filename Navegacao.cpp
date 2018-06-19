@@ -456,7 +456,11 @@ void NavUserLeitor::execute() {
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
-			break;
+			{
+				NavShowLeitor nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_EDIT_USER:
 			{
@@ -548,7 +552,11 @@ void NavUserDev::execute() {
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
-			break;
+			{
+				NavShowDev nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_EDIT_USER:
 			{
@@ -692,7 +700,11 @@ void NavUserAdmin::execute() {
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch (opcao) {
 			case US_SHOW_USER:
-			break;
+			{
+				NavShowAdmin nav(email);
+				nav.execute();
+				break;
+			}
 
 			case US_EDIT_USER:
 			{
@@ -1786,4 +1798,105 @@ void NavEditAdmin::execute(){
 	}
 
 	cout << "Conta de administrador editada." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowLeitor.
+
+void NavShowLeitor::showOption(){
+	cout << endl << "Detalhes de usuario." << endl;
+}
+
+void NavShowLeitor::execute(){
+	Leitor leitor;
+
+	showOption();
+
+	CmdShowLeitor cmd(user);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	leitor = cmd.getResult();
+
+	cout << endl << "Nome: " << leitor.getNome().getNome() << endl;
+	cout << "Sobrenome: " << leitor.getSobrenome().getNome() << endl;
+	cout << "Email: " << leitor.getEmail().getEmail() << endl;
+	cout << "Senha: " << leitor.getSenha().getSenha() << endl;
+	cout << "Fim dos detalhes." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowDev.
+
+void NavShowDev::showOption(){
+	cout << endl << "Detalhes de usuario." << endl;
+}
+
+void NavShowDev::execute(){
+	Desenvolvedor desenvolvedor;
+
+	showOption();
+
+	CmdShowDev cmd(user);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	desenvolvedor = cmd.getResult();
+
+	cout << endl << "Nome: " << desenvolvedor.getNome().getNome() << endl;
+	cout << "Sobrenome: " << desenvolvedor.getSobrenome().getNome() << endl;
+	cout << "Email: " << desenvolvedor.getEmail().getEmail() << endl;
+	cout << "Senha: " << desenvolvedor.getSenha().getSenha() << endl;
+	cout << "Data nascimento: " << desenvolvedor.getData().getDay() << "/" \
+								<< desenvolvedor.getData().getMonth() << "/" \
+								<< desenvolvedor.getData().getYear() << endl;
+	cout << "Fim dos detalhes." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowAdmin.
+
+void NavShowAdmin::showOption(){
+	cout << endl << "Detalhes de usuario." << endl;
+}
+
+void NavShowAdmin::execute(){
+	Administrador administrador;
+
+	showOption();
+
+	CmdShowAdmin cmd(user);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	administrador = cmd.getResult();
+
+	cout << endl << "Nome: " << administrador.getNome().getNome() << endl;
+	cout << "Sobrenome: " << administrador.getSobrenome().getNome() << endl;
+	cout << "Email: " << administrador.getEmail().getEmail() << endl;
+	cout << "Senha: " << administrador.getSenha().getSenha() << endl;
+	cout << "Data nascimento: " << administrador.getData().getDay() << "/" \
+								<< administrador.getData().getMonth() << "/" \
+								<< administrador.getData().getYear() << endl;
+	cout << "Endereco: " << administrador.getEndereco().getEndereco() << endl;
+	cout << "Telefone: " << administrador.getTelefone().getTelefone() << endl;
+	cout << "Fim dos detalhes." << endl;
 }

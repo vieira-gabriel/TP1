@@ -463,6 +463,51 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowLeitor.
+* Essa classe é responsável pela janela de detalhes do leitor.
+*/
+class NavShowLeitor: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavShowLeitor(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowDev.
+* Essa classe é responsável pela janela de detalhes do desenvolvedor.
+*/
+class NavShowDev: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavShowDev(Email e){ user = e; }
+	void execute();
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowAdmin.
+* Essa classe é responsável pela janela de detalhes do administrador.
+*/
+class NavShowAdmin: public InterUI {
+private:
+	Email user;
+	void showOption();
+
+public:
+	NavShowAdmin(Email e){ user = e; }
+	void execute();
+};
+
 
 
 

@@ -868,3 +868,58 @@ void CmdEditAdmin::execute() throw (invalid_argument){
 		}
 	}
 }
+
+//--------------------------------------------------------------------------- 
+// Classe CmdShowLeitor.
+
+void CmdShowLeitor::execute() throw (invalid_argument){
+	for (itLer = userLer.begin(); itLer != userLer.end(); itLer++) {
+		if (itLer->getEmail().getEmail() == user.getEmail()){
+			resultado.setNome(itLer->getNome());
+			resultado.setSobrenome(itLer->getSobrenome());
+			resultado.setEmail(itLer->getEmail());
+			resultado.setSenha(itLer->getSenha());
+			return;
+		}
+	}
+
+	throw invalid_argument("***Usuario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdShowDev.
+
+void CmdShowDev::execute() throw (invalid_argument){
+	for (itDev = userDev.begin(); itDev != userDev.end(); itDev++) {
+		if (itDev->getEmail().getEmail() == user.getEmail()){
+			resultado.setNome(itDev->getNome());
+			resultado.setSobrenome(itDev->getSobrenome());
+			resultado.setEmail(itDev->getEmail());
+			resultado.setSenha(itDev->getSenha());
+			resultado.setData(itDev->getData());
+			return;
+		}
+	}
+
+	throw invalid_argument("***Usuario inexistente!");
+}
+
+//--------------------------------------------------------------------------- 
+// Classe CmdShowAdmin.
+
+void CmdShowAdmin::execute() throw (invalid_argument){
+	for (itAdm = userAdm.begin(); itAdm != userAdm.end(); itAdm++) {
+		if (itAdm->getEmail().getEmail() == user.getEmail()){
+			resultado.setNome(itAdm->getNome());
+			resultado.setSobrenome(itAdm->getSobrenome());
+			resultado.setEmail(itAdm->getEmail());
+			resultado.setSenha(itAdm->getSenha());
+			resultado.setData(itAdm->getData());
+			resultado.setTelefone(itAdm->getTelefone());
+			resultado.setEndereco(itAdm->getEndereco());
+			return;
+		}
+	}
+
+	throw invalid_argument("***Usuario inexistente!");
+}

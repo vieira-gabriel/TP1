@@ -458,7 +458,59 @@ public:
 	void execute() throw (invalid_argument);
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowLeitor.
+* Essa classe realiza o servico de fornecer detalhes do leitor.
+*/
+class CmdShowLeitor: public CmdBase{
+private:
+	Email user;
+	Leitor resultado;
 
+public:
+	CmdShowLeitor(Email e){ user = e; }
+	void execute() throw (invalid_argument);
+	Leitor getResult(){
+		return resultado;
+	}
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowDev.
+* Essa classe realiza o servico de fornecer detalhes do desenvolvedor.
+*/
+class CmdShowDev: public CmdBase{
+private:
+	Email user;
+	Desenvolvedor resultado;
+
+public:
+	CmdShowDev(Email e){ user = e; }
+	void execute() throw (invalid_argument);
+	Desenvolvedor getResult(){
+		return resultado;
+	}
+};
+
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowAdmin.
+* Essa classe realiza o servico de fornecer detalhes do administrador.
+*/
+class CmdShowAdmin: public CmdBase{
+private:
+	Email user;
+	Administrador resultado;
+
+public:
+	CmdShowAdmin(Email e){ user = e; }
+	void execute() throw (invalid_argument);
+	Administrador getResult(){
+		return resultado;
+	}
+};
 
 
 

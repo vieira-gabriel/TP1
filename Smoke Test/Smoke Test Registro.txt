@@ -181,19 +181,16 @@ Smoke Test Registro (Sign Up)
 
 		Saida:
 
-			***Opcao invalida.
-
-			Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
-			1 - 	Leitor.
-			2 - 	Desenvolvedor.
-			3 - 	Administrador.
-			4 - 	Retornar pagina inicial.
+			Pagina inicial - Opcoes:
+			1 - 	Login.
+			2 - 	Sign Up.
+			3 - 	Exit.
 			Escolha opcao:
 
 
 	Teste 12:
 		Entradas:
-			* Opção: 
+			* Opção: 1
 			* Nome: Usuario
 			* Sobrenome: Leitor
 			* Email: l@dom
@@ -271,3 +268,20 @@ Smoke Test Registro (Sign Up)
 		Saida:
 
 			Conta de desenvolvedor criada.
+
+
+	Teste 17:
+		Entradas:
+			* Opção: 5
+
+
+		Saida:
+
+			***Opcao invalida.
+
+			Pagina de cadastro - Qual nivel de usuario deseja cadastrar:
+			1 - 	Leitor.
+			2 - 	Desenvolvedor.
+			3 - 	Administrador.
+			4 - 	Retornar pagina inicial.
+			Escolha opcao:

@@ -24,7 +24,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 2:
 		Entrada:
@@ -32,7 +32,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 3:
 		Entrada:
@@ -40,7 +40,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 4:
 		Entrada:
@@ -48,7 +48,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 5:
 		Entrada:
@@ -56,7 +56,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 6:
 		Entrada:
@@ -64,7 +64,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 7:
 		Entrada:
@@ -72,7 +72,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			
 
 	Teste 8:
 		Entrada:
@@ -115,7 +115,8 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
+			Criacao de definicao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:
 
 	Teste 13:
 		Entrada:
@@ -123,15 +124,17 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			(Não implementado)
-
+			Edicao de definicao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:
+			
 	Teste 14:
 		Entrada:
 			* Opção: 14
 			
 		Saida:
 
-			(Não implementado)
+			Exclusao de definicao de termo - Informe os dados a seguir:
+			De qual vocabulario eh:			
 
 	Teste 15:
 		Entrada:

@@ -24,9 +24,17 @@ Smoke Test Administrador
 	Teste 1:
 		Entrada:
 			* Opção: 1
-			
+
 		Saida:
-		
+
+			Nome: Admin
+			Sobrenome: Admin
+			Email: a@dom
+			Senha: Senha123
+			Data nascimento: 6/6/2006
+			Endereco: Casa da sua mae
+			Telefone: 12 34567-8901
+			Fim dos detalhes.
 			
 
 	Teste 2:
@@ -35,13 +43,30 @@ Smoke Test Administrador
 			
 		Saida:
 		
+			Editor de administrador - Informe os dados para edicao:
+
+		Entradas:
+			* Novo nome: Adminis
+			* Novo sobrenome: Trador
+			* Novo e-mail: a@dom
+			* Nova senha: senhA321
+			* Novo telefone: 10987654321
+			* Novo endereco: Rua de Cima
+			* Novo dia nascimento: 7
+			* Novo mes nascimento: 10
+			* Novo ano nascimento: 2001
 			
+		Saida:
+		
+			Editor de administrador - Informe os dados para edicao:
 
 	Teste 3:
 		Entrada:
 			* Opção: 3
 			
 		Saida:
+
+			Usuario deletado.
 		
 			
 
@@ -51,30 +76,37 @@ Smoke Test Administrador
 			
 		Saida:
 		
-			
+			Listagem de vocabularios:
+			Numero de vocabularios registrados - 1
+				- Vocabulario
+			Fim da listagem.
+
 
 	Teste 5:
 		Entrada:
 			* Opção: 5
 			
 		Saida:
-		
-			
+
+			Detalhes de vocabulario.
+
 
 	Teste 6:
 		Entrada:
 			* Opção: 6
 			
 		Saida:
-		
 			
+			Detalhes de termo.
+
 
 	Teste 7:
 		Entrada:
 			* Opção: 7
 			
 		Saida:
-		
+
+			Detalhes de definicao.
 			
 
 	Teste 8:

@@ -161,7 +161,7 @@ Smoke Test Exclusão de Vocábulo
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-Smoke Test Cadastro de Desenvolvedor em Vocabulario
+Smoke Test Cadastro em Vocabulario
 
 										"Cadastro de desenvolvedor em vocabulario - Informe os dados a seguir:"
 
@@ -206,3 +206,32 @@ Smoke Test Cadastro de Desenvolvedor em Vocabulario
 		Saida:
 
 			Registrado como desenvolvedor do vocabulario.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Smoke Test Consuta de Vocábulo
+
+										"Detalhes de vocabulario."
+
+	Teste 1:
+		Entrada:
+			* Vocabulario desejado: Vocabulario
+
+		Saida:
+
+			Nome do vocabulario: Vocabulario
+			Idioma do vocabulario: SPA
+			Definicao do vocabulario: definicao vocab.
+			Ultima modificacao: 1/1/2000
+			Lista de termos: 
+			Numero de termos registrados - 1
+				- Termo
+			Fim dos detalhes.
+
+	Teste 2:
+		Entrada:
+			* De qual vocabulario eh: Teste
+
+		Saida:
+
+			***Vocabulario inexistente!

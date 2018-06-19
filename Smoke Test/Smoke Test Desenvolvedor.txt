@@ -21,9 +21,15 @@ Smoke Test Desenvolvedor
 	Teste 1:
 		Entrada:
 			* Opção: 1
-			
+
 		Saida:
 
+			Nome: Dev
+			Sobrenome: Dev
+			Email: d@dom
+			Senha: Senha123
+			Data nascimento: 21/12/1990
+			Fim dos detalhes.
 			
 
 	Teste 2:
@@ -31,7 +37,21 @@ Smoke Test Desenvolvedor
 			* Opção: 2
 			
 		Saida:
+		
+			Editor de desenvolvedor - Informe os dados para edicao:
 
+		Entradas:
+			* Novo nome: Nome
+			* Novo sobrenome: Sobrenome
+			* Novo e-mail: dev@dom
+			* Nova Senha: Senha321
+			* Novo dia nascimento: 15
+			* Novo mes nascimento: 2 
+			* Novo ano nascimento: 2015
+			
+		Saida:
+		
+			Conta de desenvolvedor editada.
 			
 
 	Teste 3:
@@ -40,6 +60,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
+			Usuario deletado.
 			
 
 	Teste 4:
@@ -47,8 +68,12 @@ Smoke Test Desenvolvedor
 			* Opção: 4
 			
 		Saida:
+		
+			Listagem de vocabularios:
+			Numero de vocabularios registrados - 1
+				- Vocabulario
+			Fim da listagem.
 
-			
 
 	Teste 5:
 		Entrada:
@@ -56,15 +81,18 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			
+			Detalhes de vocabulario.
+			Vocabulario desejado:
+
 
 	Teste 6:
 		Entrada:
 			* Opção: 6
 			
 		Saida:
-
 			
+			Detalhes de termo.
+
 
 	Teste 7:
 		Entrada:
@@ -72,7 +100,7 @@ Smoke Test Desenvolvedor
 			
 		Saida:
 
-			
+			Detalhes de definicao.
 
 	Teste 8:
 		Entrada:

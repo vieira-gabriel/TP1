@@ -28,6 +28,8 @@ Smoke Test Menu Principal
 
 		Saida:
 
+			(Encerra execução do programa)
+
 	Teste 4:
 		Entrada: hfjds
 		Saida:

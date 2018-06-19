@@ -16,49 +16,49 @@ Smoke Test Leitor
 			* Opção: 1
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 2:
 		Entrada:
 			* Opção: 2
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 3:
 		Entrada:
 			* Opção: 3
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 4:
 		Entrada:
 			* Opção: 4
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 5:
 		Entrada:
 			* Opção: 5
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 6:
 		Entrada:
 			* Opção: 6
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 7:
 		Entrada:
 			* Opção: 7
 
 		Saida:
-			(Não implementado)
+			
 
 	Teste 8:
 		Entrada:

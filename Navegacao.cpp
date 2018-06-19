@@ -136,7 +136,7 @@ void NavLogin::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -268,7 +268,7 @@ void NavSULeitor::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -999,7 +999,7 @@ void NavDeleteVocab::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}	
 	
@@ -1169,7 +1169,7 @@ void NavDeleteTermo::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}	
 	
@@ -1344,7 +1344,7 @@ void NavDeleteDefin::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}	
 	
@@ -1390,7 +1390,7 @@ void NavSUVocab::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -1459,7 +1459,7 @@ void NavShowVocab::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -1522,7 +1522,7 @@ void NavShowTermo::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -1586,7 +1586,7 @@ void NavShowDefin::execute(){
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
 			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 
@@ -1641,8 +1641,6 @@ void NavEditLeitor::execute(){
 		cout << "Nova senha: ";
 		getline(cin, isenha);
 		
-		cin.clear();
-		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		try{
 			nome.setNome(inome);
 			sobrenome.setNome(isobre);
@@ -1653,6 +1651,8 @@ void NavEditLeitor::execute(){
 		catch (invalid_argument exp) {
 			cout << endl << exp.what() << endl;
 			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 

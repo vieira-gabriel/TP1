@@ -448,7 +448,11 @@ void NavUserLeitor::execute() {
 			}
 
 			case US_SHOW_TERMO:
-			break;
+			{
+				NavShowTermo nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_DEFIN:
 			break;
@@ -521,7 +525,11 @@ void NavUserDev::execute() {
 			}
 
 			case US_SHOW_TERMO:
-			break;
+			{
+				NavShowTermo nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_DEFIN:
 			break;
@@ -646,7 +654,11 @@ void NavUserAdmin::execute() {
 			}
 
 			case US_SHOW_TERMO:
-			break;
+			{
+				NavShowTermo nav;
+				nav.execute();
+				break;
+			}
 
 			case US_SHOW_DEFIN:
 			break;
@@ -1383,6 +1395,67 @@ void NavShowVocab::execute(){
 	cout << "Numero de termos registrados - " << termo.size() << endl;
 	for (it = termo.begin(); it != termo.end(); it++) {
 		cout << "\t- " << it->getNome() << endl;
+	}
+	cout << "Fim dos detalhes." << endl;
+}
+
+//--------------------------------------------------------------------------- 
+// Classe NavShowTermo.
+
+void NavShowTermo::showOption(){
+	cout << endl << "Detalhes de termo." << endl;
+}
+
+void NavShowTermo::execute(){
+	string itermo, ivocab;
+	Nome vocab;	
+	Termo termo;
+	list<Texto> defin;
+	list<Texto>::iterator it;
+
+	showOption();
+
+	// Obtem input valido.
+	while(true) {
+		cout << "De qual vocabulario eh: ";
+		getline(cin, ivocab);
+		cout << "Termo desejado: ";
+		getline(cin, itermo);
+
+		try{
+			vocab.setNome(ivocab);
+			termo.setNome(itermo);
+			break;
+		}
+		catch (invalid_argument exp) {
+			cout << endl << exp.what() << endl;
+			cout << "Entrada invalida. Informe novamente os dados:" << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
+	CmdShowTermo cmd(vocab, termo.getNome(), defin);
+	
+	try{
+		cmd.execute();
+	}
+	catch (invalid_argument exp) {
+		cout << endl << exp.what() << endl;
+		return;
+	}
+
+	termo = cmd.getResult();
+
+	cout << endl << "Nome do termo: " << termo.getNome().getNome() << endl;
+	cout << "Classe do vocabulario: " << termo.getClasse().getClasse() << endl;
+	cout << "Ultima modificacao: " 	<< termo.getDataCriacao().getDay() << "/" \
+									<< termo.getDataCriacao().getMonth() << "/" \
+									<< termo.getDataCriacao().getYear() << endl;
+	cout << "Lista de definicoes: " << endl;
+	cout << "Numero de definicoes registradas - " << defin.size() << endl;
+	for (it = defin.begin(); it != defin.end(); it++) {
+		cout << "\t- " << it->getTexto() << endl;
 	}
 	cout << "Fim dos detalhes." << endl;
 }

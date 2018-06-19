@@ -356,5 +356,29 @@ public:
 	}
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe CmdShowTermo.
+* Essa classe realiza o servico de fornecer detalhes do termo.
+*/
+class CmdShowTermo: public CmdBase{
+private:
+	list<Texto> *lista;
+	Nome vocab, termo;
+	Termo resultado;
+
+public:
+	CmdShowTermo(Nome, Nome, list<Texto>&);
+	void execute() throw (invalid_argument);
+	Termo getResult(){
+		return resultado;
+	}
+};
+
+
+
+
+
+
 
 #endif // COMANDOS_H_INCLUDED

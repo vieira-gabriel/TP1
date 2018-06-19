@@ -585,3 +585,33 @@ void CmdShowVocab::execute() throw (invalid_argument){
 	throw invalid_argument("***Vocabulario inexistente!");
 }
 
+//--------------------------------------------------------------------------- 
+// Classe CmdShowTermo.
+
+CmdShowTermo::CmdShowTermo(Nome a, Nome b, list<Texto> &l){
+	lista = &l;
+	vocab = a;
+	termo = b;
+}
+
+void CmdShowTermo::execute() throw (invalid_argument){
+	for (itVocab = listVocab.begin(); itVocab != listVocab.end(); itVocab++) {
+		if (itVocab->vocabulario.getNome().getNome() == vocab.getNome()){
+			for (itTermo = itVocab->termo.begin(); itTermo != itVocab->termo.end(); itTermo++) {
+				if (itTermo->termo.getNome().getNome() == termo.getNome()) {
+					resultado = itTermo->termo;
+
+					for (itDef = itTermo->definicao.begin(); itDef != itTermo->definicao.end(); itDef++) {
+						lista->insert(lista->end(), itDef->getTexto());
+					}
+					return;
+				}
+			}
+
+			throw invalid_argument("***Termo inexistente!");
+		}
+	}
+
+	throw invalid_argument("***Vocabulario inexistente!");
+}
+

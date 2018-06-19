@@ -384,6 +384,20 @@ public:
 	void execute();
 };
 
+//--------------------------------------------------------------------------- 
+/**
+* Classe NavShowTermo.
+* Essa classe é responsável pela janela de detalhes do termo.
+*/
+class NavShowTermo: public InterUI {
+private:
+	void showOption();
+
+public:
+	NavShowTermo(){}
+	void execute();
+};
+
 
 
 
